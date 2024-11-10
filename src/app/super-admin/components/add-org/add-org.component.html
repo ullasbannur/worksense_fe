@@ -1,0 +1,96 @@
+<div class="card">
+  <p-tabView [(activeIndex)]="activeIndex">
+    <p-tabPanel header="Organization Information">
+      <form [formGroup]="orgInfoForm" class="p-fluid">
+        <div class="grid">
+          <div class="col-12 col-md-6 ">
+            <!-- <div class="field"> -->
+              <label>Organization Name</label>
+              <input pInputText formControlName="name" placeholder="Enter your organization name" />
+            <!-- </div> -->
+          </div>
+          <div class="col-20 col-md-6">
+            <div class="field">
+              <label>Organization Logo</label>
+              <div class="p-inputgroup">
+                <input
+                  type="text"
+                  pInputText
+                  [value]="selectedFileName"
+                  placeholder="Upload your logo"
+                  readonly
+                />
+                <button type="button" pButton icon="pi pi-upload" (click)="fileInput.click()"></button>
+              </div>
+              <input #fileInput type="file" (change)="onFileSelect($event)" style="display: none" accept="image/*" />
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6">
+            <div class="field">
+              <label>Contact Number</label>
+              <input pInputText formControlName="contact" placeholder="Enter your contact" />
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <div class="field">
+              <label>Email-id</label>
+              <input pInputText formControlName="email" placeholder="Enter your email-id" />
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6">
+            <div class="field">
+              <label>Country</label>
+              <input pInputText formControlName="country" placeholder="Enter your country" />
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <div class="field">
+              <label>City</label>
+              <input pInputText formControlName="city" placeholder="Enter your city" />
+            </div>
+          </div>
+
+          <div class="col-12">
+            <div class="field">
+              <label>Address</label>
+              <textarea pInputTextarea formControlName="address" placeholder="Enter your address" rows="3"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="button-spacing">
+          <p-button  class="buttons" label="Cancel" severity="danger"></p-button>
+          <p-button  class="buttons" label="Next" (onClick)="onNext()" [disabled]="!orgInfoForm.valid"></p-button>
+        </div>
+
+      </form>
+    </p-tabPanel>
+
+    <p-tabPanel header="Admin Credentials">
+      <form [formGroup]="adminForm" class="p-fluid">
+        <div class="grid">
+          <div class="col-12 col-md-6">
+            <div class="field">
+              <label>Username</label>
+              <input pInputText formControlName="username" placeholder="Enter admin username" />
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <div class="field">
+              <label>Password</label>
+              <!-- <p-password  formControlName="password"  [toggleMask]="true" placeholder="Enter admin password"></p-password> -->
+              <input pInputText type="password"   formControlName="password" placeholder="Enter admin password" />
+            </div>
+          </div>
+        </div>
+        <div class="button-spacing">
+          <p-button class="buttons" label="Cancel"  severity="danger"></p-button>
+          <p-button class="buttons" label="Submit" (onClick)="onSubmit()" [disabled]="!adminForm.valid"></p-button>
+
+        </div>
+      </form>
+    </p-tabPanel>
+  </p-tabView>
+</div>

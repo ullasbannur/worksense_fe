@@ -3,6 +3,25 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { SharedModule } from './shared/shared.module';
+import { SuperAdminModule } from './super-admin/super-admin.module';
+import { AdminModule } from './admin/admin.module';
+import { UserModule } from './user/user.module';
+import { ReactiveFormsModule } from '@angular/forms';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+
+// import { TabViewModule } from 'primeng/tabview';
+// import { InputTextModule } from 'primeng/inputtext';
+// import { InputTextareaModule } from 'primeng/inputtextarea';
+// import { ButtonModule } from 'primeng/button';
+// import { FileUploadModule } from 'primeng/fileupload';
+// import { HttpClientModule } from '@angular/common/http';
+
+
+
+
+
+
 
 @NgModule({
   declarations: [
@@ -10,9 +29,26 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    SharedModule,
+    SuperAdminModule,
+    AdminModule,
+    UserModule,
+
+    
+    // TabViewModule,
+    // InputTextModule,
+    // InputTextareaModule,
+    // ButtonModule,
+    // FileUploadModule,
+    // HttpClientModule
+
+    
   ],
-  providers: [],
+  providers: [
+    provideAnimationsAsync()
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

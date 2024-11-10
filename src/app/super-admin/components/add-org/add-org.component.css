@@ -1,0 +1,63 @@
+*{
+  box-sizing:border-box;
+  padding: 0;
+  margin: 0;
+  
+
+}
+.card {
+    position: absolute;
+    top: 18%;
+    left: 25%;
+    padding: 1rem; 
+    width: 50%;
+    border-radius: 0.25rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    background-color: #fff;
+
+  }
+  
+  .grid {
+    display: grid;
+    gap: 1rem;
+  }
+
+  
+
+.button-spacing{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+
+input{
+  padding: 6px;
+}
+
+.buttons{
+  width: 60px;
+}
+
+
+@media (min-width: 768px) {
+    .grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  
+  .flex {
+    display: flex;
+  }
+  
+  .justify-content-end {
+    justify-content: flex-end;
+  }
+  
+  :host ::ng-deep .p-tabview-panels {
+    padding: 2rem;
+  }
+  
+
+  :host ::ng-deep .p-tabview-nav li {
+    margin-right: 1rem;
+  }
+}

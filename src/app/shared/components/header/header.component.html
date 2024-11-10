@@ -1,0 +1,36 @@
+
+<header>
+    <div class="logo">
+         <img src="../../../../assets/eg.jpeg">
+        <!-- <ng-content></ng-content> -->
+         <div class="option"  *ngFor="let x of option">
+            <li>{{x}}</li>
+         </div>
+    </div >
+    <div class="icon">  
+         <span>
+            <i id="user-icon" class="fa-solid fa-user"></i>
+            <i id="ham-icon" class="fa-solid fa-bars" (click)="openMenu()"></i>
+         </span>
+
+        <div class="hidden-div">
+            <!-- <div class="icon-info"> -->
+                <li>{{nameOfUser}}</li>
+                <li>{{username}}</li>
+            <!-- </div> -->
+            <button >Logout</button>
+        </div>
+    </div>
+
+</header>
+<div class="menu"  [ngClass]="{'show': isVisible }">  <!-- *ngIf="isVisible"  -->
+    <div style="margin-top: 30px;"  *ngFor="let x of option">
+        <li>{{x}}</li>
+     </div>
+
+     <hr style="width: 75%;">
+
+    <li >{{nameOfUser}}</li>
+    <li >{{username}}</li> 
+    <button style="margin-top: 20px;">Logout</button>
+</div>

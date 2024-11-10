@@ -1,0 +1,39 @@
+
+<div class="component">
+  <div class="login-container">
+    <h2 id="heading" >WorkSense </h2>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <label for="username">Username</label>
+      <input type="text" id="username" formControlName="username" placeholder="Enter your username" />
+      
+      <label for="password">Password</label>
+      <input type="password" id="password" formControlName="password" placeholder="Enter your password" />
+  
+      <button [ngClass]="{'login-disable': loginForm.invalid}" type="submit" [disabled]="loginForm.invalid">Sign In</button>
+    </form>
+  </div>
+</div>
+
+<!-- 
+ <div class="container">
+  <h2>WorkSense Login</h2>
+
+  <form [formGroup]="loginForm">  
+     (ngSubmit)="onSubmit()" 
+      <div class="username">
+        <label for="username">Username</label>
+        <input type="text" id="username" formControlName="username" placeholder="Enter your username" />
+      </div>
+      
+      <div class="password">
+        <label for="password">Password</label>
+        <input type="password" id="password" formControlName="password" placeholder="Enter your password" />
+      </div>
+    
+    <button [ngClass]="{'login-disable': loginForm.invalid}" (click)="onSubmit()"  [disabled]="loginForm.invalid">Sign In</button>  
+     type="submit" 
+
+  </form>
+
+</div> 
+-->
