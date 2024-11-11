@@ -2,31 +2,54 @@
   box-sizing:border-box;
   padding: 0;
   margin: 0;
-  
-
 }
+
+body{
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center; */
+}
+
 .card {
-    position: absolute;
-    top: 18%;
-    left: 25%;
+  /* margin-top: 60px; */
+  /* margin: 60px auto;  */
+    /* position: absolute; */
+    /* top: 18%; */
+    /* left: 25%; */
     padding: 1rem; 
     width: 50%;
+    /* height: fit-content; */
     border-radius: 0.25rem;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
     background-color: #fff;
 
+    margin: 0 auto;
+    margin-top: 100px;  
+    overflow: auto;
+    height: 68%;
+    /* max-height: 70vh; */
+    /* box-sizing: border-box;
+
+    
+    /* margin-left: 25vw;
+    margin-top: 15vh; */
+
+
   }
-  
+
   .grid {
     display: grid;
     gap: 1rem;
   }
 
-  
-
 .button-spacing{
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    /* justify-content: center; */
+    /* align-items: center; */
     margin-top: 10px;
   }
 
@@ -35,15 +58,42 @@ input{
 }
 
 .buttons{
-  width: 60px;
+  width: 50px;
+}
+
+:host ::ng-deep .p-tabview-panels {
+  padding: 2rem;
 }
 
 
+:host ::ng-deep .p-tabview-nav li {
+  margin-right: 1rem;
+}
+
+
+
 @media (min-width: 768px) {
-    .grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
+
+  .button-spacing{
+
+    flex-direction: row;
+    gap: 10px;
+    justify-content: end;
+    margin-top: 10px;
+  }
+
+  input{
+    padding: 6px;
+  }
   
+  .buttons{
+    width: 60px;
+  }
+
+  .grid {
+      grid-template-columns: repeat(2, 1fr);
+  }
+
   .flex {
     display: flex;
   }
@@ -56,7 +106,6 @@ input{
     padding: 2rem;
   }
   
-
   :host ::ng-deep .p-tabview-nav li {
     margin-right: 1rem;
   }

@@ -1,13 +1,13 @@
-<div class="card">
+ <div class="card" > <!-- *ngIf="showCard" -->
   <p-tabView [(activeIndex)]="activeIndex">
     <p-tabPanel header="Organization Information">
       <form [formGroup]="orgInfoForm" class="p-fluid">
         <div class="grid">
           <div class="col-12 col-md-6 ">
-            <!-- <div class="field"> -->
+            <div class="field">
               <label>Organization Name</label>
               <input pInputText formControlName="name" placeholder="Enter your organization name" />
-            <!-- </div> -->
+            </div>
           </div>
           <div class="col-20 col-md-6">
             <div class="field">
@@ -61,7 +61,7 @@
         </div>
 
         <div class="button-spacing">
-          <p-button  class="buttons" label="Cancel" severity="danger"></p-button>
+          <p-button  class="buttons" label="Cancel" (onClick)="onCancelCard()" severity="danger"></p-button>
           <p-button  class="buttons" label="Next" (onClick)="onNext()" [disabled]="!orgInfoForm.valid"></p-button>
         </div>
 
@@ -73,20 +73,38 @@
         <div class="grid">
           <div class="col-12 col-md-6">
             <div class="field">
-              <label>Username</label>
-              <input pInputText formControlName="username" placeholder="Enter admin username" />
+              <label>Admin Name</label>
+              <input pInputText formControlName="username" placeholder="Enter admin name" />
             </div>
           </div>
+
           <div class="col-12 col-md-6">
+            <div class="field">
+              <label>Email</label>
+              <input pInputText formControlName="email" placeholder="Enter admin email" />
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6"> 
             <div class="field">
               <label>Password</label>
               <!-- <p-password  formControlName="password"  [toggleMask]="true" placeholder="Enter admin password"></p-password> -->
               <input pInputText type="password"   formControlName="password" placeholder="Enter admin password" />
             </div>
           </div>
+
+          <div class="col-12 col-md-6">
+            <div class="field">
+              <label>Contact</label>
+              <input pInputText formControlName="contact" placeholder="Enter admin contact" />
+            </div>
+          </div>
+
+
+          
         </div>
         <div class="button-spacing">
-          <p-button class="buttons" label="Cancel"  severity="danger"></p-button>
+          <p-button class="buttons" label="Cancel" (onClick)="onCancel()"  severity="danger"></p-button>
           <p-button class="buttons" label="Submit" (onClick)="onSubmit()" [disabled]="!adminForm.valid"></p-button>
 
         </div>

@@ -16,6 +16,7 @@ export class AddOrgComponent  {
   
   activeIndex: number = 0;
   selectedFileName: string = '';
+  showCard:boolean=true;
   
   orgInfoForm: FormGroup;
   adminForm: FormGroup;
@@ -33,6 +34,8 @@ export class AddOrgComponent  {
 
     this.adminForm = this.fb.group({
       username: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      contact: ['', Validators.required],
       password: ['', Validators.required]
     });
   }
@@ -54,6 +57,19 @@ export class AddOrgComponent  {
       this.activeIndex = 1;
     }
   }
+
+  onCancel() {
+    this.activeIndex = 0;
+  }
+
+
+  onCancelCard() {
+    // this.activeIndex = 0;
+    this.showCard=!this.showCard;
+
+  }
+
+
 
   onSubmit() {
     if (this.adminForm.valid && this.orgInfoForm.valid) {

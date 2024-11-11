@@ -6,12 +6,16 @@
 header
 {
     display: flex;
+    position: absolute;
+    z-index: 1;
     justify-content: space-between;
     align-items: center; 
     height: 40px;
     width: 100%;
     box-sizing: border-box;
-    box-shadow: 0px 3px 4px 0px rgba(202,196,196,1);
+    /* box-shadow: 0px 3px 3px 0px rgb(172, 172, 172); */
+    border:1px solid lightgray;
+    background-color: white;
     /* position: fixed;  */
 }
 
@@ -25,6 +29,9 @@ header
 
 .logo img{
     height: 40px;
+    border-bottom: 1px solid lightgray ;
+    border-top: 1px solid lightgray ;
+
 }
 
 .logo{
@@ -39,34 +46,35 @@ header
 
 .menu {
     display: flex;
-    background-color: rgb(52, 60, 121);
+    background-color: rgb(214, 227, 227);
+    /* color: white; */
     flex-direction: column;
     text-align: center;
     align-items: center;
     position: absolute;
     top: 40px;
+    z-index: 0;
     font-size: medium;
     gap: 20px;
     width: 100%;
     height: 100%;
 
-    right: -100%;
-    transition: right 0.5s;
+    top: -100%;
+    transition: top 0.5s;
 }
 
 .menu.show{
-    right: 0%;
+    top: 40px;
 }
 
 .menu button{
     width: 70px;
-    height: 40px;
+    height: 35px;
     color: white;
-    background-color: red;
-    border-radius: 10px;
+    background-color: rgb(219, 54, 54);
+    border-radius: 18px;
     outline: none;
     border: none;
-
 }
 
 .hidden-div{
@@ -75,12 +83,15 @@ header
     top: 40px;
     right: 0;
     padding: 4px;
-    width: 10%;
+    width: 15%;
     height: 90px;
+    background-color: rgb(248, 255, 255);
+    border-top: none;
+    
     box-shadow: 0px 3px 4px 0px rgba(202,196,196,1);
     border-radius: 5px;
     text-align: center;
-    padding-bottom: 5px;
+    padding-bottom: 10px;
     /* background-color: rgb(52, 60, 121); */
 }
 
@@ -90,15 +101,15 @@ header
     outline: none;
     color: white;
     background-color: red;
-    margin-top: 15px;
     width: 60%;
+    height: 20px;
 }
 
 .option{
     display: none;
 }
 
-@media screen and (min-width: 767px) and (max-width: 1023px)
+@media screen and (min-width: 767px)
 {
     .menu{
         display: none;
@@ -121,14 +132,20 @@ header
         align-items: center;   
         text-align: center; 
         gap: 25px;
-        /* gap:15px */
     }
+
     .option{
         display: block;
     }
+
+    .hidden-div button{
+        margin-top: 0px;
+        
+    }
+
 }
  
-@media screen and  (min-width: 1024px){
+/* @media screen and  (min-width: 1024px){
     
     .menu{
         display: none;
@@ -155,4 +172,4 @@ header
     .option{
         display: block;
     }
-}
+} */

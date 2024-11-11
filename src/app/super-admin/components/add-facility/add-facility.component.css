@@ -1,0 +1,123 @@
+*{
+    box-sizing:border-box;
+    padding: 0;
+    margin: 0;
+  }
+  
+  body{
+    /* overflow: none; */
+  
+    /* max-width: 100vh; */
+    /* display: flex; */
+    /* justify-content: center;
+    align-items: center; */
+  }
+  
+  .card {
+    /* margin-top: 60px; */
+    /* margin: 60px auto;  */
+      /* position: absolute; */
+      /* top: 18%; */
+      /* left: 25%; */
+      padding: 1rem; 
+      width: 50%;
+      height: fit-content;
+      border-radius: 0.25rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+      background-color: #fff;
+  
+      margin: 0 auto;
+      margin-top: 100px;  
+      overflow: auto;
+      height: 55%;
+      
+      /* height: 70%; */
+      /* max-height: 70vh; */
+      /* box-sizing: border-box;
+      
+      margin-left: 25vw;
+      margin-top: 15vh; */
+  
+  
+    }
+  
+    .grid {
+      display: grid;
+      gap: 1rem;
+    }
+ 
+
+  .button-spacing{
+      display: flex;
+      flex-direction: column;
+      /* justify-content: space-between; */
+      /* justify-content: center; */
+      /* align-items: center; */
+      margin-top: 10px;
+    }
+  
+  input{
+    padding: 6px;
+  }
+  
+  .buttons{
+    width: 50px;
+    margin-top: 20px;
+  }
+  
+  
+  :host ::ng-deep .p-tabview-panels {
+    padding: 2rem;
+  }
+  
+  
+  :host ::ng-deep .p-tabview-nav li {
+    margin-right: 1rem;
+  }
+
+
+  ::ng-deep .custom-dropdown  {
+    padding: 3px;
+}
+
+  
+  
+  @media (min-width: 768px) {
+  
+    .button-spacing{
+  
+      flex-direction: row;
+      gap: 10px;
+      justify-content: end;
+      margin-top: 10px;
+    }
+  
+    input{
+      padding: 6px;
+    }
+    
+    .buttons{
+      width: 60px;
+    }
+  
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+  
+    .flex {
+      display: flex;
+    }
+    
+    .justify-content-end {
+      justify-content: flex-end;
+    }
+    
+    :host ::ng-deep .p-tabview-panels {
+      padding: 2rem;
+    }
+    
+    /* :host ::ng-deep .p-tabview-nav li {
+      margin-right: 1rem;
+    } */
+  }
+  

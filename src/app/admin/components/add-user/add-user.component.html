@@ -1,0 +1,50 @@
+<div class="card" > <!-- *ngIf="showCard" -->
+    <p-tabView>
+      <p-tabPanel header="User Credentials">
+        <form [formGroup]="userForm" class="p-fluid">
+          <div class="grid">
+
+                <div class="col-12 col-md-6">
+                <div class="field">
+                    <label>User Name</label>
+                    <input pInputText formControlName="username" placeholder="Enter user name" />
+                </div>
+                </div>
+  
+                <div class="col-12 col-md-6">
+                <div class="field">
+                    <label>Email</label>
+                    <input pInputText formControlName="email" placeholder="Enter user email" />
+                </div>
+                </div>
+  
+            <div class="col-12 col-md-6"> 
+              <div class="field">
+                <label>Password</label>
+                <input pInputText type="password"  formControlName="password" placeholder="Enter user password" />
+              </div>
+            </div>
+  
+            <div class="col-12 col-md-6">
+              <div class="field">
+                <label>Contact</label>
+                <input pInputText formControlName="contact" placeholder="Enter admin contact" />
+              </div>
+            </div>
+  
+            
+          </div>
+          
+
+          <div class="button-spacing">
+            <p-button class="buttons" label="Cancel" (onClick)="onCancel()"  severity="danger"></p-button>
+            <p-button class="buttons" label="Submit" (onClick)="onSubmit()" [disabled]="!userForm.valid"></p-button>
+          </div>
+        </form>
+
+         
+
+      </p-tabPanel>
+    </p-tabView>
+  </div>
+  

@@ -12,6 +12,8 @@ import { ButtonModule } from 'primeng/button';
 import { FileUploadModule } from 'primeng/fileupload';
 import { HttpClientModule } from '@angular/common/http';
 import { PasswordModule } from 'primeng/password';
+import { AddFacilityComponent } from './components/add-facility/add-facility.component';
+import { DropdownModule } from 'primeng/dropdown';
 
 
 const routes: Routes = [
@@ -22,13 +24,19 @@ const routes: Routes = [
   {
     path: 'addOrg',  
     component: AddOrgComponent
-  }
+  },
+  {
+    path: 'addFacility',  
+    component: AddFacilityComponent
+  },
+
 ];
 
 @NgModule({
   declarations: [
     DashbaordComponent,
-    AddOrgComponent
+    AddOrgComponent,
+    AddFacilityComponent
   ],
   imports: [
     CommonModule,
@@ -43,7 +51,9 @@ const routes: Routes = [
     FileUploadModule,
     TabViewModule,
     HttpClientModule,
-    PasswordModule
+    PasswordModule,
+    DropdownModule
+    
 
   ],
   // exports: [RouterModule]
