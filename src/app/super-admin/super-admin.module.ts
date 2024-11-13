@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { PasswordModule } from 'primeng/password';
 import { AddFacilityComponent } from './components/add-facility/add-facility.component';
 import { DropdownModule } from 'primeng/dropdown';
+import { AdminModule } from '../admin/admin.module';
 
 
 const routes: Routes = [
@@ -22,7 +23,7 @@ const routes: Routes = [
     component: DashbaordComponent
   },
   {
-    path: 'addOrg',  
+    path: 'addOrganisation',  
     component: AddOrgComponent
   },
   {
@@ -52,7 +53,9 @@ const routes: Routes = [
     TabViewModule,
     HttpClientModule,
     PasswordModule,
-    DropdownModule
+    DropdownModule,
+    
+    AdminModule
     
 
   ],

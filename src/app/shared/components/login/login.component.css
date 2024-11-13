@@ -1,6 +1,6 @@
  .component {
     display: flex;
-    margin: 60px auto;
+    margin: 0 auto;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -12,6 +12,7 @@
   }
   
   .login-container {
+    /* position: absolute; */
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);

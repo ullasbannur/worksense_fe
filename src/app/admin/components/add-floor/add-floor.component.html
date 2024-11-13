@@ -1,0 +1,130 @@
+<div class="card" > <!-- *ngIf="showCard" -->
+    <p-tabView [(activeIndex)]="activeIndex">
+      <p-tabPanel header="Floor Layout" [ngClass]="{'selected-tab-panel': activeIndex===0}">
+        <form [formGroup]="FloorForm" class="p-fluid"  >
+          <div class="grid">
+
+            <div class="col-12 col-md-6">
+                <div class="field">
+                    <label>Organisation</label>
+                    <p-dropdown 
+                        formControlName="org"
+                        [options]="orgs"
+                        [styleClass]="'custom-dropdown'"
+                        placeholder="Select Organisation">
+                    </p-dropdown>
+                </div>  
+            </div>
+  
+            <div class="col-12 col-md-6">
+              <div class="field">
+                <label>Floor Level</label>
+                <input pInputText formControlName="floorLevel"
+                 placeholder="Enter floor level" />
+              </div>
+            </div>
+
+            <div class="col-12 col-md-6">
+                <div class="field">
+                    <label>Country</label>
+                    <p-dropdown 
+                        formControlName="country"
+                        [options]="countries"
+                        [styleClass]="'custom-dropdown'"
+                        placeholder="Select Country">
+                    </p-dropdown>
+                </div>
+            </div>
+  
+            <div class="col-12 col-md-6">
+              <div class="field">
+                  <label>Facility</label>
+                  <p-dropdown 
+                      formControlName="facility"
+                      [options]="facilities"
+                      (onChange)="onChange($event)"
+                      [styleClass]="'custom-dropdown'"
+                      placeholder="Select Facility">
+                  </p-dropdown>
+              </div>
+            </div>
+
+            <div class="col-12 col-md-6">
+              <div class="field">
+                  <label>No of Seats</label>
+                  <p-inputNumber 
+                  formControlName="seats"
+                      mode="decimal" 
+                      [showButtons]="true" 
+                      [min]="1" 
+                      [max]="50" />
+                <!-- <label>No of Seats</label>   [(ngModel)]="value2"  inputId="minmax-buttons" 
+                <input pInputText formControlName="seats" 
+                placeholder="Enter no of Seats"/> -->
+              </div>
+            </div>
+  
+            <div class="col-12">
+              <div class="field">
+                <label>The Floor Name :</label>
+                <input pInputText formControlName="floorName" 
+                placeholder="Floor Name"/>
+              </div>
+            </div>
+
+          </div>
+
+          <div style="margin-top: 30px; border: 0.5px solid black; height: 60px; display: flex; flex-wrap: wrap; overflow-y: auto;" >
+            <div *ngFor="let room of roomarray" style="margin-left:5px ;">
+              <h3>{{room.roomName}}</h3>
+            </div>
+          </div>
+  
+          <div class="button-spacing">
+            <p-button  class="buttons"  label="AddRoom" (onClick)="addRoom()" [disabled]="!FloorForm.valid" severity="danger"></p-button>
+              <p-button  class="buttons" label="Cancel" (onClick)="onCancelFloor()" severity="danger"></p-button>
+              <p-button  class="buttons" label="Submit" (onClick)="onSubmitFloor()" [disabled]="!FloorForm" ></p-button>
+          </div>
+  
+        </form>
+      </p-tabPanel>
+  
+      <p-tabPanel header="Room Layout">
+        <form [formGroup]="RoomForm" class="p-fluid">
+          <div class="grid">
+
+            <div class="col-12 col-md-6">
+              <div class="field">
+                <label>Room Name</label>
+                <input pInputText formControlName="roomName"
+                 placeholder="Enter room name" />
+              </div>
+            </div>
+  
+            <div class="col-12 col-md-6">
+              <div class="field">
+                <label>Room Occupancy</label>
+                <p-inputNumber
+                      formControlName="roomOccupancy"
+                      mode="decimal" 
+                      [showButtons]="true" 
+                      [min]="1" 
+                      [max]="6" />
+                
+                <!-- <input pInputText formControlName="roomOccupancy" 
+                placeholder="Enter room limit" /> -->
+              </div>
+            </div>
+  
+            
+          </div>
+          <div class="button-spacing">
+            <p-button class="buttons" label="Cancel" (onClick)="onCancelRoom()"  severity="danger"></p-button>
+            <p-button class="buttons" label="Submit" (onClick)="onSubmitRoom()" [disabled]="!RoomForm.valid"></p-button>
+          
+          </div>
+        </form>
+      </p-tabPanel>
+    </p-tabView>
+  </div>
+  

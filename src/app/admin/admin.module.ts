@@ -10,10 +10,13 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { FileUploadModule } from 'primeng/fileupload';
+// import { HttpClient } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
 import { PasswordModule } from 'primeng/password';
 import { DropdownModule } from 'primeng/dropdown';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AddFloorComponent } from './components/add-floor/add-floor.component';
+import { InputNumberModule } from 'primeng/inputnumber';
 
 const routes: Routes = [
   {
@@ -23,13 +26,18 @@ const routes: Routes = [
   {
     path: 'addUser',  
     component: AddUserComponent
+  },
+  {
+    path: 'addFloor',  
+    component: AddFloorComponent
   }
 ];
 
 @NgModule({
   declarations: [
     LandingPageComponent,
-    AddUserComponent
+    AddUserComponent,
+    AddFloorComponent
   ],
   imports: [
     CommonModule,
@@ -44,8 +52,14 @@ const routes: Routes = [
     FileUploadModule,
     TabViewModule,
     HttpClientModule,
+    // HttpClient,
     PasswordModule,
-    DropdownModule
+    DropdownModule,
+    InputNumberModule
+  ],
+  exports:[AddUserComponent,
+    AddFloorComponent,
+    RouterModule
   ]
 })
 export class AdminModule { }

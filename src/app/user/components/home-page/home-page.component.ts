@@ -7,6 +7,6 @@ import { Component } from '@angular/core';
 })
 export class HomePageComponent {
   userType:string="User";
-  nameUser:string="nipun";
+  userName:string="nipun";
 
 }

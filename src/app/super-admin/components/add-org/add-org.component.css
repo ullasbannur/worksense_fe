@@ -5,11 +5,11 @@
 }
 
 body{
-  /* display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center; */
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* justify-content: center; */
+  /* align-items: center; */
+  /* text-align: center;  */
 }
 
 .card {
@@ -71,11 +71,15 @@ input{
 }
 
 
+:host ::ng-deep .p-tabview-nav {
+  border-bottom: none; 
+}
+
+
 
 @media (min-width: 768px) {
 
   .button-spacing{
-
     flex-direction: row;
     gap: 10px;
     justify-content: end;

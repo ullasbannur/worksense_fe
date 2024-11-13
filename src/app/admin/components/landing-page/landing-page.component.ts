@@ -7,6 +7,6 @@ import { Component } from '@angular/core';
 })
 export class LandingPageComponent {
   userType:string="Admin";
-  nameUser:string="tina";
+  userName:string="tina";
   options:string[]=['Users','Facility','Report'];
 }

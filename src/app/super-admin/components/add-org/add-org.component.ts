@@ -69,8 +69,6 @@ export class AddOrgComponent  {
 
   }
 
-
-
   onSubmit() {
     if (this.adminForm.valid && this.orgInfoForm.valid) {
       const formData = {

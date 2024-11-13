@@ -78,7 +78,12 @@
 
   ::ng-deep .custom-dropdown  {
     padding: 3px;
-}
+  }
+
+
+  :host ::ng-deep .p-tabview-nav {
+    border-bottom: none; 
+  }
 
   
   

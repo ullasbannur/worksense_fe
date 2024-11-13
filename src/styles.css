@@ -30,7 +30,34 @@
       if (!clickedInside) {
         this.isVisible = false;
       }
+
+
+      
   } */
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+
+
+
+
+/* 
+// const fieldOneValue = this.RoomForm.get('country')?.value;
+// const fieldTwoValue = this.RoomForm.get('facility')?.value;
+// const fieldThreeValue = this.RoomForm.get('floorLevel')?.value;
+// const mergedValue = `${fieldOneValue}_${fieldTwoValue}_${fieldThreeValue}`;
+
+// this.RoomForm.get('floorName')?.setValue(mergedValue, { emitEvent: false });
+
+combineLatest([
+  this.FloorForm.get('country')!.valueChanges.pipe(startWith('')),
+  this.FloorForm.get('facility')!.valueChanges.pipe(startWith('')),
+  this.FloorForm.get('floorLevel')!.valueChanges.pipe(startWith(''))
+]).subscribe(([country, facility, floorLevel]) => {
+  if (country && facility && floorLevel) {
+    const mergedValue = `${country}_${facility}_${floorLevel}`;
+    this.RoomForm.get('floorName')?.setValue(mergedValue, { emitEvent: false });
+  }
+}); */

@@ -21,7 +21,7 @@ export class AddFacilityComponent {
       address: ['', Validators.required]
     });
 
-    this.orgs=['EG','LCODE'];
+    this.orgs=[' ','EG','LCODE'];
   }
 
   ngOnInit() {}

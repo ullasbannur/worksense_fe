@@ -60,15 +60,18 @@ export class LoginComponent {
         // credential.role==='super'? this.route.navigateByUrl('/super/dashboard'):;
         switch(credential.role){
           case 'super':
-            this.route.navigateByUrl('/super/dashboard');
+            console.log("this is super");
+            this.route.navigateByUrl('super/dashboard');
             break;
-            
           case 'admin':
             this.route.navigateByUrl('/admin/dashboard');
+            console.log("this is admin");
+
             break;
-          
           case 'user':
             this.route.navigateByUrl('/user/dashboard');
+            console.log("this is user");
+
             break;
         }
       }

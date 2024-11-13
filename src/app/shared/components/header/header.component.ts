@@ -7,19 +7,26 @@ import { Component, HostListener, Input } from '@angular/core';
 })
 export class HeaderComponent {
   isVisible:boolean = false;
+  
  
   @Input()
-  username!:string;
+  userType!:string;
+
 
   @Input()
-  nameOfUser!:string;
+  userName!:string;
 
   @Input()
   option!:string[]
   
+  
   openMenu(){
     this.isVisible= !this.isVisible;
+    
   }
+
+  // console.log("10");
+
 
   // onPage:boolean=false;
 
