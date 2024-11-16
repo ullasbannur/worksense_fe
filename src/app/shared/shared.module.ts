@@ -5,6 +5,7 @@ import { Router, RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ForgotComponent } from './components/forgot/forgot.component';
+import { ResetComponent } from './components/reset/reset.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,10 @@ const routes: Routes = [
   {
     path: 'forgot',  
     component: ForgotComponent
+  },
+  {
+    path:'reset',
+    component:ResetComponent
   }
 ];
 
@@ -26,6 +31,7 @@ const routes: Routes = [
     HeaderComponent,
     LoginComponent,
     ForgotComponent,
+    ResetComponent
   ],
   imports: [
     CommonModule,
@@ -34,7 +40,9 @@ const routes: Routes = [
   ],
   exports:[RouterModule,
     HeaderComponent,
-    LoginComponent
+    LoginComponent,
+    ForgotComponent,
+    ResetComponent
   ]
 })
 export class SharedModule { }

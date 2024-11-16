@@ -3,6 +3,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    opacity: 80%;
   }
   
   #heading{
@@ -47,7 +48,9 @@
   .login-container button {
     width: 92%;
     padding: 10px;
-    background-color: #28a745;
+    /* background-color: #28a745; */
+    /* background-color: rgb(89, 119, 112); */
+    background-color: #9bbb9b;
     color: white;
     border: none;
     border-radius: 30px;
@@ -57,10 +60,19 @@
   }
   
   .login-container button:hover {
-    background-color: #218838;
+    /* background-color: #218838; */
+    background-color: rgb(89, 119, 112);
+
   }
 
 .login-disable{
-    opacity: 0.3;
+    opacity: 0.6;
   } 
+
+
+  input:focus, textarea:focus, select:focus {
+    outline: none;
+    box-shadow: none;
+}
+
 

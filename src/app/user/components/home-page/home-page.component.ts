@@ -8,5 +8,6 @@ import { Component } from '@angular/core';
 export class HomePageComponent {
   userType:string="User";
   userName:string="nipun";
+  options:string[]=['Facility','Report'];
 
 }

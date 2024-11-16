@@ -20,10 +20,8 @@ export class AddFloorComponent {
   orgs!: string[] |  [undefined];
   countries!: string[] |  [undefined];
   facilities!: string[] |  [undefined];
-  roomarray: any[] = [];
   
-
-
+  roomarray: any[] = [];
   
   FloorForm!: FormGroup;
   RoomForm!: FormGroup;
@@ -67,47 +65,42 @@ export class AddFloorComponent {
     this.activeIndex = 1;
   }
 
-  onCancelFloor() {
-    // this.activeIndex = 0;
-    // this.showCard=!this.showCard;
-  }
 
-  onSubmitFloor() {
-    console.log(this.FloorForm.value);
+  onSubmitFloor(){
+    // console.log(this.FloorForm.value);
     if (this.FloorForm.valid) {
       const formData = {
         ...this.FloorForm.value
       };
-      console.log('Form submitted:', formData);
+      // console.log('Form submitted:', formData);
 
       var newData = {...this.FloorForm.value};
+      newData.rooms=this.roomarray
       // newData.push(this.roomarray);
       console.log('Form submitted:', newData);
-
-
     }
-  }
-
-  onCancelRoom() {
-    this.activeIndex = 0;
   }
 
   onSubmitRoom() {
     if (this.RoomForm.valid) {
       const formData = {
-        ...this.RoomForm.value
-    };
-    console.log('Form submitted:', formData);
-    this.activeIndex = 0;
-     
-    let roomData = {
+        ...this.RoomForm.value};
+
+      let roomData = {
           roomName: this.RoomForm.get('roomName')?.value,
           roomOccupancy: this.RoomForm.get('roomOccupancy')?.value
         };
     this.roomarray.push(roomData); 
-          this.RoomForm.reset(); 
-
+    console.log(this.roomarray,roomData)
+    this.RoomForm.reset(); 
+    // console.log('Form submitted:', formData);
+    this.activeIndex = 0;
     }
+  }
+
+  onCancelRoom() {
+    this.activeIndex = 0;
+    this.RoomForm.reset();
   }
 
   onChange(e:any){

@@ -1,0 +1,14 @@
+<div class="login-container">
+  <h2 id="heading">Change Password</h2>
+  <form [formGroup]="resetForm" (ngSubmit)="onSubmit()">
+    <input type="password" id="oldPassword" formControlName="password" placeholder="Old Password" />
+
+    <input type="password" id="newPassword" formControlName="password1" placeholder="New Password" />
+
+    <input type="password" id="confirmPassword" formControlName="password2" placeholder="Confirm New Password" />
+
+    <button 
+      [ngClass]="{'login-disable': resetForm.invalid}" type="submit" [disabled]="resetForm.invalid">Submit
+    </button>
+  </form>
+</div>

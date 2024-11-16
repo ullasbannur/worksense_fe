@@ -1,8 +1,13 @@
  .component {
+  opacity: 85%;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+
+    /* transform: translate(-49%, -80%); */
+    /* height: 25%; */
+    /* width: 39%; */
   }
   
   #heading{
@@ -11,10 +16,11 @@
   }
   
   .login-container {
+    height:10%;
     /* position: absolute; */
     background-color: white;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); */
     padding: 20px 40px; 
     /* width: 35%; */
     text-align: center;
@@ -46,7 +52,9 @@
   .login-container button {
     width: 92%;
     padding: 10px;
-    background-color: #28a745;
+    /* background-color: #28a745; */
+    background-color:#599959;
+
     color: white;
     border: none;
     border-radius: 30px;
@@ -56,72 +64,22 @@
   }
   
   .login-container button:hover {
-    background-color: #218838;
+    /* background-color: #218838; */
+    background-color: rgb(89, 119, 112);
+
   }
 
-.login-disable{
+/* .login-disable{
     opacity: 0.3;
+  }  */
+
+
+  .login-disable{
+    opacity: 0.6;
   } 
 
 
-
-  /*
-
-.container{
-  display: flex;
-  flex-direction: column;
-  width: 400px;
-  height: 400px;
-  text-align: center;
-  justify-content: center;
-  gap: 40px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-  border: solid #f5f5f5;
-  margin: 15vh auto;
+  input:focus, textarea:focus, select:focus {
+    outline: none;
+    box-shadow: none;
 }
-
-form{
-  text-align: start;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-}
-
-.password{
-  width: 90%;
-  height: auto;
-}
-
-.username{
-  width: 90%;
-  height: auto;
-  margin-bottom: 25px;
-}
-
-.container h2{
-  margin-top: 30px;
-}
-
-form label {
-  text-align: left; 
-}
-
-form input{
-  width: 100%;
-  font-size: 16px;
-  height: 30px;
-  margin-bottom: 5px;
-  margin-top: 5px;
-
-}
-form button{
-  width: 93%;
-  height: 40px;
-  margin-top: 50px;
-  margin-bottom: 5px;
-}
- */
-
-
- 
