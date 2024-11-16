@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
+import { DialogService, DynamicDialogComponent, DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { FileUploadEvent } from 'primeng/fileupload';
 
 
@@ -9,11 +10,18 @@ import { FileUploadEvent } from 'primeng/fileupload';
   selector: 'app-add-org',
   templateUrl: './add-org.component.html',
   styleUrl: './add-org.component.css',
-  providers: [MessageService]
+  providers: [MessageService, DialogService,DynamicDialogConfig]
 })
 export class AddOrgComponent  {
 
-  
+  instance!:  DynamicDialogComponent | undefined;
+  dialogRef: any;
+  dialogService: any;
+
+
+  countries :string[] | [undefined]=[' ','DK','IN'];
+  cities :string[] | [undefined]=[' ','Mangalore','Udupi'];
+
   activeIndex: number = 0;
   selectedFileName: string = '';
   showCard:boolean=true;
@@ -21,7 +29,9 @@ export class AddOrgComponent  {
   orgInfoForm: FormGroup;
   adminForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,
+    public config: DynamicDialogConfig) {
+      
     this.orgInfoForm = this.fb.group({
       name: ['', Validators.required],
       logo: [null],
@@ -40,7 +50,17 @@ export class AddOrgComponent  {
     });
   }
 
-  ngOnInit() {}
+
+  // ngOnInit() {
+  //  const data = this.config
+  //   console.log('new instance', data);
+  // }
+
+ ngOnInit() {
+  
+    this.instance = this.dialogService.getInstance(this.dialogRef);
+    console.log('new instance', this.instance);
+  }
 
   onFileSelect(event: any) {
     if (event.target.files.length > 0) {
@@ -76,6 +96,9 @@ export class AddOrgComponent  {
         ...this.adminForm.value
       };
       console.log('Form submitted:', formData);
+      this.adminForm.reset();
+      this.orgInfoForm.reset();
+      this.activeIndex = 0;
     }
   }
 

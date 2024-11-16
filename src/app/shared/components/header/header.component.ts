@@ -1,4 +1,5 @@
 import { Component, HostListener, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -6,6 +7,9 @@ import { Component, HostListener, Input } from '@angular/core';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
+  constructor(private route:Router) {}
+
+
   isVisible:boolean = false;
   
  
@@ -18,12 +22,41 @@ export class HeaderComponent {
 
   @Input()
   option!:string[]
+
+
+  logoClick(){
+    console.log("logo clicked");
+    switch(this.userType){
+      case 'Super Admin':
+        this.route.navigateByUrl('super/dashboard');
+        console.log('ullas ka page');
+        break;
+      case 'Admin':
+        this.route.navigateByUrl('admin/dashboard');
+        console.log('tina ka page');
+        break;
+      case 'User':
+        this.route.navigateByUrl('user/dashboard');
+        console.log('nipun ka page');
+        break;
+    }
+  }
   
   
   openMenu(){
     this.isVisible= !this.isVisible;
     
   }
+
+  onclick(event : any){
+    console.log('event', event);
+    if(event==='Organisation'){
+      this.route.navigateByUrl('/listOrg');
+    }
+    
+  }
+
+ 
 
   // console.log("10");
 

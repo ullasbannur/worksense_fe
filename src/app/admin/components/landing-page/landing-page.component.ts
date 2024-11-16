@@ -9,4 +9,8 @@ export class LandingPageComponent {
   userType:string="Admin";
   userName:string="tina";
   options:string[]=['Users','Facility','Report'];
+
+  constructor(){
+    console.log('tina dashboard')
+  }
 }

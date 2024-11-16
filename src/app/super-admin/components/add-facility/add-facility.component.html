@@ -27,14 +27,26 @@
             <div class="col-12 col-md-6">
               <div class="field">
                 <label>Country</label>
-                <input pInputText formControlName="country" placeholder="Enter Country">
+                <!-- <input pInputText formControlName="country" placeholder="Enter Country"> -->
+                <p-dropdown 
+                formControlName="country"
+                [options]="countries"
+                [styleClass]="'custom-dropdown'"
+                placeholder="Select Organisation">
+            </p-dropdown>
               </div>
             </div>
 
             <div class="col-12 col-md-6">
               <div class="field">
                 <label>City</label>
-                <input pInputText formControlName="city" placeholder="Enter City" />
+                <!-- <input pInputText formControlName="city" placeholder="Enter City" /> -->
+                <p-dropdown 
+                formControlName="city"
+                [options]="cities"
+                [styleClass]="'custom-dropdown'"
+                placeholder="Select Organisation">
+            </p-dropdown>
               </div>
             </div>
   
@@ -43,7 +55,13 @@
             <div class="col-12 col-md-6">
               <div class="field">
                 <label>Pincode</label>
-                <input pInputText formControlName="pincode" placeholder="Enter Pincode" />
+                <!-- <input pInputText formControlName="pincode" placeholder="Enter Pincode" /> -->
+                <p-dropdown 
+                formControlName="pincode"
+                [options]="pincodes"
+                [styleClass]="'custom-dropdown'"
+                placeholder="Select Organisation">
+            </p-dropdown>
               </div>
             </div>
   
@@ -56,7 +74,7 @@
           </div>
   
           <div class="button-spacing">
-            <p-button  class="buttons" label="Cancel"  (click)="onCancel()"  severity="danger"></p-button>
+            <!-- <p-button  class="buttons" label="Cancel"  (click)="onCancel()"  severity="danger"></p-button> -->
             <p-button  class="buttons" label="Save" (click)="onSubmit()" [disabled]="FacilityForm.invalid"></p-button>
           </div>
   

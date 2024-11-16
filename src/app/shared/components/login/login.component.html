@@ -1,39 +1,21 @@
 
 <div class="component">
   <div class="login-container">
-    <h2 id="heading" >WorkSense </h2>
+    <h2 id="heading" >Login </h2>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-      <label for="username">Username</label>
-      <input type="text" id="username" formControlName="username" placeholder="Enter your username" />
+      <!-- <label for="username">Username</label> -->
+      <input type="text" id="username" formControlName="username" placeholder="Email" />
       
-      <label for="password">Password</label>
-      <input type="password" id="password" formControlName="password" placeholder="Enter your password" />
+      <!-- <label for="password">Password</label> -->
+      <input type="password" id="password" formControlName="password" placeholder=" Password" />
   
       <button [ngClass]="{'login-disable': loginForm.invalid}" type="submit" [disabled]="loginForm.invalid">Sign In</button>
     </form>
+    <div style="display: flex; justify-content: flex-start; margin-left: 28px; margin-top: 10px; color: blue;"> 
+      <a href="/forgot">Forgot password?</a>
+      <!-- <a href="#">new user?</a> -->
+    </div>
   </div>
 </div>
 
-<!-- 
- <div class="container">
-  <h2>WorkSense Login</h2>
 
-  <form [formGroup]="loginForm">  
-     (ngSubmit)="onSubmit()" 
-      <div class="username">
-        <label for="username">Username</label>
-        <input type="text" id="username" formControlName="username" placeholder="Enter your username" />
-      </div>
-      
-      <div class="password">
-        <label for="password">Password</label>
-        <input type="password" id="password" formControlName="password" placeholder="Enter your password" />
-      </div>
-    
-    <button [ngClass]="{'login-disable': loginForm.invalid}" (click)="onSubmit()"  [disabled]="loginForm.invalid">Sign In</button>  
-     type="submit" 
-
-  </form>
-
-</div> 
--->

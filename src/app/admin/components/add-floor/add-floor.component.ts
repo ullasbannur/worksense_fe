@@ -21,6 +21,7 @@ export class AddFloorComponent {
   countries!: string[] |  [undefined];
   facilities!: string[] |  [undefined];
   roomarray: any[] = [];
+  
 
 
   
@@ -49,7 +50,12 @@ export class AddFloorComponent {
   }
 
   ngOnInit() {}
-
+    
+  // this.serviceNmae.Observable.subscribe(
+  //   res =>{
+      
+  //   }
+  // )
   // onNext() {
   //   if (this.FloorForm.valid) {
   //     this.activeIndex = 1;
@@ -76,7 +82,6 @@ export class AddFloorComponent {
 
       var newData = {...this.FloorForm.value};
       // newData.push(this.roomarray);
-      newData.roomArray = this.roomarray;
       console.log('Form submitted:', newData);
 
 

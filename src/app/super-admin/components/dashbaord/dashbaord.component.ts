@@ -6,8 +6,11 @@ import { Component } from '@angular/core';
   styleUrl: './dashbaord.component.css'
 })
 export class DashbaordComponent {
-  userType:string="Super";
+  userType:string="Super Admin";
   userName:string='ullas';
   options:string[]=['Organisation','Facility','Report'];
 
+  constructor(){
+    console.log('dashboard initiliazed');
+  }
 }

@@ -1,0 +1,15 @@
+
+<div class="component">
+    <div class="login-container">
+      <h2 id="heading" >Forgot Password </h2>
+      <form [formGroup]="forgotForm" (ngSubmit)="onSubmit($event)">
+        <label for="username">Enter your email to receive a new password?</label>
+        <input type="text" id="username" formControlName="email" [(ngModel)]="email" placeholder="Email" />
+    
+        <button [ngClass]="{'login-disable': forgotForm.invalid}" type="submit" [disabled]="forgotForm.invalid">Submit </button>
+      </form>
+    </div>
+  </div>
+
+  
+  

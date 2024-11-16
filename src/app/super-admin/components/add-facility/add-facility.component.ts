@@ -9,6 +9,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class AddFacilityComponent {
 
   orgs: string[] |  [undefined];
+  countries: string[] |  [undefined];
+  cities: string[] |  [undefined];
+  pincodes: string[] |  [undefined];
+
+
   FacilityForm!: FormGroup;
 
   constructor(private fb: FormBuilder) {
@@ -22,6 +27,11 @@ export class AddFacilityComponent {
     });
 
     this.orgs=[' ','EG','LCODE'];
+    this.cities=[' ','Mangalore','Udupi'];
+    this.countries=[' ','DK','FN'];
+    this.pincodes=[' ','DK','FN'];
+
+
   }
 
   ngOnInit() {}

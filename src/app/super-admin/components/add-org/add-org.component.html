@@ -1,5 +1,6 @@
+
  <div class="card" > <!-- *ngIf="showCard" -->
-  <p-tabView [(activeIndex)]="activeIndex">
+  <p-tabView [(activeIndex)]="activeIndex" >
     <p-tabPanel header="Organization Information">
       <form [formGroup]="orgInfoForm" class="p-fluid">
         <div class="grid">
@@ -20,9 +21,9 @@
                   placeholder="Upload your logo"
                   readonly
                 />
-                <button type="button" pButton icon="pi pi-upload" (click)="fileInput.click()"></button>
+                <button type="button"  pButton icon="pi pi-upload" (click)="fileInput.click()" ></button>
               </div>
-              <input #fileInput type="file" (change)="onFileSelect($event)" style="display:none" accept="image/*" />
+              <input #fileInput type="file" (change)="onFileSelect($event)" style="display:none" accept="/.jpg,/.jpeg,/.png" />   <!--accept="image/*"-->
             </div>
           </div>
 
@@ -42,13 +43,25 @@
           <div class="col-12 col-md-6">
             <div class="field">
               <label>Country</label>
-              <input pInputText formControlName="country" placeholder="Enter your country" />
+              <!-- <input pInputText formControlName="country" placeholder="Enter your country" /> -->
+              <p-dropdown 
+              formControlName="country"
+              [options]="countries"
+              [styleClass]="'custom-dropdown'"
+              placeholder="Select Country">
+          </p-dropdown>
             </div>
           </div>
           <div class="col-12 col-md-6">
             <div class="field">
               <label>City</label>
-              <input pInputText formControlName="city" placeholder="Enter your city" />
+              <!-- <input pInputText formControlName="city" placeholder="Enter your city" /> -->
+              <p-dropdown 
+              formControlName="city"
+              [options]="cities"
+              [styleClass]="'custom-dropdown'"
+              placeholder="Select City">
+          </p-dropdown>
             </div>
           </div>
 
@@ -61,8 +74,8 @@
         </div>
 
         <div class="button-spacing">
-          <p-button  class="buttons" label="Cancel" (onClick)="onCancelCard()" severity="danger"></p-button>
-          <p-button  class="buttons" label="Next" (onClick)="onNext()" [disabled]="!orgInfoForm.valid"></p-button>
+          <!-- <p-button  class="buttons" id="cancel" label="Cancel" (onClick)="onCancelCard()" ></p-button> -->
+          <p-button  class="buttons"  label="Next" (onClick)="onNext()" [disabled]="!orgInfoForm.valid"></p-button>
         </div>
 
       </form>
@@ -104,7 +117,7 @@
           
         </div>
         <div class="button-spacing">
-          <p-button class="buttons" label="Cancel" (onClick)="onCancel()"  severity="danger"></p-button>
+          <p-button class="buttons"  id="cancel" label="Cancel"  (onClick)="onCancel()" ></p-button>
           <p-button class="buttons" label="Submit" (onClick)="onSubmit()" [disabled]="!adminForm.valid"></p-button>
 
         </div>

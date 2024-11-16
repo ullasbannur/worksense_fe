@@ -53,7 +53,8 @@
               <div class="field">
                   <label>No of Seats</label>
                   <p-inputNumber 
-                  formControlName="seats"
+                      id="up-down"
+                      formControlName="seats"
                       mode="decimal" 
                       [showButtons]="true" 
                       [min]="1" 
@@ -72,18 +73,19 @@
               </div>
             </div>
 
-          </div>
-
-          <div style="margin-top: 30px; border: 0.5px solid black; height: 60px; display: flex; flex-wrap: wrap; overflow-y: auto;" >
+          </div>  
+          
+          <div  class="chip-box">
             <div *ngFor="let room of roomarray" style="margin-left:5px ;">
-              <h3>{{room.roomName}}</h3>
+              <!-- <h3>{{room.roomName}}</h3> -->
+               <div class="chip" >{{room.roomName}}</div>
             </div>
           </div>
   
           <div class="button-spacing">
             <p-button  class="buttons"  label="AddRoom" (onClick)="addRoom()" [disabled]="!FloorForm.valid" severity="danger"></p-button>
-              <p-button  class="buttons" label="Cancel" (onClick)="onCancelFloor()" severity="danger"></p-button>
-              <p-button  class="buttons" label="Submit" (onClick)="onSubmitFloor()" [disabled]="!FloorForm" ></p-button>
+              <!-- <p-button  class="buttons" label="Cancel" (onClick)="onCancelFloor()" severity="danger"></p-button> -->
+            <p-button  class="buttons" label="Submit" (onClick)="onSubmitFloor()" [disabled]="!FloorForm.valid" ></p-button>
           </div>
   
         </form>
@@ -104,7 +106,8 @@
             <div class="col-12 col-md-6">
               <div class="field">
                 <label>Room Occupancy</label>
-                <p-inputNumber
+                <p-inputNumber 
+                      id="up-down"
                       formControlName="roomOccupancy"
                       mode="decimal" 
                       [showButtons]="true" 
@@ -119,7 +122,7 @@
             
           </div>
           <div class="button-spacing">
-            <p-button class="buttons" label="Cancel" (onClick)="onCancelRoom()"  severity="danger"></p-button>
+            <p-button class="buttons"  id="cancel" label="Cancel" (onClick)="onCancelRoom()"  severity="danger"></p-button>
             <p-button class="buttons" label="Submit" (onClick)="onSubmitRoom()" [disabled]="!RoomForm.valid"></p-button>
           
           </div>

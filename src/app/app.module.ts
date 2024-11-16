@@ -10,6 +10,7 @@ import { UserModule } from './user/user.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
+// import { DynamicDialogModule } from 'primeng/dynamicdialog';
 // import { TabViewModule } from 'primeng/tabview';
 // import { InputTextModule } from 'primeng/inputtext';
 // import { InputTextareaModule } from 'primeng/inputtextarea';
@@ -30,6 +31,10 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     AdminModule,
     UserModule,
 
+    
+    // DynamicDialogModule
+
+    
     
     // TabViewModule,
     // InputTextModule,

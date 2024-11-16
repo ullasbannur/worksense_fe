@@ -17,10 +17,12 @@ const routes: Routes = [
   },
   {
     path:'',
-    redirectTo:'addFloor',
+    redirectTo:'login',
     pathMatch:'full'
   }
+  // ,
   // { login
+  // {
   //   path:'**',
   //   redirectTo:'/super/dashboard'
   // }

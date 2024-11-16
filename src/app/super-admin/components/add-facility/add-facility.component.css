@@ -4,40 +4,22 @@
     margin: 0;
   }
   
-  body{
-    /* overflow: none; */
-  
-    /* max-width: 100vh; */
-    /* display: flex; */
-    /* justify-content: center;
-    align-items: center; */
-  }
-  
   .card {
-    /* margin-top: 60px; */
-    /* margin: 60px auto;  */
-      /* position: absolute; */
-      /* top: 18%; */
-      /* left: 25%; */
+   
       padding: 1rem; 
-      width: 50%;
-      height: fit-content;
-      border-radius: 0.25rem;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+      /* width: 50%; */
+      /* height: 55%;   */
+
+      /* height: fit-content; */
+      /* border-radius: 0.25rem; */
+      /* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5); */
+      /* border: 1px solid rgb(198, 193, 193); */
       background-color: #fff;
-  
-      margin: 0 auto;
-      margin-top: 100px;  
       overflow: auto;
-      height: 55%;
-      
-      /* height: 70%; */
-      /* max-height: 70vh; */
-      /* box-sizing: border-box;
-      
-      margin-left: 25vw;
-      margin-top: 15vh; */
-  
+      /* position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%); */
   
     }
   
@@ -52,7 +34,7 @@
       flex-direction: column;
       /* justify-content: space-between; */
       /* justify-content: center; */
-      /* align-items: center; */
+      align-items: center;
       margin-top: 10px;
     }
   
@@ -62,27 +44,49 @@
   
   .buttons{
     width: 50px;
-    margin-top: 20px;
+    margin-top: 10px;
   }
   
   
+
   :host ::ng-deep .p-tabview-panels {
-    padding: 2rem;
+    padding-top: 1rem;
   }
-  
-  
+
   :host ::ng-deep .p-tabview-nav li {
     margin-right: 1rem;
   }
 
+  :host ::ng-deep .p-tabview-nav {
+    border-bottom: none; 
+  }
 
-  ::ng-deep .custom-dropdown  {
-    padding: 3px;
+  :host ::ng-deep .p-button {
+    background-color: #9bbb9b;
+    border: solid #9bbb9b;
+    height: 30px;
   }
 
 
-  :host ::ng-deep .p-tabview-nav {
-    border-bottom: none; 
+  :host ::ng-deep .p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link{
+    /* color: #9bbb9b; */
+    color: white;
+    height:28px;
+    border-color: #9bbb9b;
+    background-color: #9bbb9b ;
+    /* background-color: rgb(89, 119, 112); */
+    
+  }
+
+   :host ::ng-deep .p-tabview .p-tabview-nav li .p-tabview-nav-link{
+    border-bottom: none;
+    font-weight: 500;
+
+  } 
+
+  :host ::ng-deep .p-fluid .p-dropdown .p-dropdown-label {
+    height: 30px;
+    padding-left: 6px;
   }
 
   
@@ -118,7 +122,7 @@
     }
     
     :host ::ng-deep .p-tabview-panels {
-      padding: 2rem;
+      padding: 1rem;
     }
     
     /* :host ::ng-deep .p-tabview-nav li {

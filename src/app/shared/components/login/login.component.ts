@@ -58,6 +58,7 @@ export class LoginComponent {
       if(this.loginForm.value.username != null){
         let credential = JSON.parse(localStorage.getItem(this.loginForm.value.username) || '{}');
         // credential.role==='super'? this.route.navigateByUrl('/super/dashboard'):;
+        console.log('credntial', credential)
         switch(credential.role){
           case 'super':
             console.log("this is super");

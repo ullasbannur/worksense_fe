@@ -4,44 +4,43 @@
     margin: 0;
   }
   
-  body{
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* justify-content: center; */
-    /* align-items: center; */
-    /* text-align: center;  */
-  }
-  
   .card {
-    /* margin-top: 60px; */
-    /* margin: 60px auto;  */
-      /* position: absolute; */
-      /* top: 18%; */
-      /* left: 25%; */
       padding: 1rem; 
-      width: 50%;
-      /* height: fit-content; */
-      border-radius: 0.25rem;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+      /* width: 60%; */
+      /* border-radius: 0.25rem; */
       background-color: #fff;
-  
-      margin: 0 auto;
-      margin-top: 100px;  
+      /* border: 1px solid rgb(198, 193, 193); */
       overflow: auto;
-      height: 70%;
-      /* max-height: 70vh; */
-      /* box-sizing: border-box;
-  
+      /* height: 70%; */
+      /* position: absolute; */
+      /* top: 50%; */
+      /* left: 50%; */
+      /* transform: translate(-50%, -50%); */
       
-      /* margin-left: 25vw;
-      margin-top: 15vh; */
-  
-  
+    }
+    .chip-box{
+      margin-top: 30px;
+      border: 1px solid rgb(198, 193, 193);
+      padding: 5px;
+      border-radius: 10px;
+      gap: 10px;
+      height: 45px;
+      display: flex;
+      flex-wrap: wrap;
+      overflow-y: auto;
+    }
+
+    .chip{
+      border: 1px solid rgb(198, 193, 193);
+      border-radius: 10px;
+      padding: 5px;
+      height: 35px;
+      background-color: #c9e7c9;
     }
   
     .grid {
       display: grid;
-      gap: 1rem;
+      gap: 2rem;
     }
   
   .button-spacing{
@@ -52,8 +51,6 @@
       align-items: center;
       margin-top: 10px;
     }
-
-    
   
   input{
     padding: 6px;
@@ -61,27 +58,71 @@
   
   .buttons{
     width: 50px;
+    margin-top: 5px;
   }
   
-  :host ::ng-deep .p-tabview-panels {
-    padding: 2rem;
+  
+ :host ::ng-deep .p-tabview {
+  border: none;
+}
 
+  :host ::ng-deep .p-tabview-panels {
+    padding-top: 1rem;
+  }
+
+  :host ::ng-deep .p-tabview-nav li {
+    margin-right: 1rem;
   }
 
   :host ::ng-deep .p-tabview-nav {
     border-bottom: none; 
-  }
-  
-  :host ::ng-deep .p-tabview-nav li {
-    margin-right: 1rem;
-    /* width: 20%; */
-
+    /* border-top: none; */
   }
 
-  ::ng-deep .custom-dropdown  {
-    padding: 3px;
+   :host ::ng-deep .p-button{
+    background-color: #9bbb9b;
+    border: solid #9bbb9b;
+    height: 30px;
+  }  
+
+
+  /* cancel button */
+  :host ::ng-deep #cancel .p-button{
+    background-color: #61615e7f;
+    border:#9bbb9b;
   }
-  
+
+  :host ::ng-deep .p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link{
+    padding: 4px;
+    color: white;
+    height:30px;
+    border-color: #9bbb9b;
+    background-color: #9bbb9b ;
+  }
+
+   :host ::ng-deep .p-tabview .p-tabview-nav li .p-tabview-nav-link{
+    height: 30px;
+    border-bottom: none;
+    font-weight: 500;
+  } 
+
+  :host ::ng-deep .p-fluid .p-dropdown .p-dropdown-label {
+    height: 30px;
+    padding-left: 6px;
+  }
+
+/* up down buttons */
+  :host ::ng-deep .p-fluid .p-inputnumber .p-inputnumber-input{
+    height: 32px;
+    padding-left: 10px;
+  }
+
+
+  :host ::ng-deep #up-down{
+    height: 32px;
+    padding-left: 10px;
+  }
+
   
   @media (min-width: 768px) {
   
@@ -114,7 +155,7 @@
     }
     
     :host ::ng-deep .p-tabview-panels {
-      padding: 2rem;
+      padding: 1rem;
     }
     
     :host ::ng-deep .p-tabview-nav li {

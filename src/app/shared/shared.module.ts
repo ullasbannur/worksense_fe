@@ -4,6 +4,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { Router, RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ForgotComponent } from './components/forgot/forgot.component';
 
 const routes: Routes = [
   {
@@ -13,6 +14,10 @@ const routes: Routes = [
   {
     path: 'login',  
     component: LoginComponent
+  },
+  {
+    path: 'forgot',  
+    component: ForgotComponent
   }
 ];
 
@@ -20,6 +25,7 @@ const routes: Routes = [
   declarations: [
     HeaderComponent,
     LoginComponent,
+    ForgotComponent,
   ],
   imports: [
     CommonModule,

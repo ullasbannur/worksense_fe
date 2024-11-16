@@ -15,6 +15,9 @@ import { PasswordModule } from 'primeng/password';
 import { AddFacilityComponent } from './components/add-facility/add-facility.component';
 import { DropdownModule } from 'primeng/dropdown';
 import { AdminModule } from '../admin/admin.module';
+import { ListOrgComponent } from './components/list-org/list-org.component';
+import { DynamicDialogModule } from 'primeng/dynamicdialog';
+
 
 
 const routes: Routes = [
@@ -30,14 +33,18 @@ const routes: Routes = [
     path: 'addFacility',  
     component: AddFacilityComponent
   },
-
+  {
+    path: 'listOrg',  
+    component: ListOrgComponent
+  }
 ];
 
 @NgModule({
   declarations: [
     DashbaordComponent,
     AddOrgComponent,
-    AddFacilityComponent
+    AddFacilityComponent,
+    ListOrgComponent
   ],
   imports: [
     CommonModule,
@@ -54,8 +61,7 @@ const routes: Routes = [
     HttpClientModule,
     PasswordModule,
     DropdownModule,
-    
-    AdminModule
+    DynamicDialogModule
     
 
   ],
