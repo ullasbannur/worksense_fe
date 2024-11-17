@@ -1,28 +1,40 @@
- .component {
-  opacity: 85%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.box{
+  display: flex; flex-direction: column; align-items: center;
+}
 
-    /* transform: translate(-49%, -80%); */
-    /* height: 25%; */
-    /* width: 39%; */
-  }
+.left{
+  height: 30vh;  text-align: center;
+  padding: 25px;;
+}
+
+.right{
+  height: 50vh; width: 50vw;
+}
+
+
+.proj-name{
+  font-size: 30px;
+  /* color: #599959; */
+  color: rgb(89, 119, 112);
+
+}
   
   #heading{
     margin-bottom: 50px;
     color: rgb(89, 119, 112);
   }
+
+  #forget-link{
+    align-items: center;
+    font-size: 9px;
+  }
   
   .login-container {
-    height:10%;
-    /* position: absolute; */
     background-color: white;
     border-radius: 10px;
-    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); */
-    padding: 20px 40px; 
-    /* width: 35%; */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    padding: 20px 10px; 
+    width: 100%;
     text-align: center;
   }
   
@@ -45,15 +57,15 @@
     border: 1px solid #ccc;
     border-radius: 30px;
     font-size: 16px;
-
-    
   }
   
   .login-container button {
     width: 92%;
     padding: 10px;
     /* background-color: #28a745; */
-    background-color:#599959;
+  background-color: rgb(23, 153, 86);
+
+    /* background-color:#599959; */
 
     color: white;
     border: none;
@@ -62,24 +74,55 @@
     cursor: pointer;
 
   }
-  
-  .login-container button:hover {
-    /* background-color: #218838; */
-    /* background-color: rgb(89, 119, 112); */
 
-  }
-
-/* .login-disable{
+.login-disable{
     opacity: 0.3;
-  }  */
-
-
-  .login-disable{
-    opacity: 0.6;
   } 
-
 
   input:focus, textarea:focus, select:focus {
     outline: none;
     box-shadow: none;
 }
+
+
+@media screen and (min-width: 767px){
+  #forget-link{
+    font-size: medium;
+  }
+
+
+.box{
+  flex-direction: row;
+}
+
+.left{
+  display: flex;
+  flex: 1;
+  height: 100vh;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.right{
+  flex: 1;
+  display: flex;
+  height: 100vh;
+  width: 50vw;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  padding-right: 30px;
+  
+}
+
+.proj-name{
+  font-size: 60px;
+}
+
+}
+
+
+
+

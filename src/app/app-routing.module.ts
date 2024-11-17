@@ -20,11 +20,10 @@ const routes: Routes = [
     redirectTo:'login',
     pathMatch:'full'
   }
-  // ,
-  // { login
+  ,
   // {
   //   path:'**',
-  //   redirectTo:'/super/dashboard'
+  //   redirectTo:'login'
   // }
 
 ];
