@@ -1,30 +1,40 @@
 .box{
   display: flex; flex-direction: column; align-items: center;
+  background-color: rgb(23, 153, 86);
+  /* height: max-content; */
+  height: 100vh;
+
 }
 
 .left{
   height: 30vh;  text-align: center;
   padding: 25px;;
+  background-color: rgb(23, 153, 86);
 }
 
 .right{
-  height: 50vh; width: 50vw;
+  height: 50vh; 
+  width: 70vw;
+  background-color: rgb(23, 153, 86);
+
 }
 
 
 .proj-name{
   font-size: 30px;
   /* color: #599959; */
-  color: rgb(89, 119, 112);
+  /* color: rgb(89, 119, 112); */
+  color: white;
+
 }
 
-  
-  #heading{
-    margin-bottom: 50px;
-    color: rgb(89, 119, 112);
-    font-size: 25px;
-  }
 
+#heading{
+  margin-bottom: 50px;
+  color: rgb(89, 119, 112);
+  font-size: 25px;
+}
+  
   #forget-link{
     align-items: center;
     font-size: 9px;
@@ -103,6 +113,8 @@
   text-align: center;
   justify-content: center;
   align-items: center;
+  background-color: rgb(23, 153, 86);
+  
 }
 
 
@@ -114,18 +126,36 @@
   justify-content: center;
   text-align: center;
   align-items: center;
-  padding-right: 50px;
+  padding-right: 30px;
+  background-color: rgb(23, 153, 86);
+
   
 }
 
 .proj-name{
   font-size: 60px;
+  color: white;
 }
 
-  #heading{
-    margin-bottom: 50px;
-    color: rgb(89, 119, 112);
-    font-size: 50px;
-  }
+#heading{
+  margin-bottom: 50px;
+  color: rgb(89, 119, 112);
+  font-size: 50px;
+}
+
+.login-container {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  padding: 20px 10px; 
+  width: 90%;
+  height: 40%;
+  text-align: center;
+}
+
 
 }
+
+
+
+
