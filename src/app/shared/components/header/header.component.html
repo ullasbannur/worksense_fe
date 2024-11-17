@@ -6,7 +6,7 @@
         <!-- <ng-content></ng-content> -->
          <div class="option"  *ngFor="let x of option">
             <!-- <li>{{x}}</li> -->
-             <li (click)="onclick(x)">{{x}}</li>
+             <li (click)="onClick(x)">{{x}}</li>
 
          </div>
     </div >
@@ -22,8 +22,8 @@
                 <!-- <li>{{userType}}</li> -->
             <!-- <button >Logout</button> -->
             <p>{{userType}} : {{userName}}</p>
-            <p>Change Password</p>
-            <p>Logout</p>
+            <p (click)="onChangePassword()">Change Password</p>
+            <p  (click)="onLogout()">Logout</p>
 
 
         </div>
@@ -33,12 +33,14 @@
 <div class="menu"  [ngClass]="{'show': isVisible }">  <!-- *ngIf="isVisible"  -->
     <div style="margin-top: 30px;"  *ngFor="let x of option">
         <li
-        (click)="onclick($event)">{{x}}</li>
+        (click)="onClick(x)">{{x}}</li>
      </div>
 
      <hr style="width: 75%;">
 
     <li >{{userName}}</li>
     <li >{{userType}}</li> 
-    <button style="margin-top: 20px;">Logout</button>
+    <li (click)="onChangePassword()">Change Password</li>
+
+    <button style="margin-top: 20px;"  (click)="onLogout()">Logout</button>
 </div>

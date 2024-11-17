@@ -5,16 +5,16 @@
 </app-header>
 <div class="container" >
   <!--*ngIf=" ListData | async as list"  -->
-  <h2>List of Organization</h2>
-  <button class="add-btn"  (click) ="addOrg()">Add Organization</button>
+  <h2>List of Facilities</h2>
+  <button class="add-btn"  (click) ="addFacility()">Add Facility</button>
   <div class="organization-list">
-    <div class="organization-item" *ngFor="let org of organizations">
+    <div class="organization-item" *ngFor="let facility of facilities">
       <div class="icon" style="display: flex; gap: 15px;">
-         <img src="../../../../assets/eg.jpeg" alt="">
-          <div class="name" >{{ org.name }}</div>
+         <!-- <img src="../../../../assets/eg.jpeg" alt=""> -->
+          <div class="name" >{{ facility.name }}</div>
       </div>
       <div class="actions" style="  display: flex; gap: 10px ;">
-        <span  (click) ="showDialogue(org)" style="cursor: pointer;">
+        <span  style="cursor: pointer;">
           <svg width="18" height="17" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M14.25 0L11.875 2.25L16.625 6.75L19 4.5L14.25 0ZM9.5 4.5L0 13.5V18H4.75L14.25 9L9.5 4.5Z" fill="#9BBB9B"/>
             </svg>

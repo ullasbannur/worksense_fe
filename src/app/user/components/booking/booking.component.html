@@ -1,19 +1,18 @@
 <div class="seat-booking-card">
     <div class="seat-header">
-      <h4>Seat Booking for : <b>Slot</b></h4>
+      <h4 style="font-weight: 100;">Seat Booking for :  Slot</h4>
     </div>
     <div class="seat-body">
-      <div class="seat-row">
-        <label for="from-date">FROM</label>
+      <div class="seat-row"     >
+        <label for="from-date" style="font-weight: 100;">FROM</label>
         <input id="from-date" type="date" [(ngModel)]="fromDate" />
         <input id="from-time" type="time" [(ngModel)]="fromTime" />
       </div>
       <div class="seat-row">
-        <label for="to-date">TO</label>
+        <label for="to-date" style="font-weight: 100;">TO</label>
         <input id="to-date" type="date" [(ngModel)]="toDate" />
         <input id="to-time" type="time" [(ngModel)]="toTime" />
       </div>
-
-      <button>save</button>
+      <!-- <button>save</button> -->
     </div>
   </div>

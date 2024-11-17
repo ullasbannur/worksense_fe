@@ -62,17 +62,36 @@ export class LoginComponent {
         switch(credential.role){
           case 'super':
             console.log("this is super");
+            if((credential.username===this.loginForm.value.username) && (credential.password===this.loginForm.value.password)){
             this.route.navigateByUrl('super/dashboard');
             break;
-          case 'admin':
-            this.route.navigateByUrl('/admin/dashboard');
-            console.log("this is admin");
 
+            }
+            alert("WRONG CREDENTIALS");
+            this.loginForm.reset();
+            break;
+          case 'admin':
+            console.log("this is admin");
+            if((credential.username===this.loginForm.value.username) && (credential.password===this.loginForm.value.password)){
+              this.route.navigateByUrl('admin/dashboard');
+              break;
+
+              }
+            this.loginForm.reset();
+            alert("WRONG CREDENTIALS");
             break;
           case 'user':
-            this.route.navigateByUrl('/user/dashboard');
             console.log("this is user");
-
+            if((credential.username===this.loginForm.value.username) && (credential.password===this.loginForm.value.password)){
+              this.route.navigateByUrl('user/dashboard');
+              break;
+              }
+            this.loginForm.reset();
+            alert("WRONG CREDENTIALS");
+            break;
+          default:
+            alert("WRONG CREDENTIALS");
+            this.loginForm.reset();
             break;
         }
       }

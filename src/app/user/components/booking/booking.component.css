@@ -2,7 +2,7 @@
     background-color: #fff;
     /* border-radius: 10px; */
     /* box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); */
-    border: 1px solid gray;
+    /* border: 1px solid gray; */
     padding: 20px;
     width: 300px;
   }
@@ -36,4 +36,6 @@
     flex: 1.5;
     margin-left: 5px;
     font-size: 14px;
+    outline: none;
   }
+

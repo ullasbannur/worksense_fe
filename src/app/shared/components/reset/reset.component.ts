@@ -32,6 +32,14 @@ export class ResetComponent {
   onSubmit(): void {
     if (this.resetForm.valid) {
       console.log('Form Submitted!', this.resetForm.value);
+      this.resetForm.reset();
+
+
+      // ngOnDestroy() {
+      //   if (this.ref) {
+      //       this.ref.close();
+      //   }
+
       // this.route.navigate(['login']);
     }
   }

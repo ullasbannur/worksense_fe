@@ -17,6 +17,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { AdminModule } from '../admin/admin.module';
 import { ListOrgComponent } from './components/list-org/list-org.component';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
+import { ListFacilityComponent } from './components/list-facility/list-facility.component';
 
 
 
@@ -36,6 +37,10 @@ const routes: Routes = [
   {
     path: 'listOrg',  
     component: ListOrgComponent
+  },
+  {
+    path: 'listFacility',  
+    component: ListFacilityComponent
   }
 ];
 
@@ -44,7 +49,8 @@ const routes: Routes = [
     DashbaordComponent,
     AddOrgComponent,
     AddFacilityComponent,
-    ListOrgComponent
+    ListOrgComponent,
+    ListFacilityComponent
   ],
   imports: [
     CommonModule,

@@ -10,6 +10,4 @@ export class BookingComponent {
   fromTime: string = '';
   toDate: string = '';
   toTime: string = '';
-
-
 }

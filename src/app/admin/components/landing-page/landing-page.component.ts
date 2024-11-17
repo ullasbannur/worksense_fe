@@ -8,9 +8,9 @@ import { Component } from '@angular/core';
 export class LandingPageComponent {
   userType:string="Admin";
   userName:string="tina";
-  options:string[]=['Users','Facility','Report'];
+  options:string[]=['Users','Floors','Report'];
 
   constructor(){
-    console.log('tina dashboard')
+    console.log('tina\'s dashboard')
   }
 }

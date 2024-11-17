@@ -5,9 +5,6 @@ import { Router } from '@angular/router';
 import { DialogService, DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { AddOrgComponent } from '../add-org/add-org.component';
 
-
-
-
 @Component({
   selector: 'app-list-org',
   templateUrl: './list-org.component.html',
@@ -25,18 +22,35 @@ export class ListOrgComponent {
   userName:string='ullas';
   options:string[]=['Organisation','Facility','Report'];
   
-  // public readonly listData !: Observable<ListData[]>;
 
+  showDialogue(event: any){
+    console.log('show dailog', event);
+    this.ref = this.dialogService.open(AddOrgComponent,
+      {
+        data: {event},
+        width: '80vw',
+        height: '80vh'
+      }
+    );
+  }
+  
+addOrg(){
+  this.ref = this.dialogService.open(AddOrgComponent,{width: '80vw',height: '80vh'});
+}
 
-  // constructor(private clientService : ClientService){
-  //    this.listData = this.clientService.getListData()
-  // }
+  onDelete(){}
 
   ngOnDestroy() {
     if (this.ref) {
         this.ref.close();
     }
-}
+  }
+
+    // public readonly listData !: Observable<ListData[]>;
+
+  // constructor(private clientService : ClientService){
+  //    this.listData = this.clientService.getListData()
+  // }
 
 
   organizations = [
@@ -65,14 +79,5 @@ export class ListOrgComponent {
 // openAddOrg(){
 //   this.route.navigateByUrl('addOrganisation');
 // }
-showDialogue(event: any){
-  console.log('show dailog', event);
-  this.ref = this.dialogService.open(AddOrgComponent,
-    {
-      data: {event},
-      width: '80vw',
-      height: '80vh'
-    }
-  )
-}
+
 }

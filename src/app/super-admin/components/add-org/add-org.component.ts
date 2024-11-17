@@ -57,7 +57,6 @@ export class AddOrgComponent  {
   // }
 
  ngOnInit() {
-  
     this.instance = this.dialogService.getInstance(this.dialogRef);
     console.log('new instance', this.instance);
   }

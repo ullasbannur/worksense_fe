@@ -12,6 +12,7 @@
 .dropdown {
   margin-bottom: 20px;
   position: relative;
+  top: -2%;
   left: 0;
   right: 0;
   margin: 0 auto;
@@ -42,6 +43,7 @@
   /* font-weight: bold; */
   color: #333;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
 }
 
 .rooms-container {
@@ -58,6 +60,7 @@
 }
 
 .room {
+  cursor: pointer;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 8px;
@@ -78,9 +81,15 @@
 
 #floor-select option{
   font-size: 13px;
+  outline: none; 
 }
 
-/* Media Queries */
+
+#floor-select {
+  outline: none; 
+}
+
+
 @media (min-width: 768px) {
   .dropdown {
     position: absolute;

@@ -17,6 +17,8 @@ import { DropdownModule } from 'primeng/dropdown';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AddFloorComponent } from './components/add-floor/add-floor.component';
 import { InputNumberModule } from 'primeng/inputnumber';
+import { ListUserComponent } from './components/list-user/list-user.component';
+import { ListFloorComponent } from './components/list-floor/list-floor.component';
 
 const routes: Routes = [
   {
@@ -30,6 +32,14 @@ const routes: Routes = [
   {
     path: 'addFloor',  
     component: AddFloorComponent
+  },
+  {
+    path: 'listUser',  
+    component: ListUserComponent
+  },
+  {
+    path: 'listFloor',  
+    component: ListFloorComponent
   }
 ];
 
@@ -37,7 +47,9 @@ const routes: Routes = [
   declarations: [
     LandingPageComponent,
     AddUserComponent,
-    AddFloorComponent
+    AddFloorComponent,
+    ListUserComponent,
+    ListFloorComponent
   ],
   imports: [
     CommonModule,

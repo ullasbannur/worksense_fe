@@ -50,7 +50,9 @@
     padding: 10px;
     /* background-color: #28a745; */
     /* background-color: rgb(89, 119, 112); */
-    background-color: #9bbb9b;
+    /* background-color: #9bbb9b; */
+    background-color:#599959;
+
     color: white;
     border: none;
     border-radius: 30px;
@@ -61,7 +63,7 @@
   
   .login-container button:hover {
     /* background-color: #218838; */
-    background-color: rgb(89, 119, 112);
+    /* background-color: rgb(89, 119, 112); */
 
   }
 

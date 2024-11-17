@@ -1,13 +1,17 @@
 import { Component, HostListener, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { ResetComponent } from '../reset/reset.component';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrl: './header.component.css'
+  styleUrl: './header.component.css',
+  providers:[DialogService]
 })
 export class HeaderComponent {
-  constructor(private route:Router) {}
+  ref:DynamicDialogRef|undefined;
+  constructor(private route:Router,public dialogueService:DialogService) {}
 
 
   isVisible:boolean = false;
@@ -42,18 +46,47 @@ export class HeaderComponent {
     }
   }
   
-  
   openMenu(){
     this.isVisible= !this.isVisible;
-    
   }
 
-  onclick(event : any){
+  onClick(event : any){
     console.log('event', event);
-    if(event==='Organisation'){
-      this.route.navigateByUrl('/listOrg');
+    switch(this.userType){
+
+      case 'Super Admin':
+        if(event==='Organisation'){
+          // this.route.navigateByUrl('/listOrg');super/listFacility
+          this.route.navigateByUrl('super/listOrg');
+        }
+        else if(event==='Facility'){
+          this.route.navigateByUrl('super/listFacility');
+        } 
+        break;
+      
+      case 'Admin':
+        if(event=='Users'){
+          this.route.navigateByUrl('admin/listUser');
+        }
+        else if(event=='Floors'){
+          this.route.navigateByUrl('admin/listFloor');
+        }
+        break;
+      case 'User' :
+        if(event=='Floors'){
+          this.route.navigateByUrl('user/layout');
+        }
+        break;
+
     }
-    
+  }
+
+  onChangePassword(){
+    this.ref=this.dialogueService.open(ResetComponent,{width:'300px'})
+  }
+
+  onLogout(){
+    this.route.navigateByUrl('login');
   }
 
  

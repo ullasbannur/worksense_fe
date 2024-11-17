@@ -4,8 +4,7 @@
     margin: 0;
   }
   
-  .card {
-   
+  .card {   
       padding: 1rem; 
       /* width: 50%; */
       /* border-radius: 0.25rem; */
@@ -16,8 +15,6 @@
       /* top: 50%; */
       /* left: 50%; */
       /* transform: translate(-50%, -50%); */
-     
-  
     }
   
     .grid {
