@@ -1,6 +1,9 @@
 .box{
   display: flex; flex-direction: column; align-items: center;
-  background-color: rgb(23, 153, 86);
+  text-align: center;
+  /* background-color: rgb(23, 153, 86); */
+  background-color: rgb(89, 119, 112);
+
   /* height: max-content; */
   height: 100vh;
 
@@ -9,16 +12,16 @@
 .left{
   height: 30vh;  text-align: center;
   padding: 25px;;
-  background-color: rgb(23, 153, 86);
+  background-color: rgb(89, 119, 112);
+
 }
 
 .right{
   height: 50vh; 
   width: 70vw;
-  background-color: rgb(23, 153, 86);
-
+  background-color: rgb(89, 119, 112);
+  padding-left: 10px;
 }
-
 
 .proj-name{
   font-size: 30px;
@@ -41,9 +44,9 @@
   .login-container {
     background-color: white;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    border: 1px solid gray;
     padding: 20px 10px; 
-    width: 100%;
+    width: 90%;
     text-align: center;
   }
   
@@ -56,6 +59,7 @@
     margin-bottom: 5px;
     display: block;
     text-align: left;
+    
   }
   
   .login-container input[type="text"],
@@ -111,8 +115,8 @@
   text-align: center;
   justify-content: center;
   align-items: center;
-  background-color: rgb(23, 153, 86);
-  /* background-color: rgb(89, 119, 112); */
+  /* background-color: rgb(23, 153, 86); */
+  background-color: rgb(89, 119, 112);
 
   
 }
@@ -126,12 +130,11 @@
   justify-content: center;
   text-align: center;
   align-items: center;
-  padding-right: 30px;
-  background-color: rgb(23, 153, 86);
+  /* padding-right: 20px; */
+  padding-left: 20px;
+  /* background-color: rgb(23, 153, 86); */
   /* background-color: rgb(89, 119, 112); */
-
-
-  
+  background-color: white;
 }
 
 .proj-name{
@@ -143,10 +146,11 @@
 .login-container {
   background-color: white;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
   padding: 20px 10px; 
-  width: 90%;
+  width: 50%;
   text-align: center;
+
+  /* height: 30%; */
 }
 
 }

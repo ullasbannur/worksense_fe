@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ClientService } from '../../../client.service';
+import { ClientService } from '../../../../services/client.service';
 
 @Component({
   selector: 'app-forgot',

@@ -8,7 +8,7 @@
   </div>
   <div class="right" >
     <div class="login-container">
-      <h2 id="heading" >Forgot Password </h2>
+      <h4 id="heading" > <b>Forgot Password</b></h4>
       <form [formGroup]="forgotForm" (ngSubmit)="onSubmit($event)">
         <label   style="font-size: 15px; text-align: center;" for="username">Enter your email to receive a new password</label>
         <input type="text" id="username" formControlName="email" [(ngModel)]="email" placeholder="Email" />

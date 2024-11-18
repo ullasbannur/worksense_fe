@@ -86,15 +86,16 @@ header
 .hidden-div{
     display: none;
     position: absolute;
-    top: 30px;
-    right: +10px;
+    top: 40px;
+    right: 0px;
     z-index: 1;
     padding: 8px;
     height: 130px;
     background-color: white;
     color: black;
     border: 1px solid  gray ;
-    border-radius: 5px;
+    /* border-radius: 5px; */
+    border-bottom-left-radius: 10px;
     padding-bottom: 10px;
     /* text-align: center; */
 }
