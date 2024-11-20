@@ -1,5 +1,6 @@
+import { group } from '@angular/animations';
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Route, Router } from '@angular/router';
 
 interface LoginModel{
@@ -7,6 +8,7 @@ interface LoginModel{
   password: string,
   role: string
 }
+
 
 @Component({
   selector: 'app-login',
@@ -23,9 +25,11 @@ export class LoginComponent {
     this.loginForm = this.fb.group({
  
       username: ['', Validators.required],
-      password: ['', Validators.required]
+      password: ['', Validators.required],
     });
   }
+
+
 
   ngOnInit(): void {
     let superUser:LoginModel= {
@@ -65,7 +69,7 @@ export class LoginComponent {
             if((credential.username===this.loginForm.value.username) && (credential.password===this.loginForm.value.password)){
             this.route.navigateByUrl('super/dashboard');
             break;
-
+            
             }
             alert("WRONG CREDENTIALS");
             this.loginForm.reset();

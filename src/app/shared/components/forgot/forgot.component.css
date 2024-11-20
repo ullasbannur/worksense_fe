@@ -13,6 +13,11 @@
   flex: 0.5;
   }
 
+  .left img{
+    height: 60px; 
+    width: 60px;
+  }
+
 .right{
   flex: 1;
   height: 50vh; 
@@ -26,7 +31,7 @@
 
 
 .proj-name{
-  font-size: 30px;
+  font-size: 24px;
   /* color: #599959; */
   /* color: rgb(89, 119, 112); */
   color: white;
@@ -121,6 +126,12 @@
   justify-content: center;
   align-items: center;
   color: rgb(89, 119, 112);
+}
+
+
+.left img{
+  height: 120px; 
+  width: 120px;
 }
 
 .right{

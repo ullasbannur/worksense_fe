@@ -9,9 +9,16 @@
   <button class="add-btn"  (click) ="addOrg()">Add Organization</button>
   <div class="organization-list">
     <div class="organization-item" *ngFor="let org of organizations">
-      <div class="icon" style="display: flex; gap: 15px;">
-         <img src="../../../../assets/eg.jpeg" alt="">
+
+      <div class="icon" style="display: flex; gap: 5px;">
+          <img src="../../../../assets/eg.jpeg" alt="">
           <div class="name" >{{ org.name }}</div>
+          <div class="name" >{{ org.email }}</div>
+          <div class="name" >{{ org.phone }}</div>
+          <div class="name" >{{ org.country }}</div>
+          <div class="name" >{{ org.city }}</div>
+          <div class="name" >{{ org.address }}</div>
+
       </div>
       <div class="actions" style="  display: flex; gap: 10px ;">
         <span  (click) ="showDialogue(org)" style="cursor: pointer;">

@@ -76,9 +76,12 @@
           </div>  
           
           <div  class="chip-box">
-            <div *ngFor="let room of roomarray" style="margin-left:5px ;">
+            <div *ngFor="let room of roomarray; let i= index; " style="margin-left:5px ;">
               <!-- <h3>{{room.roomName}}</h3> -->
-               <div class="chip" >{{room.roomName}}</div>
+                <div class="chip" >
+                  <span (click)="roomEdit(room,i)">{{room.roomName}}</span>   
+                  <span  (click)="deleteRoom(room,i)"> <i id="cross" class="fas fa-window-close"></i>  </span>
+                </div>
             </div>
           </div>
   

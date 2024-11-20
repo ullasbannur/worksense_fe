@@ -63,9 +63,16 @@ img{
 }
 
 .name {
-  flex: 1;
-  text-align: left;
+  /* border: solid black; */
+  /* flex: 1; */
+  /* text-align: left; */
   /* font-weight: 100; */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(152px, 1fr));
+  gap:2px;
+  overflow-wrap: break-word;
+  /* word-wrap: break-word; */
+
 }
 
 .actions button {

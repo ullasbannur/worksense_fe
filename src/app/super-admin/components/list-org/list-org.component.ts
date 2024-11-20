@@ -54,27 +54,26 @@ addOrg(){
 
 
   organizations = [
-    { name: 'EG' },
-    { name: 'Omega' },
-    { name: 'Helen Key' },
-    { name: 'COMPANY1' },
-    { name: 'COMPANY2' },
-    { name: 'COMPANY3' },
-    { name: 'COMPANY4' },
-    { name: 'COMPANY5' },
-    { name: 'COMPANY6' },
-    { name: 'COMPANY7' },
-    { name: 'EG' },
-    { name: 'Omega' },
-    { name: 'Helen Key' },
-    { name: 'COMPANY1' },
-    { name: 'COMPANY2' },
-    { name: 'COMPANY3' },
-    { name: 'COMPANY4' },
-    { name: 'COMPANY5' },
-    { name: 'COMPANY6' },
-    { name: 'COMPANY7' }
-  ];
+    { name: 'EGDK' , email:'egdk@eg.dk',phone:'9876543219', country:'India',city:'Mangalore',address:'Bejai'},
+    { name: 'EG' , email:'egdk@eg.dk',phone:'9876543219', country:'India',city:'Mangalore',address:'Bejai'},
+    { name: 'EG' , email:'egdk@eg.dk',phone:'9876543219', country:'India',city:'Mangalore',address:'Bejai'},
+    { name: 'EG' , email:'egdk@eg.dk',phone:'9876543219', country:'India',city:'Mangalore',address:'Bejai'},
+    { name: 'EG' , email:'egdk@eg.dk',phone:'9876543219', country:'India',city:'Mangalore',address:'Bejai'},
+    { name: 'EG' , email:'egdk@eg.dk',phone:'9876543219', country:'India',city:'Mangalore',address:'Bejai'},
+    { name: 'EG' , email:'egdk@eg.dk',phone:'9876543219', country:'India',city:'Mangalore',address:'Bejai'},
+    { name: 'EG' , email:'egdk@eg.dk',phone:'9876543219', country:'India',city:'Mangalore',address:'Bejai'},
+    { name: 'EG' , email:'egdk@eg.dk',phone:'9876543219', country:'India',city:'Mangalore',address:'Bejai'},
+    { name: 'EG' , email:'egdk@eg.dk',phone:'9876543219', country:'India',city:'Mangalore',address:'Bejai'},
+    { name: 'EG' , email:'egdk@eg.dk',phone:'9876543219', country:'India',city:'Mangalore',address:'Bejai'},
+    { name: 'EG' , email:'egdk@eg.dk',phone:'9876543219', country:'India',city:'Mangalore',address:'Bejai'},
+    { name: 'EG' , email:'egdk@eg.dk',phone:'9876543219', country:'India',city:'Mangalore',address:'Bejai'},
+    { name: 'EG' , email:'egdk@eg.dk',phone:'9876543219', country:'India',city:'Mangalore',address:'Bejai'},
+    { name: 'EG' , email:'egdk@eg.dk',phone:'9876543219', country:'India',city:'Mangalore',address:'Bejai'},
+    { name: 'EG' , email:'egdk@eg.dk',phone:'9876543219', country:'India',city:'Mangalore',address:'Bejai'},
+    { name: 'EG' , email:'egdk@eg.dk',phone:'9876543219', country:'India',city:'Mangalore',address:'Bejai'},
+    { name: 'EG' , email:'egdk@eg.dk',phone:'9876543219', country:'India',city:'Mangalore',address:'Bejai'},
+    { name: 'EG' , email:'egdk@eg.dk',phone:'9876543219', country:'India',city:'Mangalore',address:'Bejai'},
+  ];
 
 // openAddOrg(){
 //   this.route.navigateByUrl('addOrganisation');

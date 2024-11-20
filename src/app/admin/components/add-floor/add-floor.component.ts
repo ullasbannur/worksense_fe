@@ -13,7 +13,6 @@ import { startWith } from 'rxjs/operators';
   styleUrl: './add-floor.component.css'
 })
 export class AddFloorComponent {
-  
 
   activeIndex: number = 0;
   showCard:boolean=true;
@@ -22,6 +21,9 @@ export class AddFloorComponent {
   facilities!: string[] |  [undefined];
   
   roomarray: any[] = [];
+  onEditRoomValue: any[] = [];
+  isEdit: boolean=false;
+
   
   FloorForm!: FormGroup;
   RoomForm!: FormGroup;
@@ -44,36 +46,32 @@ export class AddFloorComponent {
     this.orgs=[' ','EG','LCODE'];
     this.countries=[' ','IN','DK'];
     this.facilities=[' ','AJANTA','WRKWRK'];
-
   }
 
   ngOnInit() {}
-    
-  // this.serviceNmae.Observable.subscribe(
-  //   res =>{
-      
-  //   }
-  // )
-  // onNext() {
-  //   if (this.FloorForm.valid) {
-  //     this.activeIndex = 1;
-  //   }
-  // }
-
 
   addRoom(){
     this.activeIndex = 1;
   }
 
+  deleteRoom(roomDel:any, index: number){
+    this.roomarray.splice(index,1);
+  }
+
+  roomEdit(room:any,index:number){
+    this.activeIndex=1;
+    this.RoomForm.patchValue({
+      roomName: room.roomName,
+      roomOccupancy: room.roomOccupancy});
+    this.onEditRoomValue.push({...room,index:index});
+    this.isEdit=!this.isEdit;
+  } 
 
   onSubmitFloor(){
-    // console.log(this.FloorForm.value);
     if (this.FloorForm.valid) {
       const formData = {
         ...this.FloorForm.value
       };
-      // console.log('Form submitted:', formData);
-
       var newData = {...this.FloorForm.value};
       newData.rooms=this.roomarray
       // newData.push(this.roomarray);
@@ -83,14 +81,28 @@ export class AddFloorComponent {
 
   onSubmitRoom() {
     if (this.RoomForm.valid) {
-      const formData = {
-        ...this.RoomForm.value};
 
-      let roomData = {
+      let roomData = 
+      {
           roomName: this.RoomForm.get('roomName')?.value,
           roomOccupancy: this.RoomForm.get('roomOccupancy')?.value
-        };
-    this.roomarray.push(roomData); 
+      };
+
+      if(this.isEdit){
+        this.onEditRoomValue.map((room)=>{
+          if(room.roomName!==roomData.roomName){
+              this.roomarray.splice(room.index,1);
+              this.roomarray.push(roomData); 
+            }
+        })
+        this.isEdit=!this.isEdit;
+        this.onEditRoomValue=[];
+      }
+      else{
+          this.roomarray.push(roomData);
+      }
+
+    // this.roomarray.push(roomData); 
     console.log(this.roomarray,roomData)
     this.RoomForm.reset(); 
     // console.log('Form submitted:', formData);

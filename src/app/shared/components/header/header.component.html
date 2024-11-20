@@ -31,16 +31,15 @@
 
 </header>
 <div class="menu"  [ngClass]="{'show': isVisible }">  <!-- *ngIf="isVisible"  -->
-    <div style="margin-top: 30px;"  *ngFor="let x of option">
-        <li
-        (click)="onClick(x)">{{x}}</li>
+    <div  id="scroll" style="margin-top: 20px; color: white;"  *ngFor="let x of option">
+        <p (click)="onClick(x)">{{x}}</p>
      </div>
 
-     <hr style="width: 75%;">
-
-    <li >{{userName}}</li>
-    <li >{{userType}}</li> 
-    <li (click)="onChangePassword()">Change Password</li>
+     <hr style="width: 65%; height: 1px; ">
+     <li style="margin-top: 20px; color: white;">{{userType}} : {{userName}}</li>
+    <!-- <li >{{userName}}</li> -->
+    <!-- <li >{{userType}}</li>  -->
+    <p id="scroll" style="margin-top: 20px; color: white;" (click)="onChangePassword()">Change Password</p>
 
     <button style="margin-top: 20px;"  (click)="onLogout()">Logout</button>
 </div>

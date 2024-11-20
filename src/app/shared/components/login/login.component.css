@@ -9,11 +9,18 @@
 
 }
 
+
 .left{
   height: 30vh;  text-align: center;
   padding: 25px;;
   background-color: rgb(89, 119, 112);
+  gap: 0;
 
+}
+
+.left img{
+  height: 60px; 
+  width: 60px;
 }
 
 .right{
@@ -24,7 +31,7 @@
 }
 
 .proj-name{
-  font-size: 30px;
+  font-size: 24px;
   /* color: #599959; */
   /* color: rgb(89, 119, 112); */
   color: white;
@@ -103,6 +110,9 @@
     font-size: medium;
   }
 
+  .image{
+    display: block;
+  }
 
 .box{
   flex-direction: row;
@@ -117,8 +127,12 @@
   align-items: center;
   /* background-color: rgb(23, 153, 86); */
   background-color: rgb(89, 119, 112);
-
   
+}
+
+.left img{
+  height: 120px; 
+  width: 120px;
 }
 
 
