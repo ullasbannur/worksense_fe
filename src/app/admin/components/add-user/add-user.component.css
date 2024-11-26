@@ -133,7 +133,7 @@
     }
     
     :host ::ng-deep .p-tabview-panels {
-      padding: 1rem;
+      padding: 1rem 0.5rem;
     }
     
     :host ::ng-deep .p-tabview-nav li {

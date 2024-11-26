@@ -129,13 +129,17 @@
 /* up down buttons */
   :host ::ng-deep .p-fluid .p-inputnumber .p-inputnumber-input{
     height: 32px;
-    padding-left: 10px;
+    /* padding-left: 10px; */
   }
 
 
   :host ::ng-deep #up-down{
     height: 32px;
-    padding-left: 10px;
+    /* padding-left: 10px; */
+  }
+
+  :host ::ng-deep .p-dropdown .p-dropdown-items li {
+    padding: 0 15px; 
   }
 
   
@@ -170,11 +174,26 @@
     }
     
     :host ::ng-deep .p-tabview-panels {
-      padding: 1rem;
+      padding: 1rem 0.5rem;
     }
     
     :host ::ng-deep .p-tabview-nav li {
       margin-right: 1rem;
     }
+
+
+    #addRooms{
+      width: 80px;
+    }
+
+    :host ::ng-deep .p-dropdown .p-dropdown-items li {
+      padding: 0 15px; 
+    }
+
+
+
+
+
+    
   }
   

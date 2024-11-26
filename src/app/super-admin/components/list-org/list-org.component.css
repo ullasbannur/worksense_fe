@@ -3,7 +3,6 @@
   /* max-width: 600px; */
   margin: 0 auto;
   text-align: center;
-  border-bottom: 1px solid rgb(198, 193, 193);
   position: absolute;
   top: 50%;
   left: 50%;
@@ -35,6 +34,9 @@ h2 {
   overflow: auto;
   width: 82vw;
   height: 71vh;
+
+  /* border: 1px solid rgb(198, 193, 193); */
+
 
   /* top: 90px; */
   /* gap: 2px; */
@@ -71,8 +73,8 @@ img{
   grid-template-columns: repeat(auto-fit, minmax(152px, 1fr));
   gap:2px;
   overflow-wrap: break-word;
-  /* word-wrap: break-word; */
-
+  word-wrap: break-word;
+  text-align: start;
 }
 
 .actions button {
@@ -87,3 +89,10 @@ img{
 .actions button:hover {
   text-decoration: underline;
 }
+
+
+
+/* .p-datatable .p-datatable-tbody > tr > td {
+
+  word-break: break-all;
+} */

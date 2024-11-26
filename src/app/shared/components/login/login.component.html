@@ -9,7 +9,7 @@
     <div class="login-container" >
       <h2 id="heading"><b>Login</b> </h2>
       <form [formGroup]="loginForm" >
-        <input type="text" id="username" formControlName="username" placeholder="Email" />
+        <input type="text" id="username" formControlName="username" placeholder="Username" />
         <input type="password" id="password" formControlName="password" placeholder=" Password" />
         <button [ngClass]="{'login-disable': loginForm.invalid}" type="submit" [disabled]="loginForm.invalid"  (click)="onSubmit()">Sign In</button>
       </form>

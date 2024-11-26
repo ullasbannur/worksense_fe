@@ -19,6 +19,7 @@ import { AddFloorComponent } from './components/add-floor/add-floor.component';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { ListUserComponent } from './components/list-user/list-user.component';
 import { ListFloorComponent } from './components/list-floor/list-floor.component';
+import { TableModule } from 'primeng/table';
 
 const routes: Routes = [
   {
@@ -67,7 +68,8 @@ const routes: Routes = [
     // HttpClient,
     PasswordModule,
     DropdownModule,
-    InputNumberModule
+    InputNumberModule,
+    TableModule
   ],
   exports:[AddUserComponent,
     AddFloorComponent,

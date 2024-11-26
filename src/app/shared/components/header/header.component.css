@@ -22,10 +22,11 @@ header
 }
 
 .option:hover{
-    border-radius: 10px;
+    /* border-radius: 10px; */
     padding-left:2px ;
     padding-right:2px ;
         transform: scale(1.1); 
+        border-bottom:1px solid #e0e0e0;
 }
 
 #scroll p:hover{

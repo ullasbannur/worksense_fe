@@ -54,7 +54,7 @@ export class LoginComponent {
     localStorage.setItem('tina',JSON.stringify(adminUser));
     localStorage.setItem('nipun',JSON.stringify(user));
   }
-
+//route guards   
   onSubmit(): void {
     if (this.loginForm.valid){
       console.log('Form Submitted!', this.loginForm.value);
@@ -67,7 +67,9 @@ export class LoginComponent {
           case 'super':
             console.log("this is super");
             if((credential.username===this.loginForm.value.username) && (credential.password===this.loginForm.value.password)){
-            this.route.navigateByUrl('super/dashboard');
+            // this.route.navigateByUrl('super/dashboard');
+            this.route.navigateByUrl('super/listOrg');
+
             break;
             
             }
@@ -77,7 +79,9 @@ export class LoginComponent {
           case 'admin':
             console.log("this is admin");
             if((credential.username===this.loginForm.value.username) && (credential.password===this.loginForm.value.password)){
-              this.route.navigateByUrl('admin/dashboard');
+              // this.route.navigateByUrl('admin/dashboard');
+              this.route.navigateByUrl('admin/listUser');
+
               break;
 
               }
@@ -87,12 +91,14 @@ export class LoginComponent {
           case 'user':
             console.log("this is user");
             if((credential.username===this.loginForm.value.username) && (credential.password===this.loginForm.value.password)){
-              this.route.navigateByUrl('user/dashboard');
+              // this.route.navigateByUrl('user/dashboard');
+              this.route.navigateByUrl('user/layout');
+
               break;
               }
             this.loginForm.reset();
             alert("WRONG CREDENTIALS");
-            break;
+            break;  
           default:
             alert("WRONG CREDENTIALS");
             this.loginForm.reset();

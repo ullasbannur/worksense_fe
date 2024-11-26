@@ -3,7 +3,7 @@
     /* max-width: 600px; */
     margin: 0 auto;
     text-align: center;
-    border-bottom: 1px solid rgb(198, 193, 193);
+    /* border-bottom: 1px solid rgb(198, 193, 193); */
     position: absolute;
     top: 50%;
     left: 50%;
@@ -46,7 +46,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 8px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-right: 8px;
+
     background-color: #f8f9fa;
     border: 1px solid rgb(198, 193, 193);
     border-bottom: none;
@@ -63,8 +66,14 @@
   }
   
   .name {
-    flex: 1;
-    text-align: left;
+    /* flex: 1;
+    text-align: left; */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(152px, 1fr));
+    gap:2px;
+    overflow-wrap: break-word;
+    padding-left: 5px;
+    text-align: start;
   }
   
   .actions button {

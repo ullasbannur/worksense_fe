@@ -74,8 +74,6 @@ export class AddFloorComponent {
       };
       var newData = {...this.FloorForm.value};
       newData.rooms=this.roomarray
-      // newData.push(this.roomarray);
-      console.log('Form submitted:', newData);
     }
   }
 
@@ -102,10 +100,7 @@ export class AddFloorComponent {
           this.roomarray.push(roomData);
       }
 
-    // this.roomarray.push(roomData); 
-    console.log(this.roomarray,roomData)
     this.RoomForm.reset(); 
-    // console.log('Form submitted:', formData);
     this.activeIndex = 0;
     }
   }
@@ -116,7 +111,6 @@ export class AddFloorComponent {
   }
 
   onChange(e:any){
-    // console.log("events",e,this.FloorForm.get('country')?.value);
     if(this.FloorForm.get('floorLevel')?.value && this.FloorForm.get('country')?.value ){
       let floorName=  this.FloorForm.get('country')?.value+'_'+ e.value +'_'+ this.FloorForm.get('floorLevel')?.value 
       this.FloorForm.patchValue({floorName:floorName});

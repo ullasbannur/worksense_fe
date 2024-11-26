@@ -39,7 +39,9 @@ export class AddOrgComponent  {
       email: ['', [Validators.required, Validators.email]],
       country: ['', Validators.required],
       city: ['', Validators.required],
-      address: ['', Validators.required]
+      address: ['', Validators.required],
+      pincode: ['', Validators.required]
+
     });
 
     this.adminForm = this.fb.group({

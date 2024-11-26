@@ -53,7 +53,7 @@ export class ResetComponent {
     );
   }
 
-  ngOnInit(): void {}
+  // ngOnInit(): void {}
 
   onSubmit(): void {
     if (this.resetForm.valid) {

@@ -6,19 +6,19 @@
         <div class="grid">
           <div class="col-12 col-md-6 ">
             <div class="field">
-              <label>Organization Name</label>
-              <input pInputText formControlName="name" placeholder="Enter your organization name" />
+              <!-- <label>Organization Name</label> -->
+              <input pInputText formControlName="name" placeholder="Organization name" />
             </div>
           </div>
           <div class="col-20 col-md-6">
             <div class="field">
-              <label>Organization Logo</label>
+              <!-- <label>Organization Logo</label> -->
               <div class="p-inputgroup">
                 <input
                   type="text"
                   pInputText
                   [value]="selectedFileName"
-                  placeholder="Upload your logo"
+                  placeholder="Organization logo"
                   readonly
                 />
                 <button type="button"  pButton icon="pi pi-upload" (click)="fileInput.click()" ></button>
@@ -29,48 +29,60 @@
 
           <div class="col-12 col-md-6">
             <div class="field">
-              <label>Contact Number</label>
-              <input pInputText formControlName="contact" placeholder="Enter your contact" />
-            </div>
-          </div>
-          <div class="col-12 col-md-6">
-            <div class="field">
-              <label>Email-id</label>
-              <input pInputText formControlName="email" placeholder="Enter your email-id" />
+              <!-- <label>Contact Number</label> -->
+              <input pInputText formControlName="contact" placeholder="Contact number" />
             </div>
           </div>
 
           <div class="col-12 col-md-6">
             <div class="field">
-              <label>Country</label>
+              <!-- <label>Email-id</label> -->
+              <input pInputText formControlName="email" placeholder=" Email-id" />
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6">
+            <div class="field">
+              <!-- <label>Country</label> -->
               <!-- <input pInputText formControlName="country" placeholder="Enter your country" /> -->
               <p-dropdown 
               formControlName="country"
               [options]="countries"
               [styleClass]="'custom-dropdown'"
-              placeholder="Select Country">
-          </p-dropdown>
+              placeholder=" Country">
+              </p-dropdown>
             </div>
           </div>
+
           <div class="col-12 col-md-6">
             <div class="field">
-              <label>City</label>
+              <!-- <label>City</label> -->
               <!-- <input pInputText formControlName="city" placeholder="Enter your city" /> -->
               <p-dropdown 
               formControlName="city"
               [options]="cities"
               [styleClass]="'custom-dropdown'"
-              placeholder="Select City">
-          </p-dropdown>
+              placeholder=" City">
+              </p-dropdown>
+            </div>
+          </div>
+
+
+          <div class="col-12 col-md-6">
+            <div class="field">
+              <!-- <label>Email-id</label> -->
+              <input pInputText formControlName="pincode" placeholder="Pincode" />
             </div>
           </div>
 
           <div class="col-12">
             <div class="field">
-              <label>Address</label>
-              <textarea pInputTextarea formControlName="address" placeholder="Enter your address" rows="3"></textarea>
+              <!-- <label>Address</label> -->
+              <textarea pInputTextarea formControlName="address" placeholder="Address" rows="3"  class="center-placeholder"></textarea>
             </div>
           </div>
+
+         
         </div>
 
         <div class="button-spacing">
@@ -86,33 +98,32 @@
         <div class="grid">
           <div class="col-12 col-md-6">
             <div class="field">
-              <label>Admin Name</label>
-              <input pInputText formControlName="username" placeholder="Enter admin name" />
+              <!-- <label>Admin Name</label> -->
+              <input pInputText formControlName="username" placeholder="Name" />
             </div>
           </div>
 
           <div class="col-12 col-md-6">
             <div class="field">
-              <label>Email</label>
-              <input pInputText formControlName="email" placeholder="Enter admin email" />
+              <!-- <label>Email</label> -->
+              <input pInputText formControlName="email" placeholder="Email" />
             </div>
           </div>
 
           <div class="col-12 col-md-6"> 
             <div class="field">
-              <label>Password</label>
+              <!-- <label>Password</label> -->
               <!-- <p-password  formControlName="password"  [toggleMask]="true" placeholder="Enter admin password"></p-password> -->
-              <input pInputText type="password"   formControlName="password" placeholder="Enter admin password" />
+              <input pInputText type="password"   formControlName="password" placeholder="Password" />
             </div>
           </div>
 
           <div class="col-12 col-md-6">
             <div class="field">
-              <label>Contact</label>
-              <input pInputText formControlName="contact" placeholder="Enter admin contact" />
+              <!-- <label>Contact</label> -->
+              <input pInputText formControlName="contact" placeholder="Contact" />
             </div>
           </div>
-
 
           
         </div>

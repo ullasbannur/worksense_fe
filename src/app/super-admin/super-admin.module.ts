@@ -18,6 +18,7 @@ import { AdminModule } from '../admin/admin.module';
 import { ListOrgComponent } from './components/list-org/list-org.component';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { ListFacilityComponent } from './components/list-facility/list-facility.component';
+import { TableModule } from 'primeng/table';
 
 
 
@@ -67,6 +68,8 @@ const routes: Routes = [
     HttpClientModule,
     PasswordModule,
     DropdownModule,
+    TableModule,
+
     DynamicDialogModule
     
 

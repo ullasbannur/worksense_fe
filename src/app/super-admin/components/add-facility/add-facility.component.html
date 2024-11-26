@@ -6,19 +6,19 @@
 
             <div class="col-12 col-md-6 ">
               <div class="field">
-                <label>Facility Name</label>
-                <input pInputText formControlName="name" placeholder="Enter facility name" />
+                <!-- <label>Facility Name</label> -->
+                <input pInputText formControlName="name" placeholder="Facility name" />
               </div>
             </div>
 
             <div class="col-12 col-md-6">
                 <div class="field">
-                    <label>Organisation</label>
+                    <!-- <label>Organisation</label> -->
                     <p-dropdown 
                         formControlName="org"
                         [options]="orgs"
                         [styleClass]="'custom-dropdown'"
-                        placeholder="Select Organisation">
+                        placeholder="Organisation">
                     </p-dropdown>
                 </div>
             </div>
@@ -26,49 +26,43 @@
   
             <div class="col-12 col-md-6">
               <div class="field">
-                <label>Country</label>
+                <!-- <label>Country</label> -->
                 <!-- <input pInputText formControlName="country" placeholder="Enter Country"> -->
                 <p-dropdown 
                 formControlName="country"
                 [options]="countries"
                 [styleClass]="'custom-dropdown'"
-                placeholder="Select Organisation">
+                placeholder="Country">
             </p-dropdown>
               </div>
             </div>
 
             <div class="col-12 col-md-6">
               <div class="field">
-                <label>City</label>
+                <!-- <label>City</label> -->
                 <!-- <input pInputText formControlName="city" placeholder="Enter City" /> -->
                 <p-dropdown 
                 formControlName="city"
                 [options]="cities"
                 [styleClass]="'custom-dropdown'"
-                placeholder="Select Organisation">
+                placeholder="City">
             </p-dropdown>
               </div>
             </div>
   
            
 
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-6 ">
               <div class="field">
-                <label>Pincode</label>
-                <!-- <input pInputText formControlName="pincode" placeholder="Enter Pincode" /> -->
-                <p-dropdown 
-                formControlName="pincode"
-                [options]="pincodes"
-                [styleClass]="'custom-dropdown'"
-                placeholder="Select Organisation">
-            </p-dropdown>
+                <!-- <label>Pincode</label> -->
+                <input pInputText formControlName="pincode" placeholder="Pincode" />
               </div>
             </div>
   
             <div class="col-12">
               <div class="field">
-                <label>Address</label>
-                <textarea pInputTextarea formControlName="address" placeholder="Enter facility" rows="3"></textarea>
+                <!-- <label>Address</label> -->
+                <textarea pInputTextarea formControlName="address" placeholder=" Address" rows="3"></textarea>
               </div>
             </div>
           </div>
