@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { DialogService, DynamicDialogComponent, DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { FileUploadEvent } from 'primeng/fileupload';
+import { OrganizationService,Organization } from '../../../../services/org-service/organization.service';
+import { ListOrgComponent } from '../list-org/list-org.component';
 
 
 
@@ -29,8 +31,8 @@ export class AddOrgComponent  {
   orgInfoForm: FormGroup;
   adminForm: FormGroup;
 
-  constructor(private fb: FormBuilder,
-    public config: DynamicDialogConfig) {
+  constructor(private fb: FormBuilder,public config: DynamicDialogConfig, private orgService: OrganizationService,
+    private listOrg:ListOrgComponent) {
       
     this.orgInfoForm = this.fb.group({
       name: ['', Validators.required],
@@ -63,15 +65,34 @@ export class AddOrgComponent  {
     console.log('new instance', this.instance);
   }
 
+  // onFileSelect(event: any) {
+  //   if (event.target.files.length > 0) {
+  //     const file = event.target.files[0];
+  //     this.selectedFileName = file.name;
+  //     this.orgInfoForm.patchValue({
+  //       logo: file
+  //     });
+  //   }
+  // }
+
   onFileSelect(event: any) {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
+  
+      // Check file type
+      const allowedExtensions = ['image/jpeg', 'image/png', 'image/jpg'];
+      if (!allowedExtensions.includes(file.type)) {
+        alert('Unsupported file format. Please upload a .jpg, .jpeg, or .png file.');
+        return; // Exit the function if file type is not valid
+      }
+  
       this.selectedFileName = file.name;
       this.orgInfoForm.patchValue({
         logo: file
       });
     }
   }
+  
 
   onNext() {
     if (this.orgInfoForm.valid) {
@@ -91,12 +112,49 @@ export class AddOrgComponent  {
   }
 
   onSubmit() {
+
     if (this.adminForm.valid && this.orgInfoForm.valid) {
-      const formData = {
-        ...this.orgInfoForm.value,
-        ...this.adminForm.value
-      };
-      console.log('Form submitted:', formData);
+
+
+      const formData  = new FormData();
+
+      // let formData1  = new FormData();
+
+
+      const orgInfoValue = this.orgInfoForm.value;
+      const adminFormValue = this.adminForm.value;
+      // console.log(newForm);
+
+    formData.append('name', orgInfoValue.name);
+    formData.append('contact', orgInfoValue.contact);
+    formData.append('email', orgInfoValue.email);
+    formData.append('country', orgInfoValue.country);
+    formData.append('city', orgInfoValue.city);
+    formData.append('streetAddress', orgInfoValue.address);
+    formData.append('postalCode', orgInfoValue.pincode);
+    formData.append('logo', orgInfoValue.logo); 
+
+    // const formData1 : FormData={...orgInfoValue};
+
+    // console.log(formData1);
+    console.log(formData);
+
+
+    this.orgService.createOrganization(formData).subscribe({
+      next: () => {
+        console.log('added successfully');
+        this.listOrg.loadOrganizations();
+      },
+      error: (err) => {
+        console.error("Error",err);
+      },
+    })
+
+      // const formData = {
+      //   ...this.orgInfoForm.value,
+      //   ...this.adminForm.value
+      // };
+      // console.log('Form submitted:', formData);
       this.adminForm.reset();
       this.orgInfoForm.reset();
       this.activeIndex = 0;

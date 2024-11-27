@@ -1,0 +1,47 @@
+
+<div class="card" > <!-- *ngIf="showCard" -->
+    <p-tabView [(activeIndex)]="activeIndex" >
+  
+      <p-tabPanel header="Admin Credentials">
+        <form [formGroup]="adminForm" class="p-fluid">
+          <div class="grid">
+            <div class="col-12 col-md-6">
+              <div class="field">
+                <!-- <label>Admin Name</label> -->
+                <input pInputText formControlName="username" placeholder="Name" />
+              </div>
+            </div>
+  
+            <div class="col-12 col-md-6">
+              <div class="field">
+                <!-- <label>Email</label> -->
+                <input pInputText formControlName="email" placeholder="Email" />
+              </div>
+            </div>
+  
+            <div class="col-12 col-md-6"> 
+              <div class="field">
+                <!-- <label>Password</label> -->
+                <!-- <p-password  formControlName="password"  [toggleMask]="true" placeholder="Enter admin password"></p-password> -->
+                <input pInputText type="password"   formControlName="password" placeholder="Password" />
+              </div>
+            </div>
+  
+            <div class="col-12 col-md-6">
+              <div class="field">
+                <!-- <label>Contact</label> -->
+                <input pInputText formControlName="contact" placeholder="Contact" />
+              </div>
+            </div>
+  
+            
+          </div>
+          <div class="button-spacing">
+            <p-button class="buttons" label="Submit" (onClick)="onSubmitAdmin()" [disabled]="!adminForm.valid"></p-button>
+  
+          </div>
+        </form>
+      </p-tabPanel>
+    </p-tabView>
+  </div>
+  

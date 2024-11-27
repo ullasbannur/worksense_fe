@@ -1,0 +1,12 @@
+.card{
+    padding: 10px;
+}
+
+
+
+:host ::ng-deep .p-accordion .p-accordion-header .p-accordion-header-link {  
+    /* border: none; */
+    background-color: white;
+    padding: 10px;
+    
+}

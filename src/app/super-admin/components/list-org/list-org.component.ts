@@ -1,9 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ClientService, ListData } from '../../../../services/client.service';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { DialogService, DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { AddOrgComponent } from '../add-org/add-org.component';
+import { Organization, OrganizationService } from '../../../../services/org-service/organization.service';
+import { ViewAdminComponent } from '../view-admin/view-admin.component';
+import { EditAdminComponent } from '../edit-admin/add-admin.component';
 
 @Component({
   selector: 'app-list-org',
@@ -11,18 +14,87 @@ import { AddOrgComponent } from '../add-org/add-org.component';
   styleUrl: './list-org.component.css',
   providers: [DialogService,DynamicDialogConfig]
 })
-export class ListOrgComponent {
+export class ListOrgComponent implements OnInit {
   ref: DynamicDialogRef | undefined;
 
-  constructor(private route:Router,
-    public dialogService: DialogService
-  ) {}
+  constructor(private route:Router,public dialogService: DialogService, private orgService:OrganizationService) {}
 
-  
+  // orgs = Array<Organization>;
+  orgs!: Organization[];
+  selectedOrganization = null;
+  isEdit:boolean=false;
+
+  ngOnInit(): void {
+    this.loadOrganizations();
+    // console.log(this.orgs);
+  }
 
   userType:string="Super Admin";
   userName:string='ullas';
   options:string[]=['Organisation','Facility','Report'];
+
+
+  loadOrganizations(): void {
+    this.orgService.getOrganizations().subscribe((data) => {
+      this.orgs=data;
+      // this.orgs = data as Organization[];
+    }
+  );
+  }
+
+  deleteOrganization(organizationId: string): void {
+    this.orgService.deleteOrganization(organizationId).subscribe({
+      next: (response) => {
+        this.loadOrganizations();
+        console.log(response)
+      },
+      error: (err) => {
+        console.error("Error",err);
+      }
+    });
+  }
+  
+  editOrganization(organizations:Organization){
+    organizations.isEdit=true;
+  }
+
+  updateOrganization(organizations:Organization){
+    organizations.isEdit=false;
+
+    this.orgService.updateOrganization(organizations.organizationId, organizations ).subscribe({
+      next: () => {
+        this.loadOrganizations();
+        console.log('Updated successfully');
+      },
+      error: (err) => {
+        console.error("Error",err);
+        // this.loadOrganizations();
+
+      },
+    });
+  }
+
+  // deleteOrganization(organizationId:string){
+  //   this.orgService.deleteOrganization(organizationId).subscribe();
+  //   this.loadOrganizations();
+  // }
+
+  // deleteOrganization(organizationId: string): void {
+  //   this.orgService.deleteOrganization(organizationId).subscribe(
+  //     () => {
+  //       this.orgs = this.orgs.filter(org => org.organizationId !== organizationId);
+  //       alert('Organization deleted successfully!');
+  //       // this.loadOrganizations();
+  //     },
+  //     // () => alert('Failed to delete organization.')
+  //     () => {
+  //       // alert('deleted organization.')
+  //       this.loadOrganizations();
+  //   }
+
+  //   );
+  // }
+  
   
 
   showDialogue(event: any){
@@ -35,12 +107,25 @@ export class ListOrgComponent {
       }
     );
   }
+
+  addAdmin(){
+    this.ref = this.dialogService.open(EditAdminComponent,
+      { 
+        // contentStyle: { overflow: 'auto' },
+        width: '',
+        height: ''
+      }
+    );
+  }
   
 addOrg(){
-  this.ref = this.dialogService.open(AddOrgComponent,{width: '70%',height: ''});
+  this.ref = this.dialogService.open(AddOrgComponent,{width: '60%',height: ''});
 }
 
-  onDelete(){}
+viewAdmin(){
+  this.ref = this.dialogService.open(ViewAdminComponent,{header: '_Admins',width: '50%',height: ''});
+}
+
 
   ngOnDestroy() {
     if (this.ref) {

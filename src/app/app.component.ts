@@ -10,13 +10,14 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'sampleWorkSense';
-  admin!: FormGroup;
+  // admin!: FormGroup;
+  // this.admin = this.fb.group({
+  
+  //   username: ['', Validators.required]
+  // });
 
   constructor(private fb: FormBuilder) {
-    this.admin = this.fb.group({
-  
-      username: ['', Validators.required]
-    });
+   
   }
 
 }

@@ -9,6 +9,7 @@ import { AdminModule } from './admin/admin.module';
 import { UserModule } from './user/user.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { HttpClientModule, provideHttpClient } from '@angular/common/http';
 
 // import { DynamicDialogModule } from 'primeng/dynamicdialog';
 // import { TabViewModule } from 'primeng/tabview';
@@ -30,6 +31,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     SuperAdminModule,
     AdminModule,
     UserModule,
+    HttpClientModule
 
     
     // DynamicDialogModule
@@ -46,7 +48,8 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     
   ],
   providers: [
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    // provideHttpClient()  
   ],
   bootstrap: [AppComponent]
 })

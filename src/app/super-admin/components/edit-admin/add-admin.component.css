@@ -1,0 +1,160 @@
+  /* *{
+    box-sizing:border-box;
+    padding: 0;
+    margin: 0;
+  } */
+
+  .card {
+    /* padding: 1rem;  */
+   /* position: absolute;  */
+   /* top: 50%; */
+   /* left: 50%;  */
+   /* transform: translate(-50%, -50%); */
+   /* width: 50%; */
+   /* border: 1px solid rgb(198, 193, 193); */
+   /* height: 70%; */
+   border-radius: 0.25rem;
+   background-color: #fff;
+   overflow: auto;
+   padding: 20px;
+   /* width: 300px; */
+   /* width: 80%; */
+ }
+
+ .grid {
+   display: grid;
+   gap: 1.5rem;
+ }
+
+.button-spacing{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+ }
+
+input{
+ padding: 6px;
+}
+
+.buttons{
+ width: 50px;
+ margin-top: 10px;
+}
+
+:host ::ng-deep .p-tabview {
+border: none;
+}
+
+:host ::ng-deep .p-tabview-panels {
+ padding-top: 1rem;
+}
+
+:host ::ng-deep .p-tabview-nav li {
+ margin-right: 1rem;
+}
+
+:host ::ng-deep .p-tabview-nav {
+ border-bottom: none; 
+ /* border-top: none; */
+}
+
+:host ::ng-deep .p-button{
+ background-color: #9bbb9b;
+ border: solid #9bbb9b;
+ height: 30px;
+}  
+
+
+/* cancel button */
+:host ::ng-deep #cancel .p-button{
+ background-color: #61615e7f;
+ border:#9bbb9b;
+}
+
+:host ::ng-deep .p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link{
+ padding: 4px;
+ color: white;
+ height:30px;
+ border-color: #9bbb9b;
+ background-color: #9bbb9b ;
+}
+
+:host ::ng-deep .p-tabview .p-tabview-nav li .p-tabview-nav-link{
+ height: 30px;
+ border-bottom: none;
+ font-weight: 500;
+} 
+
+:host ::ng-deep .p-fluid .p-dropdown .p-dropdown-label {
+ height: 30px;
+ padding-left: 6px;
+}
+
+:host ::ng-deep .p-dropdown .p-dropdown-items li {
+ padding: 0 15px; 
+}
+
+
+@media (min-width: 768px) {
+
+
+ .button-spacing{
+   flex-direction: row;
+   gap: 10px;
+   justify-content: end;
+   margin-top: 2px;
+ }
+
+ input{
+   padding: 6px;
+ }
+ 
+ .buttons{
+   width: 60px;
+   /* background-color: red; */
+ }
+
+ .grid {
+     grid-template-columns: repeat(2, 1fr);
+ }
+
+ .flex {
+   display: flex;
+ }
+ 
+ .justify-content-end {
+   justify-content: flex-end;
+ }
+ 
+ :host ::ng-deep .p-tabview-panels {
+   padding: 1rem 0.5rem;
+ }
+ 
+ :host ::ng-deep .p-tabview-nav li {
+   margin-right: 1rem;
+ }
+
+ .center-placeholder::placeholder {
+   text-align: start;
+   padding-left: 5px;
+ }
+ 
+ .center-placeholder {
+   text-align: start;
+   padding-left: 5px;
+ }
+
+
+ :host ::ng-deep .p-dropdown .p-dropdown-items li {
+   padding: 0 15px; 
+ }
+
+ .card{
+   border-radius: 0.25rem;
+   background-color: #fff;
+   overflow: auto;
+   padding: 20px;
+   width: auto;
+   
+ }
+}

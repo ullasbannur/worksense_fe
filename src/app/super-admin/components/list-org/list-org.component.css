@@ -72,8 +72,8 @@ img{
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(152px, 1fr));
   gap:2px;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
+  /* overflow-wrap: break-word; */
+  /* word-wrap: break-word; */
   text-align: start;
 }
 
@@ -89,7 +89,6 @@ img{
 .actions button:hover {
   text-decoration: underline;
 }
-
 
 
 /* .p-datatable .p-datatable-tbody > tr > td {
