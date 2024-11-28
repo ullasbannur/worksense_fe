@@ -1,32 +1,51 @@
 <div class="card">
     <p-accordion  [activeIndex]="0"> 
-        <p-accordionTab [header]="tab.name" *ngFor="let tab of admins">
+        <p-accordionTab [header]="tab.name"   *ngFor="let tab of admins">
             <p class="m-0" style="display: flex; flex-direction: column; gap: 2px; padding: 5px;">
-
 
               <span style="height: 5px;"></span>
 
+              <span style="padding-left: 10px;">
+                <i class="fa-solid fa-user" style="padding-right: 5px;"></i>
+                <span *ngIf="!isEdit">
+                  {{ tab.name }}
+                </span>
+
+                <input type="text" *ngIf="isEdit"  [(ngModel)]="tab.name" style="width: auto; height: 30px; font-size: 15px;">
+              </span>
 
                 <span style="padding-left: 10px;">
-                    <i class="fa-solid fa-envelope"></i>
-                    {{ tab.email }}
+                    <i class="fa-solid fa-envelope"  style="padding-right: 3px;"></i>
+                    <span *ngIf="!isEdit">
+                      {{ tab.email }}
+                    </span>
+
+                    <input type="text" *ngIf="isEdit"  [(ngModel)]="tab.email" style="width: auto; height: 30px; font-size: 15px;">
+
                 </span>
 
                 <span style="padding-left: 10px;">
-                    <i class="fa-solid fa-phone"></i>
-                    {{tab.phone}}
+                    <i class="fa-solid fa-phone"  style="padding-right: 3px;"></i>
+                    <span *ngIf="!isEdit">
+                      {{tab.phone}}
+                    </span>
+
+                    <input type="text" *ngIf="isEdit"  [(ngModel)]="tab.phone" style="width: auto; height: 30px; font-size: 15px;">
+
+
                 </span>
                 
             </p>
 
             <div style="display: flex; justify-content: flex-end; gap: 5px; padding-bottom: 5px;">
-                <span style="cursor: pointer;"   (click)="editAdmin()">
-                    <svg width="18" height="17" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <span style="cursor: pointer;">  
+                    <svg  *ngIf="!isEdit"  width="18" height="17" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M14.25 0L11.875 2.25L16.625 6.75L19 4.5L14.25 0ZM9.5 4.5L0 13.5V18H4.75L14.25 9L9.5 4.5Z" fill="#9BBB9B"/>
                         </svg>
-                </span>     
 
-               
+                        <i *ngIf="isEdit" class="fa-solid fa-floppy-disk" style="color: #9BBB9B; font-size: 20px;"></i>
+                    
+                </span>     
                     
                 <span style="cursor: pointer; padding-right: 10px; padding-bottom: 5px;">
                     <svg width="19" height="18" viewBox="0 0 25 29" fill="none" xmlns="http://www.w3.org/2000/svg">

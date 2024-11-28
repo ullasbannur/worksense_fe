@@ -14,7 +14,7 @@
     <p-table
         [value]="orgs"
         [paginator]="true"
-        [rows]="12"
+        [rows]="11"
         [tableStyle]="{ 'min-width': '50rem' }"
       >
         <ng-template pTemplate="header">
@@ -89,7 +89,7 @@
                    border: 1px solid green; border-radius: 5px; padding: 5px; margin-right: 5px; "
                    (click)="viewAdmin()">View</button>
 
-                  <i class="fa-solid fa-plus"   style="cursor: pointer;"  (click)="addAdmin()"></i>
+                  <i class="fa-solid fa-plus"   style="cursor: pointer;"  (click)="addAdmin(organizations.organizationId)"></i>
 
 
 

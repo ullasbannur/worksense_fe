@@ -19,6 +19,8 @@ import { EditAdminComponent } from '../edit-admin/add-admin.component';
 export class ViewAdminComponent {
 
   visible: boolean = false;
+
+  isEdit:boolean=false;
   
   ref: DynamicDialogRef | undefined;
 
@@ -30,17 +32,16 @@ export class ViewAdminComponent {
       {name:'Nipun', email:'nihso@eg.dk',phone:'765456778'},
       {name:'Shodhan', email:'shods@eg.dk',phone:'765336778'},
       {name:'Aravind', email:'aras@eg.dk',phone:'7653323278'}
-
     ];
 
-    editAdmin(){
-      this.ref = this.dialogService.open(EditAdminComponent,
-        {
-          width: '%',
-          height: '%'
-        }
-      );
-  }
+  //   editAdmin(){
+  //     this.ref = this.dialogService.open(EditAdminComponent,
+  //       {
+  //         width: '%',
+  //         height: '%'
+  //       }
+  //     );
+  // }
 
 
 

@@ -58,21 +58,50 @@ export class ListOrgComponent implements OnInit {
     organizations.isEdit=true;
   }
 
-  updateOrganization(organizations:Organization){
-    organizations.isEdit=false;
 
-    this.orgService.updateOrganization(organizations.organizationId, organizations ).subscribe({
+
+  updateOrganization(organizations: Organization) {
+    organizations.isEdit = false;
+  
+    const formData = new FormData();
+  
+    formData.append('organizationId', organizations.organizationId); 
+    formData.append('name', organizations.name);
+    formData.append('contact', organizations.contact);
+    formData.append('email', organizations.email);
+    formData.append('country', organizations.country);
+    formData.append('city', organizations.city);
+    formData.append('streetAddress', organizations.streetAddress);
+    formData.append('postalCode', organizations.postalCode);
+    formData.append('logo', organizations.logo); 
+  
+    this.orgService.updateOrganization(organizations.organizationId,formData).subscribe({
       next: () => {
         this.loadOrganizations();
         console.log('Updated successfully');
       },
       error: (err) => {
-        console.error("Error",err);
-        // this.loadOrganizations();
-
+        console.error("Error", err);
       },
     });
   }
+  
+
+  // updateOrganization(organizations:Organization){
+  //   organizations.isEdit=false;
+
+  //   this.orgService.updateOrganization(organizations.organizationId, organizations ).subscribe({
+  //     next: () => {
+  //       this.loadOrganizations();
+  //       console.log('Updated successfully');
+  //     },
+  //     error: (err) => {
+  //       console.error("Error",err);
+  //       // this.loadOrganizations();
+
+  //     },
+  //   });
+  // }
 
   // deleteOrganization(organizationId:string){
   //   this.orgService.deleteOrganization(organizationId).subscribe();
@@ -95,23 +124,15 @@ export class ListOrgComponent implements OnInit {
   //   );
   // }
   
-  
 
-  showDialogue(event: any){
-    console.log('show dailog', event);
-    this.ref = this.dialogService.open(AddOrgComponent,
-      {
-        data: {event},
-        width: '80vw',
-        height: '80vh'
-      }
-    );
-  }
 
-  addAdmin(){
+  addAdmin(organisationId:string){
     this.ref = this.dialogService.open(EditAdminComponent,
       { 
-        // contentStyle: { overflow: 'auto' },
+        data:{
+          organisationId
+
+        },
         width: '',
         height: ''
       }
@@ -119,11 +140,32 @@ export class ListOrgComponent implements OnInit {
   }
   
 addOrg(){
-  this.ref = this.dialogService.open(AddOrgComponent,{width: '60%',height: ''});
+  this.ref = this.dialogService.open(AddOrgComponent,
+    {
+      width: '60%',
+      height: ''
+    });
 }
 
 viewAdmin(){
-  this.ref = this.dialogService.open(ViewAdminComponent,{header: '_Admins',width: '50%',height: ''});
+  this.ref = this.dialogService.open(ViewAdminComponent,
+    {
+      header: '_Admins',
+      width: '50%',height: ''
+    });
+}
+
+showDialogue(event: any){
+  console.log('show dailog', event);
+  this.ref = this.dialogService.open(AddOrgComponent,
+    {
+      data: {
+        event
+      },
+      width: '80vw',
+      height: '80vh'
+    }
+  );
 }
 
 
