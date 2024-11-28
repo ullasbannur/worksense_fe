@@ -37,15 +37,6 @@ export class OrganizationService {
 
   constructor(private http: HttpClient) { }
 
-  // createAdmin(userData: any): Observable<any> {
-  //   const organizationId = this.getOrganizationId();
-  //   if (organizationId) {
-  //     userData.OrganizationId = organizationId;
-  //     return this.http.post(`${this.userApiUrl}/register`, userData); 
-  //   } else {
-  //     throw new Error('Organization ID is not available');
-  //   }
-  // }
   createClientAdmin(userData: User): Observable<User> {
     return this.http.post<User>(`${this.userApiUrl}/register`, userData);
   }

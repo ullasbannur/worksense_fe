@@ -20,18 +20,13 @@ export class AddOrgComponent {
   dialogRef: any;
   dialogService: any;
 
-
   countries: string[] | [undefined] = [' ', 'DK', 'IN'];
   cities: string[] | [undefined] = [' ', 'Mangalore', 'Udupi'];
-
   activeIndex: number = 0;
   selectedFileName: string = '';
   showCard: boolean = true;
-
   orgInfoForm: FormGroup;
   adminForm: FormGroup;
-  // orgIdAdmin!:string;
-  // organisationId!: string;
 
   constructor(private fb: FormBuilder, public config: DynamicDialogConfig, private orgService: OrganizationService,
     private listOrg: ListOrgComponent) {
@@ -55,7 +50,6 @@ export class AddOrgComponent {
       password: ['', Validators.required]
     });
   }
-
 
   // ngOnInit() {
   //  const data = this.config

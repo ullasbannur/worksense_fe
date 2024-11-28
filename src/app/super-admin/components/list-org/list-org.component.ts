@@ -6,7 +6,7 @@ import { DialogService, DynamicDialogConfig, DynamicDialogRef } from 'primeng/dy
 import { AddOrgComponent } from '../add-org/add-org.component';
 import { Organization, OrganizationService } from '../../../../services/org-service/organization.service';
 import { ViewAdminComponent } from '../view-admin/view-admin.component';
-import { EditAdminComponent } from '../edit-admin/add-admin.component';
+import { AddAdminComponent } from '../add-admin/add-admin.component';
 
 @Component({
   selector: 'app-list-org',
@@ -57,8 +57,6 @@ export class ListOrgComponent implements OnInit {
   editOrganization(organizations:Organization){
     organizations.isEdit=true;
   }
-
-
 
   updateOrganization(organizations: Organization) {
     organizations.isEdit = false;
@@ -125,13 +123,11 @@ export class ListOrgComponent implements OnInit {
   // }
   
 
-
   addAdmin(organisationId:string){
-    this.ref = this.dialogService.open(EditAdminComponent,
+    this.ref = this.dialogService.open(AddAdminComponent,
       { 
         data:{
-          organisationId
-
+          organisationId:organisationId
         },
         width: '',
         height: ''
@@ -147,27 +143,29 @@ addOrg(){
     });
 }
 
-viewAdmin(){
+viewAdmin(organisationId:string){
   this.ref = this.dialogService.open(ViewAdminComponent,
-    {
+    {data:{
+      organisationId:organisationId
+    },
       header: '_Admins',
-      width: '50%',height: ''
+      width: '50%',
+      height: ''
     });
 }
-
-showDialogue(event: any){
-  console.log('show dailog', event);
-  this.ref = this.dialogService.open(AddOrgComponent,
-    {
-      data: {
-        event
-      },
-      width: '80vw',
-      height: '80vh'
-    }
-  );
-}
-
+//data sharing
+// showDialogue(event: any){
+//   console.log('show dailog', event);
+//   this.ref = this.dialogService.open(AddOrgComponent,
+//     {
+//       data: {
+//         event
+//       },
+//       width: '80vw',
+//       height: '80vh'
+//     }
+//   );
+// }
 
   ngOnDestroy() {
     if (this.ref) {

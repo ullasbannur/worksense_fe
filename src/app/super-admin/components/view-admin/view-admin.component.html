@@ -1,5 +1,5 @@
 <div class="card">
-    <p-accordion  [activeIndex]="0"> 
+    <p-accordion  [activeIndex]="0" > 
         <p-accordionTab [header]="tab.name"   *ngFor="let tab of admins">
             <p class="m-0" style="display: flex; flex-direction: column; gap: 2px; padding: 5px;">
 
@@ -58,38 +58,3 @@
     </p-accordion>
 </div>
 
-
-<!-- 
-
-<div class="accordion-container"
-style="padding-bottom: 30px;">
-  <p class="accordion-heading" 
-  style="padding-top: 30px; 
-  padding-bottom: 20px;">Organization Admins</p>
-  <mat-accordion class="accordion-data">
-    <mat-expansion-panel *ngFor="let admin of admins">
-      <mat-expansion-panel-header>
-        <mat-panel-title class="accordion-data">
-          {{ admin.name }}
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-  
-      <div class="admin-details">
-        <p class="accordion-data">
-          <mat-icon>email</mat-icon> {{ admin.email }}
-        </p>
-        <p class="accordion-data">
-          <mat-icon>phone</mat-icon> {{ admin.phone }}
-        </p>
-        <div class="admin-actions">
-          <button mat-icon-button class="edit-btn" >
-            <mat-icon>edit</mat-icon>
-          </button>
-          <button mat-icon-button class="delete-btn" >
-            <mat-icon>delete</mat-icon>
-          </button>
-        </div>
-      </div>
-    </mat-expansion-panel>
-  </mat-accordion>
-</div> -->

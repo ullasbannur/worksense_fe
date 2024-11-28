@@ -27,7 +27,7 @@ import { AccordionModule } from 'primeng/accordion';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { EditAdminComponent } from './components/edit-admin/add-admin.component'; // For mat-expansion-panel
+import { AddAdminComponent } from './components/add-admin/add-admin.component'; // For mat-expansion-panel
 
 
 
@@ -57,8 +57,8 @@ const routes: Routes = [
     component: ViewAdminComponent
   },
   {
-    path: 'editAdmin',  
-    component: EditAdminComponent
+    path: 'addAdmin',  
+    component: AddAdminComponent
   }
 ];
 
@@ -70,7 +70,7 @@ const routes: Routes = [
     ListOrgComponent,
     ListFacilityComponent,
     ViewAdminComponent,
-    EditAdminComponent
+    AddAdminComponent
   ],
   imports: [
     CommonModule,
