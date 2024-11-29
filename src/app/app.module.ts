@@ -49,7 +49,7 @@ import { HttpClientModule, provideHttpClient } from '@angular/common/http';
   ],
   providers: [
     provideAnimationsAsync(),
-    // provideHttpClient()  
+    provideHttpClient()  
   ],
   bootstrap: [AppComponent]
 })

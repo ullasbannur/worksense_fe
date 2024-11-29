@@ -144,9 +144,11 @@ addOrg(){
 }
 
 viewAdmin(organisationId:string){
+  console.log(organisationId);
   this.ref = this.dialogService.open(ViewAdminComponent,
-    {data:{
-      organisationId:organisationId
+    {
+      data:{
+      idOrg:organisationId
     },
       header: '_Admins',
       width: '50%',

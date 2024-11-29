@@ -29,8 +29,6 @@ export class LoginComponent {
     });
   }
 
-
-
   ngOnInit(): void {
     let superUser:LoginModel= {
       username: 'ullas',
