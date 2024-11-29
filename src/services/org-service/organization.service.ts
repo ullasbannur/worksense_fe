@@ -53,7 +53,6 @@ export class OrganizationService {
   //   return this.http.post<Organization>(this.apiUrl, organization);
   // }
 
-
   createOrganization(organization: FormData): Observable<Organization | null> {
     return this.http.post<Organization>(this.orgApiUrl, organization).pipe(
       map(response => {

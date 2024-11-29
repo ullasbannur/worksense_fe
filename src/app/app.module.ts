@@ -9,7 +9,8 @@ import { AdminModule } from './admin/admin.module';
 import { UserModule } from './user/user.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { HttpClientModule, provideHttpClient } from '@angular/common/http';
+import { HttpClientModule, provideHttpClient, withInterceptors } from '@angular/common/http';
+import { headersInterceptor } from '../interceptors/headers.interceptor';
 
 // import { DynamicDialogModule } from 'primeng/dynamicdialog';
 // import { TabViewModule } from 'primeng/tabview';
@@ -49,7 +50,7 @@ import { HttpClientModule, provideHttpClient } from '@angular/common/http';
   ],
   providers: [
     provideAnimationsAsync(),
-    provideHttpClient()  
+    provideHttpClient(withInterceptors([headersInterceptor]))  
   ],
   bootstrap: [AppComponent]
 })

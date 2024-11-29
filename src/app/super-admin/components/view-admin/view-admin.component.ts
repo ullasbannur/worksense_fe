@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { DialogService, DynamicDialogConfig } from 'primeng/dynamicdialog';
+import { UserService } from '../../../../services/user-service/user.service';
 
 interface adminType {
   name: string;
@@ -17,24 +18,38 @@ interface adminType {
 })
 export class ViewAdminComponent implements OnInit {
   organisationId!: string;
-
   visible: boolean = false;
-
   isEdit: boolean = false;
-
-  admins: adminType[] = [
-    { name: 'Ullas', email: 'ulban@eg.dk', phone: '989898988' },
-    { name: 'Nipun', email: 'nihso@eg.dk', phone: '765456778' },
-    { name: 'Shodhan', email: 'shods@eg.dk', phone: '765336778' },
-    { name: 'Aravind', email: 'aras@eg.dk', phone: '7653323278' }
-  ];
+  admins!:any[];
 
   constructor(private route: Router, 
     public dialogService: DialogService,
-    public config: DynamicDialogConfig) {}
+    public config: DynamicDialogConfig,
+  private userService: UserService) {}
 
   ngOnInit() {
       console.log('Organisation ID:', this.config.data.idOrg);
       this.organisationId = this.config.data.idOrg;
+
+      this.loadAdmins(this.organisationId);
+  }
+
+  loadAdmins(orgId:string){
+
+    this.userService.getAdminByOrgId(orgId).subscribe((response) => {
+      this.admins=response.data;
+    });
+  }
+
+  adminDelete(adminId:string){
+
+    this.userService.deleteAdminById(adminId).subscribe({
+      next:()=>{
+        console.log('User Deleted');
+        this.loadAdmins(this.organisationId);
+      },
+      error: (err) => {
+        console.error("Error Deleting Admin",err);
+      }})
   }
 }

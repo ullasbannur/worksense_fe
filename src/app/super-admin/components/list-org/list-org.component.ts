@@ -150,7 +150,7 @@ viewAdmin(organisationId:string){
       data:{
       idOrg:organisationId
     },
-      header: '_Admins',
+      header: 'Admins',
       width: '50%',
       height: ''
     });

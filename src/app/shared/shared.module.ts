@@ -6,6 +6,8 @@ import { LoginComponent } from './components/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ForgotComponent } from './components/forgot/forgot.component';
 import { ResetComponent } from './components/reset/reset.component';
+import { provideHttpClient } from '@angular/common/http';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 const routes: Routes = [
   {
@@ -43,6 +45,10 @@ const routes: Routes = [
     LoginComponent,
     ForgotComponent,
     ResetComponent
+  ],
+  providers: [
+    provideAnimationsAsync(),
+    provideHttpClient()  
   ]
 })
 export class SharedModule { }
