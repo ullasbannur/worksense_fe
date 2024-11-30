@@ -3,8 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { DialogService, DynamicDialogComponent, DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { FileUploadEvent } from 'primeng/fileupload';
-import { OrganizationService, Organization, User } from '../../../../services/org-service/organization.service';
+import { OrganizationService, Organization } from '../../../../services/org-service/organization.service';
 import { ListOrgComponent } from '../list-org/list-org.component';
+import { UserService,User } from '../../../../services/user-service/user.service';
 
 
 
@@ -29,7 +30,7 @@ export class AddOrgComponent {
   adminForm: FormGroup;
 
   constructor(private fb: FormBuilder, public config: DynamicDialogConfig, private orgService: OrganizationService,
-    private listOrg: ListOrgComponent) {
+    private listOrg: ListOrgComponent, private userService: UserService) {
 
     this.orgInfoForm = this.fb.group({
       name: ['', Validators.required],
@@ -147,7 +148,7 @@ export class AddOrgComponent {
             console.log('Organization added successfully', organization, organization.organizationId);
             this.listOrg.loadOrganizations();
 
-            this.orgService.createClientAdmin(AdminData).subscribe({
+            this.userService.createClientAdmin(AdminData).subscribe({
               next: () => {
                 console.log('Admin Added successfully');
               },
@@ -155,10 +156,6 @@ export class AddOrgComponent {
                 console.error("ErrorAdmin", err);
               }
             });
-
-
-
-
 
           }
           else {

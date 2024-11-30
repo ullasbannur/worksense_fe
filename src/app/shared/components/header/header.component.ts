@@ -31,15 +31,15 @@ export class HeaderComponent {
   logoClick(){
     console.log("logo clicked");
     switch(this.userType){
-      case 'Super Admin':
+      case 'SuperAdmin':
         this.route.navigateByUrl('super/dashboard');
         console.log('ullas ka page');
         break;
-      case 'Admin':
+      case 'CustomerAdmin':
         this.route.navigateByUrl('admin/dashboard');
         console.log('tina ka page');
         break;
-      case 'User':
+      case 'RegisteredUser':
         this.route.navigateByUrl('user/dashboard');
         console.log('nipun ka page');
         break;
@@ -54,7 +54,7 @@ export class HeaderComponent {
     console.log('event', event);
     switch(this.userType){
 
-      case 'Super Admin':
+      case 'SuperAdmin':
         if(event==='Organisation'){
           // this.route.navigateByUrl('/listOrg');super/listFacility
           this.route.navigateByUrl('super/listOrg');
@@ -64,7 +64,7 @@ export class HeaderComponent {
         } 
         break;
       
-      case 'Admin':
+      case 'CustomerAdmin':
         if(event=='Users'){
           this.route.navigateByUrl('admin/listUser');
         }
@@ -72,17 +72,22 @@ export class HeaderComponent {
           this.route.navigateByUrl('admin/listFloor');
         }
         break;
-      case 'User' :
+      case 'RegisteredUser' :
         if(event=='Floors'){
           this.route.navigateByUrl('user/layout');
         }
         break;
-
     }
   }
 
   onChangePassword(){
     this.ref=this.dialogueService.open(ResetComponent,{width:'300px'})
+  }
+
+  ngOnDestroy() {
+    if (this.ref) {
+        this.ref.close();
+    }
   }
 
   onLogout(){

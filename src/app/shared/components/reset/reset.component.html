@@ -1,23 +1,23 @@
 <div class="login-container">
   <h2 id="heading">Change Password</h2>
-  <form [formGroup]="resetForm" (ngSubmit)="onSubmit()">
-    <input type="password" id="oldPassword" formControlName="password" placeholder="Old Password" />
+  <form [formGroup]="resetForm" >
+    <input type="password" id="oldPassword" formControlName="oldPassword" placeholder="Old Password" />
     
-    <input type="password" id="newPassword" formControlName="password1" placeholder="New Password" />
-    <div *ngIf="resetForm.get('password1')?.touched && resetForm.get('password1')?.hasError('weakPassword')">
+    <input type="password" id="newPassword" formControlName="newPassword" placeholder="New Password" />
+    <div *ngIf="resetForm.get('newPassword')?.touched && resetForm.get('newPassword')?.hasError('weakPassword')">
       Password not strong!
     </div>  
     
-    <div *ngIf="resetForm.hasError('sameAsOldPassword') && resetForm.get('password1')?.touched">
+    <div *ngIf="resetForm.hasError('sameAsOldPassword') && resetForm.get('newPassword')?.touched">
       Password same as old password!
     </div>
 
-    <input type="password" id="confirmPassword" formControlName="password2" placeholder="Confirm New Password" />
-    <div *ngIf="resetForm.get('password2')?.touched && resetForm.get('password2')?.hasError('mismatch')">
+    <input type="password" id="confirmPassword" formControlName="confirmNewPassword" placeholder="Confirm New Password" />
+    <div *ngIf="resetForm.get('confirmNewPassword')?.touched && resetForm.get('confirmNewPassword')?.hasError('mismatch')">
       Passwords do not match!
     </div>
 
-    <button 
+    <button (click)="onSubmit()"
       [ngClass]="{'login-disable': resetForm.invalid}" type="submit" [disabled]="resetForm.invalid">Submit
     </button>
   </form>

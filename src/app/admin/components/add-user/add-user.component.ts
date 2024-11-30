@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { User, UserService } from '../../../../services/user-service/user.service';
+import { ListUserComponent } from '../list-user/list-user.component';
 
 @Component({
   selector: 'app-add-user',
@@ -10,16 +12,35 @@ export class AddUserComponent {
   showCard:boolean=true;
   userForm!: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  orgId!:string;
+
+  constructor(private fb: FormBuilder,
+    private userService:UserService, private listUser: ListUserComponent ) {
+
     this.userForm = this.fb.group({
       username: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      contact: ['', Validators.required],
+      phoneNumber: ['', Validators.required],
       password: ['', Validators.required]
     });
   }
 
-  ngOnInit() {}
+  decodeToken(token: string): any {
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    const decodedData = atob(base64);
+    return JSON.parse(decodedData);
+    // return decodedData;
+  }
+
+  ngOnInit() {
+    const token=JSON.parse( localStorage.getItem('tokenFromBackend') || '{}');
+    const decodedToken = this.decodeToken(token);
+    console.log('decoded token:',decodedToken);
+    const orgId=decodedToken.OrganizationId;
+    this.orgId=orgId;
+    console.log(this.orgId);
+  }
 
   onCancel() {
     console.log('Cancelled');
@@ -27,14 +48,24 @@ export class AddUserComponent {
 
   onSubmit() {
     if (this.userForm.valid) {
-      const formData = {
-        ...this.userForm.value
+      const UserData:User = {
+        ...this.userForm.value,
+        confirmPassword: this.userForm.value.password,
+        organizationId: this.orgId,
+        role: 'RegisteredUser'
       };
-      console.log('Form submitted:', formData);
-      console.log('Form submitted:', this.userForm.value);
 
+    this.userService.createClientAdmin(UserData).subscribe({
+      next: () => {
+        console.log('User Added');
+        this.listUser.getUsersByOrgId(this.orgId);
+        this.userForm.reset();
+      },
+      error: (err) => {
+        console.error("Erroruser", err);
+      }
+    });
     }
+
   }
-
-
 }

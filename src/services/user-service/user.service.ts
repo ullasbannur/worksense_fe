@@ -27,6 +27,24 @@ export interface AdminModel {
   accessFailedCount: number;
 }
 
+
+export interface User {
+  userName: string;
+  phoneNumber: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+  role: string;
+  organizationId: string;
+}
+
+
+export interface PasswordModel{
+  oldPassword: string;
+  newPassword: string;
+  confirmNewPassword: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -87,5 +105,27 @@ export class UserService {
         return of(error);
       })
     );
+  }
+
+  createClientAdmin(userData: User): Observable<User> {
+    return this.http.post<User>(`${this.userApiUrl}/register`, userData);
+  }
+
+  getCurrentProfile():Observable<any>{
+    return this.http.get<any>(`${this.userApiUrl}/profile`).pipe(
+      map(response=>{
+        if(response){
+          return response.data;
+        }
+      }),
+      catchError(error => {
+        console.error('Error fetching Current profile:', error);
+        return of(error);
+      })
+    );
+  }
+
+  changePassword(Data:PasswordModel):Observable<any>{
+    return this.http.post<any>(`${this.userApiUrl}/change-password`, Data);
   }
 }

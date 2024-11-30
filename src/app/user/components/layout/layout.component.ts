@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DialogService, DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { BookingComponent } from '../booking/booking.component';
@@ -19,17 +19,36 @@ interface FloorData {
   styleUrls: ['./layout.component.css'],
   providers:[DialogService,DynamicDialogConfig]
 })
-export class LayoutComponent {
+export class LayoutComponent implements OnInit {
   ref: DynamicDialogRef | undefined;
 
   
-  userType:string="User";
-  userName:string="nipun";
+  userType!:string;
+  userName!:string;
   options:string[]=['Floors','Report'];
 
   constructor(private route:Router,
     public dialogService: DialogService
   ) {}
+
+  decodeToken(token: string): any {
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    const decodedData = atob(base64);
+    return JSON.parse(decodedData);
+  }
+
+  ngOnInit() {
+    const token=JSON.parse( localStorage.getItem('tokenFromBackend') || '{}');
+    const decodedToken = this.decodeToken(token);
+    console.log('decoded token:',decodedToken);
+    const orgId=decodedToken.OrganizationId;
+    const role=decodedToken["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
+
+    this.userType=role;
+    this.userName=decodedToken['sub'];
+   
+  }
 
   showBooking(){
     this.ref = this.dialogService.open(BookingComponent,{width: '',height: ''});

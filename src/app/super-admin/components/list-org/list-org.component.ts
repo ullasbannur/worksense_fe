@@ -7,6 +7,7 @@ import { AddOrgComponent } from '../add-org/add-org.component';
 import { Organization, OrganizationService } from '../../../../services/org-service/organization.service';
 import { ViewAdminComponent } from '../view-admin/view-admin.component';
 import { AddAdminComponent } from '../add-admin/add-admin.component';
+import { UserService } from '../../../../services/user-service/user.service';
 
 @Component({
   selector: 'app-list-org',
@@ -17,21 +18,43 @@ import { AddAdminComponent } from '../add-admin/add-admin.component';
 export class ListOrgComponent implements OnInit {
   ref: DynamicDialogRef | undefined;
 
-  constructor(private route:Router,public dialogService: DialogService, private orgService:OrganizationService) {}
+  constructor(private route:Router,public dialogService: DialogService, private orgService:OrganizationService,
+    private userService: UserService ) {}
 
   // orgs = Array<Organization>;
   orgs!: Organization[];
   selectedOrganization = null;
   isEdit:boolean=false;
 
-  ngOnInit(): void {
-    this.loadOrganizations();
-    // console.log(this.orgs);
+  userType!:string;
+  userName!:string;
+  options:string[]=['Organisation','Facility','Report'];
+
+  decodeToken(token: string): any {
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    const decodedData = atob(base64);
+    return JSON.parse(decodedData);
   }
 
-  userType:string="Super Admin";
-  userName:string='ullas';
-  options:string[]=['Organisation','Facility','Report'];
+  ngOnInit(): void {
+    this.loadOrganizations();
+    const token = JSON.parse(localStorage.getItem('tokenFromBackend') || '{}');
+    const decodedToken = this.decodeToken(token);
+    this.userType=decodedToken["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
+
+    this.userService.getCurrentProfile().subscribe({
+      next:(profile)=>{
+        console.log('Profile',profile);
+        this.userName=profile.userName;
+      }
+    })
+  }
+
+ 
+
+
+  
 
 
   loadOrganizations(): void {

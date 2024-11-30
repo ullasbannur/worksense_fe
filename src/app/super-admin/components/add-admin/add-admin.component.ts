@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { DynamicDialogConfig } from 'primeng/dynamicdialog';
-import { OrganizationService, User } from '../../../../services/org-service/organization.service';
+import { OrganizationService } from '../../../../services/org-service/organization.service';
+import { User, UserService } from '../../../../services/user-service/user.service';
 
 @Component({
   selector: 'app-add-admin',
@@ -22,7 +23,7 @@ export class AddAdminComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
     public config: DynamicDialogConfig,
-    private orgService: OrganizationService
+    private userService: UserService
   ) {
 
     this.adminForm = this.fb.group({
@@ -46,7 +47,7 @@ export class AddAdminComponent implements OnInit {
       role: 'CustomerAdmin'
     };
 
-    this.orgService.createClientAdmin(AdminData).subscribe({
+    this.userService.createClientAdmin(AdminData).subscribe({
       next: () => {
         console.log('Admin Added');
         this.adminForm.reset();

@@ -22,15 +22,14 @@ export class ListUserComponent implements OnInit {
     private userService: UserService
   ) { }
 
-  userType: string = "Admin";
-  userName: string = 'tina';
+  userType!: string ;
+  userName!: string ;
   options: string[] = ['Users', 'Floors', 'Report'];
   users!:AdminModel[];
 
   addUser() {
     this.ref = this.dialogService.open(AddUserComponent, { width: '%', height: '%' });
   }
-
 
   ngOnDestroy() {
     if (this.ref) {
@@ -44,7 +43,6 @@ export class ListUserComponent implements OnInit {
     const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
     const decodedData = atob(base64);
     return JSON.parse(decodedData);
-    // return decodedData;
   }
 
   ngOnInit(){
@@ -54,6 +52,8 @@ export class ListUserComponent implements OnInit {
     const orgId=decodedToken.OrganizationId;
     const role=decodedToken["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
 
+    this.userType=role;
+    this.userName=decodedToken['sub'];
 
     this.getUsersByOrgId(orgId);
   }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AddFacilityComponent } from '../add-facility/add-facility.component';
 import { DialogService, DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { Router } from '@angular/router';
@@ -10,17 +10,30 @@ import { Router } from '@angular/router';
   providers: [DialogService,DynamicDialogConfig]
 
 })
-export class ListFacilityComponent {
+export class ListFacilityComponent implements OnInit {
   
   ref: DynamicDialogRef | undefined;
+  userType!:string;
+  userName!:string;
+  options:string[]=['Organisation','Facility','Report'];
 
   constructor(private route:Router,
     public dialogService: DialogService
   ) {}
 
-  userType:string="Super Admin";
-  userName:string='ullas';
-  options:string[]=['Organisation','Facility','Report'];
+  decodeToken(token: string): any {
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    const decodedData = atob(base64);
+    return JSON.parse(decodedData);
+  }
+
+  ngOnInit() {
+    const token = JSON.parse(localStorage.getItem('tokenFromBackend') || '{}');
+    const decodedToken = this.decodeToken(token);
+    this.userType=decodedToken["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
+    this.userName=decodedToken['sub'];
+  }
   
 addFacility(){
   this.ref = this.dialogService.open(AddFacilityComponent,{width: '%',height: '%'});

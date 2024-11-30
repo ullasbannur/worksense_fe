@@ -15,15 +15,15 @@ export interface Organization {
   postalCode: string;
 }
 
-export interface User {
-  userName: string;
-  phoneNumber: string;
-  email: string;
-  password: string;
-  confirmPassword: string;
-  role: string;
-  organizationId: string;
-}
+// export interface User {
+//   userName: string;
+//   phoneNumber: string;
+//   email: string;
+//   password: string;
+//   confirmPassword: string;
+//   role: string;
+//   organizationId: string;
+// }
 
 
 @Injectable({
@@ -33,13 +33,13 @@ export class OrganizationService {
   orgid!: string;
 
   private orgApiUrl = 'https://localhost:7162/api/Organization';
-  private userApiUrl = `https://localhost:7266/api/User`;
+  // private userApiUrl = `https://localhost:7266/api/User`;
 
   constructor(private http: HttpClient) { }
 
-  createClientAdmin(userData: User): Observable<User> {
-    return this.http.post<User>(`${this.userApiUrl}/register`, userData);
-  }
+  // createClientAdmin(userData: User): Observable<User> {
+  //   return this.http.post<User>(`${this.userApiUrl}/register`, userData);
+  // }
 
   getOrganizations(): Observable<Organization[]> {
     return this.http.get<Organization[]>(this.orgApiUrl);

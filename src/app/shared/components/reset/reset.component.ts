@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { PasswordModel, UserService } from '../../../../services/user-service/user.service';
+import { HeaderComponent } from '../header/header.component';
 
 function passwordStrengthValidator(control: AbstractControl): { [key: string]: boolean } | null {
   const password = control.value;
@@ -17,8 +19,8 @@ function passwordStrengthValidator(control: AbstractControl): { [key: string]: b
 }
 
 function passwordMatchValidator(group: FormGroup): null | object {
-  const password = group.get('password')?.value;
-  const password1 = group.get('password1')?.value;
+  const password = group.get('oldPassword')?.value;
+  const password1 = group.get('newPassword')?.value;
 
   if (password && password1 && password === password1) {
     return { sameAsOldPassword: true };
@@ -27,8 +29,8 @@ function passwordMatchValidator(group: FormGroup): null | object {
 }
 
 function confirmPasswordValidator(group: FormGroup): null | object {
-  const password1 = group.get('password1')?.value;
-  const password2 = group.get('password2')?.value;
+  const password1 = group.get('newPassword')?.value;
+  const password2 = group.get('confirmNewPassword')?.value;
   return password1 === password2 ? null : { mismatch: true };
 }
 
@@ -40,12 +42,12 @@ function confirmPasswordValidator(group: FormGroup): null | object {
 export class ResetComponent {
   resetForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private route: Router) {
+  constructor(private fb: FormBuilder, private route: Router, private userService: UserService, private headerPage:HeaderComponent) {
     this.resetForm = this.fb.group(
       {
-        password: ['', Validators.required],        
-        password1: ['', [Validators.required, Validators.minLength(6), passwordStrengthValidator]], 
-        password2: ['', [Validators.required, Validators.minLength(6)]], 
+        oldPassword: ['', Validators.required],        
+        newPassword: ['', [Validators.required, Validators.minLength(6), passwordStrengthValidator]], 
+        confirmNewPassword: ['', [Validators.required, Validators.minLength(6)]], 
       },
       {
         validator: [passwordMatchValidator, confirmPasswordValidator],
@@ -53,13 +55,24 @@ export class ResetComponent {
     );
   }
 
-  // ngOnInit(): void {}
-
   onSubmit(): void {
     if (this.resetForm.valid) {
-      console.log('Form Submitted!', this.resetForm.value);
+      const resetData: PasswordModel = {
+        ...this.resetForm.value
+      }
+
+      this.userService.changePassword(resetData).subscribe({
+        next:()=>{
+          console.log('password changed');
+          this.headerPage.ngOnDestroy();
+          this.route.navigateByUrl('login');
+        },
+        error:(err)=>{
+          console.log('Error changing passowrd',err);
+        }
+      });
+
       this.resetForm.reset();
-      // this.route.navigate(['login']);
     }
   }
 }
