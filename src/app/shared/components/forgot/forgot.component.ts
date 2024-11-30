@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ClientService } from '../../../../services/client.service';
+// import { ClientService } from '../../../../services/client.service';
 
 @Component({
   selector: 'app-forgot',
@@ -14,7 +14,7 @@ export class ForgotComponent {
   email!: string;
 
   constructor(private fb: FormBuilder,private route:Router,
-    private readonly clientService: ClientService
+    // private readonly clientService: ClientService
   ) {
     this.forgotForm = this.fb.group({
  
@@ -27,7 +27,7 @@ export class ForgotComponent {
 
     this.route.navigateByUrl('login');
  
-    this.clientService.resetPassword(this.forgotForm.value)
+    // this.clientService.resetPassword(this.forgotForm.value)
 
   }
 

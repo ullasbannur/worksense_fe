@@ -14,7 +14,7 @@ import { FileUploadModule } from 'primeng/fileupload';
 import { HttpClientModule } from '@angular/common/http';
 import { PasswordModule } from 'primeng/password';
 import { DropdownModule } from 'primeng/dropdown';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddFloorComponent } from './components/add-floor/add-floor.component';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { ListUserComponent } from './components/list-user/list-user.component';
@@ -69,7 +69,8 @@ const routes: Routes = [
     PasswordModule,
     DropdownModule,
     InputNumberModule,
-    TableModule
+    TableModule,
+    FormsModule
   ],
   exports:[AddUserComponent,
     AddFloorComponent,

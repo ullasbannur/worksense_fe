@@ -2,13 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { DialogService, DynamicDialogConfig } from 'primeng/dynamicdialog';
-import { UserService } from '../../../../services/user-service/user.service';
+import { AdminModel, UserService } from '../../../../services/user-service/user.service';
 
-interface adminType {
-  name: string;
-  email: string;
-  phone: string;
-}
 
 @Component({
   selector: 'app-view-admin',
@@ -19,13 +14,13 @@ interface adminType {
 export class ViewAdminComponent implements OnInit {
   organisationId!: string;
   visible: boolean = false;
-  isEdit: boolean = false;
-  admins!:any[];
+  // isEdit: boolean = false;
+  admins!:AdminModel[];
 
   constructor(private route: Router, 
     public dialogService: DialogService,
     public config: DynamicDialogConfig,
-  private userService: UserService) {}
+    private userService: UserService) {}
 
   ngOnInit() {
       console.log('Organisation ID:', this.config.data.idOrg);
@@ -38,6 +33,7 @@ export class ViewAdminComponent implements OnInit {
 
     this.userService.getAdminByOrgId(orgId).subscribe((response) => {
       this.admins=response.data;
+
     });
   }
 
@@ -51,5 +47,34 @@ export class ViewAdminComponent implements OnInit {
       error: (err) => {
         console.error("Error Deleting Admin",err);
       }})
+  }
+
+
+  editAdmin(tab:AdminModel){
+    tab.isEdit=true;
+    console.log('edit clicked');
+  }
+
+
+  updateAdmin(tab:AdminModel){
+    tab.isEdit=false;
+    const {isEdit,...updatedAdmin}=tab;
+    const orgId=updatedAdmin.organizationId;
+    const id=updatedAdmin.id;
+
+    console.log('updatd->',updatedAdmin);
+
+
+    this.userService.updateAdminById(id,updatedAdmin).subscribe({
+      next:()=>{
+        console.log('Updated admin');
+        this.loadAdmins(orgId);
+
+      },
+      error:(err)=>{
+        console.log('error while updating',err);
+      }
+    });
+
   }
 }
