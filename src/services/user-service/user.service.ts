@@ -59,7 +59,7 @@ export class UserService {
         if (!response){
         console.error('No token recieved');
         }
-        console.log('resposne->',response);
+        console.log('token from api call-->',response);
         return response;
       }),
       catchError(error => {
