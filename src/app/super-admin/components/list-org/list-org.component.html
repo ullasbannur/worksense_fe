@@ -58,16 +58,19 @@
 
                 <td  *ngIf ="!organizations.isEdit" style="padding: 5px;">{{organizations.country}}</td>
                 <td *ngIf ="organizations.isEdit">
-                  <!-- <input type="text"> -->
-                  <input type="text" style="width: 95%; height: 30px; font-size: 15px;" [(ngModel)]="organizations.country">
-
+                  <select (change)="onCountrySelect($event)"   style="width: 95%; height: 30px;font-size: 15px;  padding-right: 5px;" 
+                        [(ngModel)]="organizations.country">
+                    <option *ngFor="let country of countries" [ngValue]="country.name" >{{ country.name }}</option>
+                  </select>
                 </td>
 
+                  <!-- <input type="text" style="width: 95%; height: 30px; font-size: 15px;" [(ngModel)]="organizations.city"> -->
                 <td *ngIf ="!organizations.isEdit" style="padding: 5px;">{{organizations.city}}</td>
                 <td *ngIf ="organizations.isEdit">
-                  <!-- <input type="text"> -->
-                  <input type="text" style="width: 95%; height: 30px; font-size: 15px;" [(ngModel)]="organizations.city">
-
+                  <select style="width: 95%; height: 30px;font-size: 15px;  padding-right: 5px;" 
+                        [(ngModel)]="organizations.city">
+                    <option  *ngFor="let city of cities"   [ngValue]="city.name">{{ city.name }}</option>
+                  </select>
                 </td>
 
                 <td *ngIf ="!organizations.isEdit" style="padding: 5px;">{{organizations.streetAddress}}</td>

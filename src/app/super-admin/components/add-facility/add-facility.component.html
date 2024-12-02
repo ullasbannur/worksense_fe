@@ -15,38 +15,43 @@
                 <div class="field">
                     <!-- <label>Organisation</label> -->
                     <p-dropdown 
-                        formControlName="org"
+                        formControlName="organizationId"
                         [options]="orgs"
+                        optionLabel="name"
                         [styleClass]="'custom-dropdown'"
                         placeholder="Organisation">
                     </p-dropdown>
                 </div>
             </div>
-            
-  
+
+
             <div class="col-12 col-md-6">
               <div class="field">
-                <!-- <label>Country</label> -->
-                <!-- <input pInputText formControlName="country" placeholder="Enter Country"> -->
                 <p-dropdown 
                 formControlName="country"
                 [options]="countries"
+                [optionLabel]="'name'"
                 [styleClass]="'custom-dropdown'"
-                placeholder="Country">
-            </p-dropdown>
+                [scrollHeight]="'150px'"
+                placeholder=" Country"
+                (onChange)="onCountrySelect($event)">
+                </p-dropdown>
               </div>
             </div>
+            
 
             <div class="col-12 col-md-6">
               <div class="field">
                 <!-- <label>City</label> -->
-                <!-- <input pInputText formControlName="city" placeholder="Enter City" /> -->
+                <!-- <input pInputText formControlName="city" placeholder="Enter your city" /> -->
                 <p-dropdown 
                 formControlName="city"
                 [options]="cities"
+                [optionLabel]="'name'"
                 [styleClass]="'custom-dropdown'"
-                placeholder="City">
-            </p-dropdown>
+                [scrollHeight]="'150px'"
+                placeholder=" City">
+                </p-dropdown>
               </div>
             </div>
   
@@ -55,14 +60,14 @@
             <div class="col-12 col-md-6 ">
               <div class="field">
                 <!-- <label>Pincode</label> -->
-                <input pInputText formControlName="pincode" placeholder="Pincode" />
+                <input pInputText formControlName="pinCode" placeholder="Pincode" />
               </div>
             </div>
   
             <div class="col-12">
               <div class="field">
                 <!-- <label>Address</label> -->
-                <textarea pInputTextarea formControlName="address" placeholder=" Address" rows="3"></textarea>
+                <textarea pInputTextarea formControlName="streetAddress" placeholder=" Address" rows="3"></textarea>
               </div>
             </div>
           </div>

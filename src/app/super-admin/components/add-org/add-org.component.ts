@@ -6,7 +6,7 @@ import { FileUploadEvent } from 'primeng/fileupload';
 import { OrganizationService, Organization } from '../../../../services/org-service/organization.service';
 import { ListOrgComponent } from '../list-org/list-org.component';
 import { UserService,User } from '../../../../services/user-service/user.service';
-
+import { City, Country, StaticService } from '../../../../services/static-service/static.service';
 
 
 @Component({
@@ -21,8 +21,9 @@ export class AddOrgComponent {
   dialogRef: any;
   dialogService: any;
 
-  countries: string[] | [undefined] = [' ', 'DK', 'IN'];
-  cities: string[] | [undefined] = [' ', 'Mangalore', 'Udupi'];
+  countries!: Country[];
+  countryId!:number;
+  cities!:City[];
   activeIndex: number = 0;
   selectedFileName: string = '';
   showCard: boolean = true;
@@ -30,7 +31,7 @@ export class AddOrgComponent {
   adminForm: FormGroup;
 
   constructor(private fb: FormBuilder, public config: DynamicDialogConfig, private orgService: OrganizationService,
-    private listOrg: ListOrgComponent, private userService: UserService) {
+    private listOrg: ListOrgComponent, private userService: UserService, private staticService: StaticService) {
 
     this.orgInfoForm = this.fb.group({
       name: ['', Validators.required],
@@ -56,21 +57,28 @@ export class AddOrgComponent {
   //  const data = this.config
   //   console.log('new instance', data);
   // }
-
-  ngOnInit() {
-    this.instance = this.dialogService.getInstance(this.dialogRef);
-    console.log('new instance', this.instance);
+  loadCountries(){
+    this.staticService.getCountiries().subscribe((data)=>{
+      this.countries=data;
+    });
   }
 
-  // onFileSelect(event: any) {
-  //   if (event.target.files.length > 0) {
-  //     const file = event.target.files[0];
-  //     this.selectedFileName = file.name;
-  //     this.orgInfoForm.patchValue({
-  //       logo: file
-  //     });
-  //   }
-  // }
+  onCountrySelect(event: any) {
+    const selectedCountry = event.value; 
+    this.countryId=selectedCountry.id;
+    console.log('country Id->>',this.countryId);
+    this.loadCities(this.countryId);
+  }
+
+  loadCities(countryId:number){
+    this.staticService.getCitiesByCountryId(countryId).forEach((data)=>{
+      this.cities=data.cities;
+    });
+  }
+
+  ngOnInit() {
+    this.loadCountries();
+  }
 
   onFileSelect(event: any) {
     if (event.target.files.length > 0) {
@@ -80,7 +88,7 @@ export class AddOrgComponent {
       const allowedExtensions = ['image/jpeg', 'image/png', 'image/jpg'];
       if (!allowedExtensions.includes(file.type)) {
         alert('Unsupported file format. Please upload a .jpg, .jpeg, or .png file.');
-        return; // Exit the function if file type is not valid
+        return; 
       }
 
       this.selectedFileName = file.name;
@@ -118,8 +126,8 @@ export class AddOrgComponent {
       formData.append('name', orgInfoValue.name);
       formData.append('contact', orgInfoValue.contact);
       formData.append('email', orgInfoValue.email);
-      formData.append('country', orgInfoValue.country);
-      formData.append('city', orgInfoValue.city);
+      formData.append('country', orgInfoValue.country.name);
+      formData.append('city', orgInfoValue.city.name);
       formData.append('streetAddress', orgInfoValue.address);
       formData.append('postalCode', orgInfoValue.pincode);
       formData.append('logo', orgInfoValue.logo);

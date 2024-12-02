@@ -8,27 +8,33 @@ import { Organization, OrganizationService } from '../../../../services/org-serv
 import { ViewAdminComponent } from '../view-admin/view-admin.component';
 import { AddAdminComponent } from '../add-admin/add-admin.component';
 import { UserService } from '../../../../services/user-service/user.service';
+import { City, Country, StaticService } from '../../../../services/static-service/static.service';
 
 @Component({
   selector: 'app-list-org',
   templateUrl: './list-org.component.html',
   styleUrl: './list-org.component.css',
-  providers: [DialogService,DynamicDialogConfig]
+  providers: [DialogService, DynamicDialogConfig]
 })
 export class ListOrgComponent implements OnInit {
   ref: DynamicDialogRef | undefined;
 
-  constructor(private route:Router,public dialogService: DialogService, private orgService:OrganizationService,
-    private userService: UserService ) {}
+  constructor(private route: Router, public dialogService: DialogService, private orgService: OrganizationService,
+    private userService: UserService, private staticService: StaticService) { }
 
   // orgs = Array<Organization>;
   orgs!: Organization[];
   selectedOrganization = null;
-  isEdit:boolean=false;
+  isEdit: boolean = false;
 
-  userType!:string;
-  userName!:string;
-  options:string[]=['Organisation','Facility','Report'];
+  userType!: string;
+  userName!: string;
+  options: string[] = ['Organisation', 'Facility', 'Report'];
+  countries!: Country[];
+  cities!: City[];
+  countryId!: number;
+
+
 
   decodeToken(token: string): any {
     const base64Url = token.split('.')[1];
@@ -37,32 +43,53 @@ export class ListOrgComponent implements OnInit {
     return JSON.parse(decodedData);
   }
 
-  ngOnInit(): void {
-    this.loadOrganizations();
-    const token = JSON.parse(localStorage.getItem('tokenFromBackend') || '{}');
-    const decodedToken = this.decodeToken(token);
-    this.userType=decodedToken["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
+  loadCountries() {
+    this.staticService.getCountiries().subscribe((data) => {
+      this.countries = data;
+      // console.log(this.countries);
 
-    this.userService.getCurrentProfile().subscribe({
-      next:(profile)=>{
-        console.log('Profile',profile);
-        this.userName=profile.userName;
-      }
-    })
+    });
   }
 
- 
+  onCountrySelect(event: any) {
+    console.log(event.target.value);
+    const selectedCountry = event.target.value;
+    const countryId = selectedCountry.split(':')[0].trim();
+    this.countryId = parseInt(countryId, 10);
+    this.countryId = this.countryId + 1;
+
+    this.loadCities(this.countryId);
+  }
+
+  loadCities(countryId: number) {
+    this.staticService.getCitiesByCountryId(countryId).forEach((data) => {
+      this.cities = data.cities;
+    });
+  }
+
+  ngOnInit(): void {
+    this.loadOrganizations();
+    this.loadCountries();
 
 
-  
+    const token = JSON.parse(localStorage.getItem('tokenFromBackend') || '{}');
+    const decodedToken = this.decodeToken(token);
+    this.userType = decodedToken["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
 
+    this.userService.getCurrentProfile().subscribe({
+      next: (profile) => {
+        console.log('Profile', profile);
+        this.userName = profile.userName;
+      }
+    });
+  }
 
   loadOrganizations(): void {
     this.orgService.getOrganizations().subscribe((data) => {
-      this.orgs=data;
+      this.orgs = data;
       // this.orgs = data as Organization[];
     }
-  );
+    );
   }
 
   deleteOrganization(organizationId: string): void {
@@ -72,21 +99,31 @@ export class ListOrgComponent implements OnInit {
         console.log(response)
       },
       error: (err) => {
-        console.error("Error",err);
+        console.error("Error", err);
       }
     });
   }
+
+  editOrganization(organizations: Organization) {
+    organizations.isEdit = true;
+
+    const prevCountry = this.countries.find(
+      (country) => country.name === organizations.country
+    );
   
-  editOrganization(organizations:Organization){
-    organizations.isEdit=true;
+    if (prevCountry) {
+      this.countryId = prevCountry.id; 
+      console.log(prevCountry.id);
+      this.loadCities(this.countryId);
+    }
   }
 
   updateOrganization(organizations: Organization) {
     organizations.isEdit = false;
-  
+
     const formData = new FormData();
-  
-    formData.append('organizationId', organizations.organizationId); 
+
+    formData.append('organizationId', organizations.organizationId);
     formData.append('name', organizations.name);
     formData.append('contact', organizations.contact);
     formData.append('email', organizations.email);
@@ -94,9 +131,9 @@ export class ListOrgComponent implements OnInit {
     formData.append('city', organizations.city);
     formData.append('streetAddress', organizations.streetAddress);
     formData.append('postalCode', organizations.postalCode);
-    formData.append('logo', organizations.logo); 
-  
-    this.orgService.updateOrganization(organizations.organizationId,formData).subscribe({
+    formData.append('logo', organizations.logo);
+
+    this.orgService.updateOrganization(organizations.organizationId, formData).subscribe({
       next: () => {
         this.loadOrganizations();
         console.log('Updated successfully');
@@ -106,7 +143,7 @@ export class ListOrgComponent implements OnInit {
       },
     });
   }
-  
+
 
   // updateOrganization(organizations:Organization){
   //   organizations.isEdit=false;
@@ -144,68 +181,68 @@ export class ListOrgComponent implements OnInit {
 
   //   );
   // }
-  
 
-  addAdmin(organisationId:string){
+
+  addAdmin(organisationId: string) {
     this.ref = this.dialogService.open(AddAdminComponent,
-      { 
-        data:{
-          organisationId:organisationId
+      {
+        data: {
+          organisationId: organisationId
         },
         width: '',
         height: ''
       }
     );
   }
-  
-addOrg(){
-  this.ref = this.dialogService.open(AddOrgComponent,
-    {
-      width: '60%',
-      height: ''
-    });
-}
 
-viewAdmin(organisationId:string){
-  console.log(organisationId);
-  this.ref = this.dialogService.open(ViewAdminComponent,
-    {
-      data:{
-      idOrg:organisationId
-    },
-      header: 'Admins',
-      width: '50%',
-      height: ''
-    });
-}
-//data sharing
-// showDialogue(event: any){
-//   console.log('show dailog', event);
-//   this.ref = this.dialogService.open(AddOrgComponent,
-//     {
-//       data: {
-//         event
-//       },
-//       width: '80vw',
-//       height: '80vh'
-//     }
-//   );
-// }
+  addOrg() {
+    this.ref = this.dialogService.open(AddOrgComponent,
+      {
+        width: '60%',
+        height: ''
+      });
+  }
+
+  viewAdmin(organisationId: string) {
+    console.log(organisationId);
+    this.ref = this.dialogService.open(ViewAdminComponent,
+      {
+        data: {
+          idOrg: organisationId
+        },
+        header: 'Admins',
+        width: '50%',
+        height: ''
+      });
+  }
+  //data sharing
+  // showDialogue(event: any){
+  //   console.log('show dailog', event);
+  //   this.ref = this.dialogService.open(AddOrgComponent,
+  //     {
+  //       data: {
+  //         event
+  //       },
+  //       width: '80vw',
+  //       height: '80vh'
+  //     }
+  //   );
+  // }
 
   ngOnDestroy() {
     if (this.ref) {
-        this.ref.close();
+      this.ref.close();
     }
   }
 
-    // public readonly listData !: Observable<ListData[]>;
+  // public readonly listData !: Observable<ListData[]>;
 
   // constructor(private clientService : ClientService){
   //    this.listData = this.clientService.getListData()
   // }
 
 
-   organizations = [
+  organizations = [
     { name: 'EGDK', email: 'EGDK@eg.dk', phone: '1234567890', country: 'India', city: 'Mangalore', address: 'Bejai', pinCode: '575006' },
     { name: 'AlphaTech Slns', email: 'alpha@alphatech.com', phone: '1234567890', country: 'USA', city: 'New York', address: '5th Avenue', pinCode: '10001' },
     { name: 'Beta Innovations', email: 'beta@beta.com', phone: '1234567891', country: 'UK', city: 'London', address: 'Oxford Street', pinCode: 'W1D 1BS' },
@@ -242,12 +279,12 @@ viewAdmin(organisationId:string){
     { name: 'Omicron Labs', email: 'omicron@omionlabs.com', phone: '1234567804', country: 'Russia', city: 'Moscow', address: 'Tverskaya Street', pinCode: '125009' },
     { name: 'Pi Global', email: 'pi@piglobal.com', phone: '1234567805', country: 'South Africa', city: 'Cape Town', address: 'Long Street', pinCode: '8001' },
     { name: 'Rho Networks', email: 'rho@rhonetworks.com', phone: '1234567806', country: 'United Arab Emirates', city: 'Dubai', address: 'Sheikh Zayed Road', pinCode: '00000' },
-    
-];
+
+  ];
 
 
-// openAddOrg(){
-//   this.route.navigateByUrl('addOrganisation');
-// }
+  // openAddOrg(){
+  //   this.route.navigateByUrl('addOrganisation');
+  // }
 
 }

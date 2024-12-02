@@ -4,11 +4,13 @@ export const headersInterceptor: HttpInterceptorFn = (req, next) => {
 
   const token=JSON.parse( localStorage.getItem('tokenFromBackend') || '{}');
 
-  const cloneReq= req.clone({
-    setHeaders:{ Authorization: `${token}`}
-  });
+    const cloneReq= req.clone({
+      setHeaders:{ Authorization: `${token}`}
+    });
 
   return next(cloneReq);
+
+
   // return next(req);
 
 };
