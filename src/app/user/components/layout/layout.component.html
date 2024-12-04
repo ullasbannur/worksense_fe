@@ -5,26 +5,26 @@
 </app-header>
 
 <div class="container">
-  <h3 style="font-weight: 100;font-size: 1.5em;">Layout : {{selectedFloor}}</h3>
+  <h3 style="font-weight: 100;font-size: 1.5em;">Layout : {{currentFloor.floorName}}</h3>
 
   <div class="dropdown">
     <label for="floor-select"></label>
-    <select   id="floor-select" [(ngModel)]="selectedFloor" (change)="onFloorChange()">
-      <option   *ngFor="let floor of floors" [value]="floor">{{ floor }}</option>
+    <!--  -->
+    <select   id="floor-select" [ngModel]="currentFloor"  (ngModelChange)="onFloorChange($event)" >
+      <option   *ngFor="let floor of floorsOfOrg | async" [ngValue]="floor" >{{ floor.floorName }}</option>
     </select>
-  </div>
+  </div>  
 
-  <div *ngIf="selectedFloor">
+  <div >
     <div class="slots-container">
-      <div  (click)="showBooking()"  style="font-weight: 100;" class="slot" *ngFor="let slot of [].constructor(currentFloorData?.totalSlots)">
-        Slot
-      </div>
+      <div  (click)="showBooking()"  style="font-weight: 100;" class="slot" *ngFor="let slot of allSlots"> {{slot.slotName}} </div>
     </div>
 
     <div class="rooms-container">
-      <div class="room" (click)="showBooking()" *ngFor="let room of currentFloorData?.rooms">
-        <p style="font-weight: 100;">{{ room.name }} ({{ room.slots }})</p>
+      <div class="room" (click)="showBooking()" *ngFor="let room of allRooms">
+        <p style="font-weight: 100;">{{ room.slotName }} ({{ room.occupancy }})</p>
       </div>
     </div>
+
   </div>
 </div>

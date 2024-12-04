@@ -3,13 +3,13 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 export interface Floor{
-  floorLevel: string
-  floorName: string
-  noOfSeats: number
-  noOfRooms: number
-  facilityId: string,
-  organizationId:string
-  floorId?:string | undefined
+  floorLevel: string;
+  floorName: string;
+  noOfSeats: number;
+  noOfRooms: number;
+  facilityId: string;
+  organizationId:string;
+  floorId?:string | undefined;
 }
 
 @Injectable({

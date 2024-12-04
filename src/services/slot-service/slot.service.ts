@@ -45,7 +45,7 @@ export class SlotService {
     return this.http.post<any>(`${this.slotApiurl}/createSlot`,slotData);
   }
 
-  getAllSlotByFloorId(floorId:string): Observable<GetRoom[]>{
+  getAllSlotByFloorId(floorId:string|undefined): Observable<GetRoom[]>{
     return this.http.get<GetRoom[]>(`${this.slotApiurl}/GetAllSlotByFloorId/${floorId}`);
   }
 
