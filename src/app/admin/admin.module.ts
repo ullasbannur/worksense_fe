@@ -21,6 +21,8 @@ import { ListUserComponent } from './components/list-user/list-user.component';
 import { ListFloorComponent } from './components/list-floor/list-floor.component';
 import { TableModule } from 'primeng/table';
 import { ViewRoomComponent } from './components/view-room/view-room.component';
+import { AccordionModule } from 'primeng/accordion';
+
 
 const routes: Routes = [
   {
@@ -72,7 +74,9 @@ const routes: Routes = [
     DropdownModule,
     InputNumberModule,
     TableModule,
-    FormsModule
+    FormsModule,
+    AccordionModule
+
   ],
   exports:[AddUserComponent,
     AddFloorComponent,

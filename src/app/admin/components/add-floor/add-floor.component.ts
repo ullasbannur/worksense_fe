@@ -12,6 +12,7 @@ import { Facility, FacilityService } from '../../../../services/facility-service
 import { Country, StaticService } from '../../../../services/static-service/static.service';
 import { FloorService, Floor } from '../../../../services/floor-service/floor.service';
 import { SlotService } from '../../../../services/slot-service/slot.service';
+import { ListFloorComponent } from '../list-floor/list-floor.component';
 
 @Component({
   selector: 'app-add-floor',
@@ -22,7 +23,7 @@ export class AddFloorComponent implements OnInit {
   orgName!:string;
   orgId!:string;
 
-  floorId!:string;
+  floorId!:string | undefined;
 
   activeIndex: number = 0;
   showCard:boolean=true;
@@ -40,7 +41,8 @@ export class AddFloorComponent implements OnInit {
   RoomForm!: FormGroup;
 
   constructor(private fb: FormBuilder ,private orgService: OrganizationService, private facilityService: FacilityService,
-    private staticService: StaticService, private floorService: FloorService, private slotService: SlotService
+    private staticService: StaticService, private floorService: FloorService, private slotService: SlotService,
+    private listFloor: ListFloorComponent
   ) {
     this.FloorForm = this.fb.group({
       organizationId: [''],
@@ -122,9 +124,12 @@ export class AddFloorComponent implements OnInit {
 
 
       this.floorService.createFloor(floorData1).subscribe((data)=>{
-        this.floorId=data.floorId;
+        console.log(data);
+        
+        this.floorId = data?.floorId;
         console.log('Added Floor');
 
+        this.listFloor.loadFloorsByOrgId(this.orgId);
 
         const slotData={
           floorId:this.floorId,

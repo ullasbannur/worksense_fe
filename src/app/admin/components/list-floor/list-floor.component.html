@@ -26,35 +26,35 @@
                 <!-- <th style="padding: 5px;">Country</th> -->
                 <th style="padding: 5px; width: 10%;">Slots</th>  
                 <th style="padding: 5px; width: 10%;">Rooms</th>
-                <th style="width: 10%; text-align: center;">Actions</th>
+                <th style="width: 10%; text-align: center;">Action</th>
 
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-floor>
             <tr>
-                <td style="padding: 5px;">{{ floor.name }}</td>
+                <td style="padding: 5px;">{{ floor.floorName }}</td>
                 <!-- <td style="padding: 5px;">{{floor.organisation}}</td> -->
-                <td style="padding: 5px;">{{floor.facility}}</td>
-                <td style="padding: 5px; padding-left: 20px; ">{{floor.FL}}</td>
+                <td style="padding: 5px;">{{ facilityMap [ floor.facilityId ] }}</td>
+                <td style="padding: 5px; padding-left: 20px; ">{{floor.floorLevel}}</td>
                 <!-- <td style="padding: 5px;">{{floor.country}}</td> -->
                 <td style="padding: 5px;">
-                  {{floor.seats}}
+                  {{floor.noOfSeats}}
                 </td>
                 <td style="padding: 5px;">
                   <!-- {{floor.rooms}} -->
-                  <button style="background-color: rgb(235, 235, 235); cursor: pointer;
+                  <button  (click)="viewRoom(floor.floorId)"   style="background-color: rgb(235, 235, 235); cursor: pointer;
                   border: 1px solid rgb(129, 137, 129); border-radius: 3px; padding: 5px; margin-right: 5px; "
                   >View</button>
                 </td>
 
                 <td style="text-align: center;">
-                  <span  style="cursor: pointer; margin-right: 5px;"> 
+                  <!-- <span  style="cursor: pointer; margin-right: 5px;"> 
                     <svg width="18" height="17" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M14.25 0L11.875 2.25L16.625 6.75L19 4.5L14.25 0ZM9.5 4.5L0 13.5V18H4.75L14.25 9L9.5 4.5Z" fill="#9BBB9B"/>
                       </svg>
-                  </span>
+                  </span> -->
                    
-                  <span style="cursor: pointer;" (click)="onDelete()">
+                  <span style="cursor: pointer;" (click)="onDeleteFloor(floor.floorId)">
                     <svg width="19" height="18" viewBox="0 0 25 29" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M10.7143 0C8.75 0 7.14286 1.60714 7.14286 3.57143H3.57143C1.60714 3.57143 0 5.17857 0 7.14286H25C25 5.17857 23.3929 3.57143 21.4286 3.57143H17.8571C17.8571 1.60714 16.25 0 14.2857 0H10.7143ZM3.57143 10.7143V27.8929C3.57143 28.2857 3.85714 28.5714 4.25 28.5714H20.7857C21.1786 28.5714 21.4643 28.2857 21.4643 27.8929V10.7143H17.8929V23.2143C17.8929 24.2143 17.1071 25 16.1071 25C15.1071 25 14.3214 24.2143 14.3214 23.2143V10.7143H10.75V23.2143C10.75 24.2143 9.96429 25 8.96429 25C7.96429 25 7.17857 24.2143 7.17857 23.2143V10.7143H3.60714H3.57143Z" fill="#9BBB9B"/>
                       </svg>
