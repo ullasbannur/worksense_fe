@@ -1,24 +1,35 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {jwtDecode} from 'jwt-decode';
 
 // import * as data from '../../../../assets/data.json';
 import { HttpClient } from '@angular/common/http';
 
 import { combineLatest } from 'rxjs';
 import { startWith } from 'rxjs/operators';
+import { OrganizationService } from '../../../../services/org-service/organization.service';
+import { Facility, FacilityService } from '../../../../services/facility-service/facility.service';
+import { Country, StaticService } from '../../../../services/static-service/static.service';
+import { FloorService, Floor } from '../../../../services/floor-service/floor.service';
+import { SlotService } from '../../../../services/slot-service/slot.service';
 
 @Component({
   selector: 'app-add-floor',
   templateUrl: './add-floor.component.html',
   styleUrl: './add-floor.component.css'
 })
-export class AddFloorComponent {
+export class AddFloorComponent implements OnInit {
+  orgName!:string;
+  orgId!:string;
+
+  floorId!:string;
 
   activeIndex: number = 0;
   showCard:boolean=true;
-  orgs!: string[] |  [undefined];
-  countries!: string[] |  [undefined];
-  facilities!: string[] |  [undefined];
+  countries!: Country[];
+
+  facilities!:Facility[];
+  facilityMap: { [key: string]: string } = {};
   
   roomarray: any[] = [];
   onEditRoomValue: any[] = [];
@@ -28,27 +39,57 @@ export class AddFloorComponent {
   FloorForm!: FormGroup;
   RoomForm!: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder ,private orgService: OrganizationService, private facilityService: FacilityService,
+    private staticService: StaticService, private floorService: FloorService, private slotService: SlotService
+  ) {
     this.FloorForm = this.fb.group({
-      org: ['', Validators.required],
+      organizationId: [''],
       floorLevel: ['', Validators.required],
       country: ['',Validators.required],
-      facility: ['', Validators.required],
-      seats: ['', Validators.required],
+      facilityId: ['', Validators.required],
+      noOfSeats: ['', Validators.required],
       floorName: ['', Validators.required]
     });
 
     this.RoomForm = this.fb.group({
+    // noOfRooms
       roomName: ['', Validators.required],
       roomOccupancy: ['', Validators.required]
     });
 
-    this.orgs=[' ','EG','LCODE'];
-    this.countries=[' ','IN','DK'];
-    this.facilities=[' ','AJANTA','WRKWRK'];
+    // this.countries=[' ','IN','DK'];
+    // this.facilities=[' ','AJANTA','WRKWRK'];
   }
 
-  ngOnInit() {}
+  loadCountries(){
+    this.staticService.getCountiries().subscribe((data)=>{
+      this.countries=data;
+    });
+  }
+
+  ngOnInit() {
+    const token=JSON.parse( localStorage.getItem('tokenFromBackend') || '{}');
+    const decodedToken: any= jwtDecode(token);
+    const orgId=decodedToken['OrganizationId'];
+    this.orgId=orgId;
+
+    this.loadCountries();
+
+
+    this.orgService.getOrganization(orgId).subscribe((data)=>{
+      this.orgName=data.name;
+    });
+
+    this.facilityService.getFacilitiesByOrgId(orgId).subscribe((data)=>{
+      this.facilities=data;
+
+      data.forEach(x=>{
+        this.facilityMap[x.facilityId]=x.name;
+      });
+    });
+
+    console.log(this.facilityMap);
+  }
 
   addRoom(){
     this.activeIndex = 1;
@@ -61,40 +102,84 @@ export class AddFloorComponent {
   roomEdit(room:any,index:number){
     this.activeIndex=1;
     this.RoomForm.patchValue({
-      roomName: room.roomName,
-      roomOccupancy: room.roomOccupancy});
+      roomName: room.name,
+      roomOccupancy: room.occupancy});
     this.onEditRoomValue.push({...room,index:index});
     this.isEdit=!this.isEdit;
   } 
 
   onSubmitFloor(){
     if (this.FloorForm.valid) {
-      const formData = {
-        ...this.FloorForm.value
-      };
-      var newData = {...this.FloorForm.value};
-      newData.rooms=this.roomarray
+      const floorData = {...this.FloorForm.value};
+      floorData.noOfRooms=this.roomarray.length;
+      floorData.facilityId=this.FloorForm.value.facilityId.facilityId;
+      floorData.organizationId=this.orgId;
+
+      const {country, ...floorData1}= floorData;
+
+
+      console.log(floorData1);
+
+
+      this.floorService.createFloor(floorData1).subscribe((data)=>{
+        this.floorId=data.floorId;
+        console.log('Added Floor');
+
+
+        const slotData={
+          floorId:this.floorId,
+          numberOfSeats:this.FloorForm.value.noOfSeats,
+          rooms:this.roomarray
+        };
+  
+  
+        this.slotService.createSlot(slotData).subscribe({
+          next:()=>{
+            console.log('Cretaed slots');
+          },
+          error:(err)=>{
+            console.log('slot creation error',err);
+          }
+        });
+
+
+
+
+
+      });
+
+
+      
+    
     }
   }
 
   onSubmitRoom() {
     if (this.RoomForm.valid) {
-
-      let roomData = 
-      {
-          roomName: this.RoomForm.get('roomName')?.value,
-          roomOccupancy: this.RoomForm.get('roomOccupancy')?.value
+      const roomData = {
+          name: this.RoomForm.get('roomName')?.value,
+          occupancy: this.RoomForm.get('roomOccupancy')?.value
       };
 
       if(this.isEdit){
-        this.onEditRoomValue.map((room)=>{
-          if(room.roomName!==roomData.roomName){
-              this.roomarray.splice(room.index,1);
-              this.roomarray.push(roomData); 
-            }
-        })
+        console.log(roomData);
+
+        // this.onEditRoomValue.map((room)=>{
+        //   if(room.name!==roomData.name){
+        //       this.roomarray.splice(room.index,1);
+        //       this.roomarray.push(roomData); 
+        //     }
+        // });
+
+        this.onEditRoomValue.forEach((room, index) => {
+          if (room.name !== roomData.name || room.occupancy !== roomData.occupancy) {
+            this.roomarray[room.index] = roomData;
+          }
+        });
+
         this.isEdit=!this.isEdit;
         this.onEditRoomValue=[];
+
       }
       else{
           this.roomarray.push(roomData);
@@ -112,7 +197,7 @@ export class AddFloorComponent {
 
   onChange(e:any){
     if(this.FloorForm.get('floorLevel')?.value && this.FloorForm.get('country')?.value ){
-      let floorName=  this.FloorForm.get('country')?.value+'_'+ e.value +'_'+ this.FloorForm.get('floorLevel')?.value 
+      let floorName=  this.FloorForm.get('country')?.value.countrycode +'_'+ e.value.name +'_'+ this.FloorForm.get('floorLevel')?.value 
       this.FloorForm.patchValue({floorName:floorName});
 
     }

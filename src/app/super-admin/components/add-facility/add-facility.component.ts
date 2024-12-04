@@ -73,7 +73,6 @@ export class AddFacilityComponent {
     this.loadOrgs();
   }
 
-
   onSubmit() {
     if (this.FacilityForm.valid) {
       const formData = {
@@ -94,10 +93,6 @@ export class AddFacilityComponent {
           console.log('Error adding facility',err);
         }
        });
-      
-
-
-
 
     }
   }

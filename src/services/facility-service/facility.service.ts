@@ -14,6 +14,8 @@ export interface Facility{
   organizationId: string;
 }
 
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -29,6 +31,10 @@ export class FacilityService {
 
   getFacilityById(id:string): Observable<Facility>{
     return this.http.get<Facility>(`${this.facilityUrl}/${id}`);
+  }
+
+  getFacilitiesByOrgId(orgId:string): Observable<Facility[]>{
+    return this.http.get<Facility[]>(`${this.facilityUrl}/organization/${orgId}`);
   }
 
   postFacility(newFacility:Facility): Observable<any>{

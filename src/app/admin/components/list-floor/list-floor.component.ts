@@ -42,7 +42,8 @@ export class ListFloorComponent implements OnInit {
   }
   
 addFloor(){
-  this.ref = this.dialogService.open(AddFloorComponent,{width: '%',height: '%'});
+  this.ref = this.dialogService.open(AddFloorComponent,
+    {width: '%',height: '%'});
 }
 
 onDelete(){}
@@ -74,7 +75,5 @@ onDelete(){}
     { name: 'IN_AJANTA_18', organisation: 'EGDK', FL: '19', country: 'INDIA', facility: 'Ajanta', seats: 27, rooms: 5 },
     { name: 'IN_AJANTA_19', organisation: 'EGDK', FL: '20', country: 'INDIA', facility: 'Ajanta', seats: 40, rooms: 8 },
     { name: 'IN_AJANTA_20', organisation: 'EGDK', FL: '21', country: 'INDIA', facility: 'Ajanta', seats: 33, rooms: 6 }
-];
-
-
+  ];
 }

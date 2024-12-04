@@ -14,40 +14,44 @@
     <p-table
         [value]="floors"
         [paginator]="true"
-        [rows]="12"
-        [tableStyle]="{ 'min-width': '50rem' }"
+        [rows]="11"
+        [tableStyle]="{ 'min-width': '10rem' }"
       >
         <ng-template pTemplate="header">
             <tr>
-                <th style="padding: 5px;">Floor Name</th>
-                <th style="padding: 5px;">Organization</th>
-                <th style="padding: 5px;">Facility</th>
-                <th style="padding: 5px;">Floor Level</th>
-                <th style="padding: 5px;">Country</th>
-                <th style="padding: 5px;">Slots</th>
-                <th style="padding: 5px;">Rooms</th>
-                <th style="width: 50px;"></th>
+                <th style="padding: 5px; width: 25%;">Floor Name</th>
+                <!-- <th style="padding: 5px;">Organization</th> -->
+                <th style="padding: 5px; width: 15%;">Facility</th>
+                <th style="padding: 5px; width: 15%;">Floor Level</th>
+                <!-- <th style="padding: 5px;">Country</th> -->
+                <th style="padding: 5px; width: 10%;">Slots</th>  
+                <th style="padding: 5px; width: 10%;">Rooms</th>
+                <th style="width: 10%; text-align: center;">Actions</th>
 
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-floor>
             <tr>
                 <td style="padding: 5px;">{{ floor.name }}</td>
-                <td style="padding: 5px;">{{floor.organisation}}</td>
+                <!-- <td style="padding: 5px;">{{floor.organisation}}</td> -->
                 <td style="padding: 5px;">{{floor.facility}}</td>
-                <td style="padding: 5px;">{{floor.FL}}</td>
-                <td style="padding: 5px;">{{floor.country}}</td>
-                <td style="padding: 5px;">{{floor.seats}}</td>
-                <td style="padding: 5px;">{{floor.rooms}}</td>
+                <td style="padding: 5px; padding-left: 20px; ">{{floor.FL}}</td>
+                <!-- <td style="padding: 5px;">{{floor.country}}</td> -->
+                <td style="padding: 5px;">
+                  {{floor.seats}}
+                </td>
+                <td style="padding: 5px;">
+                  <!-- {{floor.rooms}} -->
+                  <button style="background-color: rgb(235, 235, 235); cursor: pointer;
+                  border: 1px solid rgb(129, 137, 129); border-radius: 3px; padding: 5px; margin-right: 5px; "
+                  >View</button>
+                </td>
 
                 <td style="text-align: center;">
-                  <span  style="cursor: pointer;"> 
+                  <span  style="cursor: pointer; margin-right: 5px;"> 
                     <svg width="18" height="17" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M14.25 0L11.875 2.25L16.625 6.75L19 4.5L14.25 0ZM9.5 4.5L0 13.5V18H4.75L14.25 9L9.5 4.5Z" fill="#9BBB9B"/>
                       </svg>
-                  </span>
-                  <span>
-                    
                   </span>
                    
                   <span style="cursor: pointer;" (click)="onDelete()">

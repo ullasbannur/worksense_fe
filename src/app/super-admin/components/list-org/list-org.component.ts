@@ -46,18 +46,18 @@ export class ListOrgComponent implements OnInit {
   loadCountries() {
     this.staticService.getCountiries().subscribe((data) => {
       this.countries = data;
-      // console.log(this.countries);
-
+      // console.log(this.countries);s
     });
   }
 
   onCountrySelect(event: any) {
-    console.log(event.target.value);
+
+
     const selectedCountry = event.target.value;
+    console.log(selectedCountry);
     const countryId = selectedCountry.split(':')[0].trim();
     this.countryId = parseInt(countryId, 10);
     this.countryId = this.countryId + 1;
-
     this.loadCities(this.countryId);
   }
 
@@ -113,7 +113,7 @@ export class ListOrgComponent implements OnInit {
   
     if (prevCountry) {
       this.countryId = prevCountry.id; 
-      console.log(prevCountry.id);
+      // console.log(prevCountry.id);
       this.loadCities(this.countryId);
     }
   }

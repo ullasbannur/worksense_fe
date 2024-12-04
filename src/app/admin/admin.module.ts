@@ -20,6 +20,7 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { ListUserComponent } from './components/list-user/list-user.component';
 import { ListFloorComponent } from './components/list-floor/list-floor.component';
 import { TableModule } from 'primeng/table';
+import { ViewRoomComponent } from './components/view-room/view-room.component';
 
 const routes: Routes = [
   {
@@ -50,7 +51,8 @@ const routes: Routes = [
     AddUserComponent,
     AddFloorComponent,
     ListUserComponent,
-    ListFloorComponent
+    ListFloorComponent,
+    ViewRoomComponent
   ],
   imports: [
     CommonModule,

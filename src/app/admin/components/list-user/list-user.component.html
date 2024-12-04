@@ -13,15 +13,15 @@
     <p-table
         [value]="users"
         [paginator]="true"
-        [rows]="12"
-        [tableStyle]="{ 'min-width': '50rem' }"
+        [rows]="10"
+        [tableStyle]="{ 'min-width': '10rem' }"
       >
         <ng-template pTemplate="header">
             <tr>
-                <th style="padding: 5px;">Name</th>
-                <th style="padding: 5px; " >Email</th>
-                <th style="padding: 5px;">Contact</th>
-                <th style="width: 50px;">Actions</th>
+                <th style="padding: 5px; width: 15%;">Name</th>
+                <th style="padding: 5px; width: 20%; " >Email</th>
+                <th style="padding: 5px; width: 15%;">Contact</th>
+                <th style="padding: 5px; width: 15%; text-align: center;">Actions</th>
 
             </tr>
         </ng-template>

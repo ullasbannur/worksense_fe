@@ -7,20 +7,20 @@
             <div class="col-12 col-md-6">
                 <div class="field">
                     <!-- <label>Organisation</label> -->
-                    <p-dropdown 
+                    <input pInputText formControlName="organizationId" placeholder="{{orgName}}" readonly />
+                    <!-- <p-dropdown 
                         formControlName="org"
                         [options]="orgs"
                         [styleClass]="'custom-dropdown'"
                         placeholder="Organisation">
-                    </p-dropdown>
+                    </p-dropdown> -->
                 </div>  
             </div>
   
             <div class="col-12 col-md-6">
               <div class="field">
                 <!-- <label>Floor Level</label> -->
-                <input pInputText formControlName="floorLevel"
-                 placeholder="Floor level" />
+                <input pInputText formControlName="floorLevel" placeholder="Floor level" />
               </div>
             </div>
 
@@ -30,6 +30,7 @@
                     <p-dropdown 
                         formControlName="country"
                         [options]="countries"
+                        optionLabel="name"
                         [styleClass]="'custom-dropdown'"
                         placeholder="Country">
                     </p-dropdown>
@@ -40,8 +41,9 @@
               <div class="field">
                   <!-- <label>Facility</label> -->
                   <p-dropdown 
-                      formControlName="facility"
+                      formControlName="facilityId"
                       [options]="facilities"
+                      optionLabel="name"
                       (onChange)="onChange($event)"
                       [styleClass]="'custom-dropdown'"
                       placeholder="Facility">
@@ -53,7 +55,7 @@
               <div class="field">
                   <input 
                       type="number"
-                      formControlName="seats"
+                      formControlName="noOfSeats"
                       min="1" 
                       max="50"
                       placeholder="Number of slots" 
@@ -79,7 +81,7 @@
               <div class="field">
                 <!-- <label>The Floor Name :</label> -->
                 <input pInputText formControlName="floorName" 
-                placeholder="Floor Name"/>
+                placeholder="Floor Name" readonly/>
               </div>
             </div>
 
@@ -88,8 +90,8 @@
           <div  class="chip-box">
             <div *ngFor="let room of roomarray; let i= index; " style="margin-left:5px ;">
               <!-- <h3>{{room.roomName}}</h3> -->
-                <div class="chip" >
-                  <span (click)="roomEdit(room,i)">{{room.roomName}}</span>   
+                <div class="chip"  (click)="roomEdit(room,i)" >
+                  <span >{{room.name}}</span>   
                   <span  (click)="deleteRoom(room,i)"> <i id="cross" class="fas fa-window-close"></i>  </span>
                 </div>
             </div>
@@ -98,7 +100,7 @@
           <div class="button-spacing">
             <p-button  class="buttons" id="addRooms" label="AddRoom" (onClick)="addRoom()" [disabled]="!FloorForm.valid || roomarray.length >= 5"></p-button>
               <!-- <p-button  class="buttons" label="Cancel" (onClick)="onCancelFloor()" severity="danger"></p-button> -->
-            <p-button  class="buttons" label="Submit" (onClick)="onSubmitFloor()" [disabled]="!FloorForm.valid" ></p-button>  
+            <p-button  class="buttons" label="Submit" (onClick)="onSubmitFloor()" [disabled]="!FloorForm.valid || roomarray.length < 1" ></p-button>  
           </div>
   
         </form>
@@ -126,19 +128,9 @@
                       min="1" 
                       max="6"
                       placeholder="Occupancy" 
-                      class="p-inputtext p-component form-control" />
+                      class="p-inputtext p-component form-control" 
+                />
 
-
-                <!-- <p-inputNumber 
-                      id="up-down"
-                      formControlName="roomOccupancy"
-                      mode="decimal" 
-                      [showButtons]="true" 
-                      [min]="1" 
-                      [max]="6" /> -->
-                
-                <!-- <input pInputText formControlName="roomOccupancy" 
-                placeholder="Enter room limit" /> -->
               </div>
             </div>
   
@@ -146,7 +138,9 @@
           </div>
           <div class="button-spacing">
             <p-button class="buttons"  id="cancel" label="Cancel" (onClick)="onCancelRoom()"  severity="danger"></p-button>
-            <p-button class="buttons" label="Submit" (onClick)="onSubmitRoom()" [disabled]="!RoomForm.valid || roomarray.length>=5"></p-button>
+            <p-button class="buttons" label="Submit" (onClick)="onSubmitRoom()"
+             [disabled]="!RoomForm.valid && !isEdit || roomarray.length >= 5 && !isEdit"
+             ></p-button>
           
           </div>
         </form>
