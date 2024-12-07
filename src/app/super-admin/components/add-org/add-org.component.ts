@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, HostListener, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { DialogService, DynamicDialogComponent, DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
@@ -80,11 +80,14 @@ export class AddOrgComponent {
     this.loadCountries();
   }
 
+  closeDialogue(){
+    this.listOrg.ngOnDestroy();
+  }
+
   onFileSelect(event: any) {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
 
-      // Check file type
       const allowedExtensions = ['image/jpeg', 'image/png', 'image/jpg'];
       if (!allowedExtensions.includes(file.type)) {
         alert('Unsupported file format. Please upload a .jpg, .jpeg, or .png file.');
@@ -103,6 +106,13 @@ export class AddOrgComponent {
       this.activeIndex = 1;
     }
   }
+
+  // ngOnDestroy() {
+  //   if (this.instance) {
+  //     this.instance.close();
+  //   }
+  // }
+  // (blur)="ngOnDestroy()"
 
   onCancel() {
     this.activeIndex = 0;

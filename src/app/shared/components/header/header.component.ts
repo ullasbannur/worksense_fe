@@ -81,7 +81,7 @@ export class HeaderComponent {
   }
 
   onChangePassword(){
-    this.ref=this.dialogueService.open(ResetComponent,{width:'300px'})
+    this.ref=this.dialogueService.open(ResetComponent,{width:'300px',dismissableMask:true,closable: false})
   }
 
   ngOnDestroy() {

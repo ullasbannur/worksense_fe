@@ -28,7 +28,7 @@ export class ListUserComponent implements OnInit {
   users!:AdminModel[];
 
   addUser() {
-    this.ref = this.dialogService.open(AddUserComponent, { width: '', height: '' });
+    this.ref = this.dialogService.open(AddUserComponent, { width: '', height: '', dismissableMask: true, closable: false, });
   }
 
   ngOnDestroy() {

@@ -6,6 +6,8 @@ import { SharedModule } from '../shared/shared.module';
 import { LayoutComponent } from './components/layout/layout.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BookingComponent } from './components/booking/booking.component';
+import { DynamicDialogModule } from 'primeng/dynamicdialog';
+import { DeleteBookingComponent } from './components/delete-booking/delete-booking.component';
 
 const routes: Routes = [
   {
@@ -28,14 +30,15 @@ const routes: Routes = [
   declarations: [
     HomePageComponent,
     LayoutComponent,
-    BookingComponent
+    BookingComponent,
+    DeleteBookingComponent
   ],
   imports: [
     CommonModule,
     SharedModule,
     [RouterModule.forChild(routes)],
-    
-    FormsModule
+    FormsModule,
+    DynamicDialogModule 
     ]
 })
 export class UserModule { }

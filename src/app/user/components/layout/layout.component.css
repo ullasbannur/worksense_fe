@@ -1,8 +1,14 @@
+/* ::ng-deep .p-dialog .p-dialog-header {
+  display: none;
+} */
+
+
+
 .container {
   text-align: center;
   padding: 20px;
   position: absolute; 
-  top: 50%;
+  top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
   height: 70vh;
@@ -26,10 +32,13 @@
   border: 1px solid #ccc;
   /* background-color: #f5f5f5; */
   border-radius: 12px;
-  margin-bottom: 20px;
-  overflow: auto;
-  height: 50%;
+  margin-bottom: 10px;
+  overflow-y: auto;
+  height: 50vh;
+  /* overflow-y: auto; */
   /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+  /* justify-content: center; */
+  /* justify-content: space-around; */
 }
 
 .slot {
@@ -40,7 +49,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  /* font-weight: bold; */
   color: #333;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   cursor: pointer;
@@ -48,15 +56,19 @@
 
 .rooms-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(130px, 8rem));
   gap: 20px;
-  padding: 20px;
+  padding: 10px;
   border: 1px solid #ccc;
   /* background-color: #f9f9f9; */
   border-radius: 12px;
-  overflow: auto;
-  height: 20%;
+  overflow-y: auto;
+  height: 11vh;
+  width: auto;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* overflow: auto; */
+  /* justify-content: space-around; */
+  justify-content: center;
 }
 
 .room {
@@ -64,12 +76,10 @@
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 8px;
-  /* background-color: #fff; */
   background-color: #d7ccc8;
   background-color: #d7ccc8;
   text-align: center;
   font-weight: bold;
-  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
 }
 
 .dropdown select{
@@ -87,6 +97,19 @@
 
 #floor-select {
   outline: none; 
+}
+
+.red {
+  /* background-color: rgb(207, 83, 83); */
+  /* background-color: rgb(107, 226, 153); */
+  background-color: rgb(101, 205, 140);
+  color: white; 
+}
+
+.green {
+  background-color: #c1bebe;
+  /* background-color: rgb(79, 157, 109); */
+  color: white; 
 }
 
 

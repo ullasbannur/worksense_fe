@@ -112,7 +112,7 @@ export class ListFacilityComponent implements OnInit {
    }
 
   addFacility() {
-    this.ref = this.dialogService.open(AddFacilityComponent, { width: '', height: '%' });
+    this.ref = this.dialogService.open(AddFacilityComponent, { width: '', height: '%' ,dismissableMask:true, closable: false,});
   }
 
   ngOnDestroy() {

@@ -1,0 +1,7 @@
+<div class="container">
+    <p>Delete Booking for : <b>{{bookingName}}</b> </p>
+    <p>Booked By : <b> {{userName}} </b></p>
+    <button class="buttonDelete" style="border: none;  padding: 10px; border-radius: 10px; color: white; width: 100px;"
+        (click)="deleteBooking()"  [disabled]="currentUserId!=userId"  [ngClass]="{'disabled-button': currentUserId != userId}"  >Delete
+    </button>
+</div>  

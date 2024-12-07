@@ -4,24 +4,41 @@
     [option]="options">
 </app-header>
 
-<div class="container">
+<div class="container" >
   <h3 style="font-weight: 100;font-size: 1.5em;">Layout : {{currentFloor.floorName}}</h3>
 
-  <div class="dropdown">
+  <div class="dropdown" *ngIf="floorsOfOrg | async as floors">
     <label for="floor-select"></label>
-    <!--  -->
-    <select   id="floor-select" [ngModel]="currentFloor"  (ngModelChange)="onFloorChange($event)" >
-      <option   *ngFor="let floor of floorsOfOrg | async" [ngValue]="floor" >{{ floor.floorName }}</option>
+    <select id="floor-select" [ngModel]="currentFloor" (ngModelChange)="onFloorChange($event)">
+      <option *ngFor="let floor of floors" [ngValue]="floor" >{{ floor.floorName }}</option>
     </select>
   </div>  
 
   <div >
+    <!-- <div class="slots-container">
+      <div  (click)="showBooking(slot.slotId, slot.slotName)" style="font-weight: 100;" class="slot" *ngFor="let slot of allSlots"> {{slot.slotName}} </div>
+    </div> -->
     <div class="slots-container">
-      <div  (click)="showBooking()"  style="font-weight: 100;" class="slot" *ngFor="let slot of allSlots"> {{slot.slotName}} </div>
+      <div  
+        *ngFor="let slot of allSlots"
+        [ngClass]="{
+          'red': bookedSlotIds.includes(slot.slotId), 
+          'green': !bookedSlotIds.includes(slot.slotId)
+        }"
+        (click)="showBooking(slot.slotId, slot.slotName)" 
+        style="font-weight: 100;" 
+        class="slot">
+          {{slot.slotName}}
+      </div>
     </div>
+    
 
     <div class="rooms-container">
-      <div class="room" (click)="showBooking()" *ngFor="let room of allRooms">
+      <div class="room" (click)="showBooking(room.slotId, room.slotName)" *ngFor="let room of allRooms" 
+      [ngClass]="{
+        'red': bookedSlotIds.includes(room.slotId), 
+        'green': !bookedSlotIds.includes(room.slotId)
+      }">
         <p style="font-weight: 100;">{{ room.slotName }} ({{ room.occupancy }})</p>
       </div>
     </div>

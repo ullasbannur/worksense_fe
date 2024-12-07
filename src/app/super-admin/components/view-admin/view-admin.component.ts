@@ -64,12 +64,10 @@ export class ViewAdminComponent implements OnInit {
 
     console.log('updatd->',updatedAdmin);
 
-
     this.userService.updateAdminById(id,updatedAdmin).subscribe({
       next:()=>{
         console.log('Updated admin');
         this.loadAdmins(orgId);
-
       },
       error:(err)=>{
         console.log('error while updating',err);

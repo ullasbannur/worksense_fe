@@ -1,143 +1,147 @@
+<div>
 
- <div class="card" > <!-- *ngIf="showCard" -->
-  <p-tabView [(activeIndex)]="activeIndex" >
-    <p-tabPanel header="Organization Information">
-      <form [formGroup]="orgInfoForm" class="p-fluid">
-        <div class="grid">
-          <div class="col-12 col-md-6 ">
-            <div class="field">
-              <!-- <label>Organization Name</label> -->
-              <input pInputText formControlName="name" placeholder="Organization name" />
-            </div>
-          </div>
-          <div class="col-20 col-md-6">
-            <div class="field">
-              <!-- <label>Organization Logo</label> -->
-              <div class="p-inputgroup">
-                <input
-                  type="text"
-                  pInputText
-                  [value]="selectedFileName"
-                  placeholder="Organization logo"
-                  readonly
-                />
-                <button type="button"  pButton icon="pi pi-upload" (click)="fileInput.click()" ></button>
+  <div class="card" > <!-- *ngIf="showCard" -->
+    <p-tabView [(activeIndex)]="activeIndex" >
+      <p-tabPanel  header="Organization Information">
+        <form [formGroup]="orgInfoForm" class="p-fluid">
+          <div class="grid">
+            <div class="col-12 col-md-6 ">
+              <div class="field">
+                <!-- <label>Organization Name</label> -->
+                <input   pInputText formControlName="name" placeholder="Organization name" />
               </div>
-              <input #fileInput type="file" (change)="onFileSelect($event)" style="display:none" accept=".jpg,.jpeg,.png" />   <!--accept="image/*"-->
             </div>
-          </div>
-
-          <div class="col-12 col-md-6">
-            <div class="field">
-              <!-- <label>Contact Number</label> -->
-              <input pInputText formControlName="contact" placeholder="Contact number" />
+            <div class="col-20 col-md-6">
+              <div class="field">
+                <!-- <label>Organization Logo</label> -->
+                <div class="p-inputgroup">
+                  <input
+                    type="text"
+                    pInputText
+                    [value]="selectedFileName"
+                    placeholder="Organization logo"
+                    readonly
+                  />
+                  <button type="button"  pButton icon="pi pi-upload" (click)="fileInput.click()" ></button>
+                </div>
+                <input #fileInput type="file" (change)="onFileSelect($event)" style="display:none" accept=".jpg,.jpeg,.png" />   <!--accept="image/*"-->
+              </div>
             </div>
-          </div>
-
-          <div class="col-12 col-md-6">
-            <div class="field">
-              <!-- <label>Email-id</label> -->
-              <input pInputText formControlName="email" placeholder=" Email-id" />
+  
+            <div class="col-12 col-md-6">
+              <div class="field">
+                <!-- <label>Contact Number</label> -->
+                <input pInputText formControlName="contact" placeholder="Contact number" />
+              </div>
             </div>
-          </div>
-
-          
-
-          <div class="col-12 col-md-6">
-            <div class="field">
-              <p-dropdown 
-              formControlName="country"
-              [options]="countries"
-              [optionLabel]="'name'"
-              [styleClass]="'custom-dropdown'"
-              [scrollHeight]="'150px'"
-              placeholder=" Country"
-              (onChange)="onCountrySelect($event)">
-              </p-dropdown>
+  
+            <div class="col-12 col-md-6">
+              <div class="field">
+                <!-- <label>Email-id</label> -->
+                <input pInputText formControlName="email" placeholder=" Email-id" />
+              </div>
             </div>
-          </div>
-
-          <div class="col-12 col-md-6">
-            <div class="field">
-              <!-- <label>City</label> -->
-              <!-- <input pInputText formControlName="city" placeholder="Enter your city" /> -->
-              <p-dropdown 
-              formControlName="city"
-              [options]="cities"
-              [optionLabel]="'name'"
-              [styleClass]="'custom-dropdown'"
-              [scrollHeight]="'150px'"
-              placeholder=" City">
-              </p-dropdown>
+  
+            
+  
+            <div class="col-12 col-md-6">
+              <div class="field">
+                <p-dropdown 
+                formControlName="country"
+                [options]="countries"
+                [optionLabel]="'name'"
+                [styleClass]="'custom-dropdown'"
+                [scrollHeight]="'150px'"
+                placeholder=" Country"
+                (onChange)="onCountrySelect($event)">
+                </p-dropdown>
+              </div>
             </div>
-          </div>
-
-
-          <div class="col-12 col-md-6">
-            <div class="field">
-              <!-- <label>Email-id</label> -->
-              <input pInputText formControlName="pincode" placeholder="Pincode" />
+  
+            <div class="col-12 col-md-6">
+              <div class="field">
+                <!-- <label>City</label> -->
+                <!-- <input pInputText formControlName="city" placeholder="Enter your city" /> -->
+                <p-dropdown 
+                formControlName="city"
+                [options]="cities"
+                [optionLabel]="'name'"
+                [styleClass]="'custom-dropdown'"
+                [scrollHeight]="'150px'"
+                placeholder=" City">
+                </p-dropdown>
+              </div>
             </div>
-          </div>
-
-          <div class="col-12">
-            <div class="field">
-              <!-- <label>Address</label> -->
-              <textarea pInputTextarea formControlName="address" placeholder="Address" rows="3"  class="center-placeholder"></textarea>
+  
+  
+            <div class="col-12 col-md-6">
+              <div class="field">
+                <!-- <label>Email-id</label> -->
+                <input pInputText formControlName="pincode" placeholder="Pincode" />
+              </div>
             </div>
-          </div>
-
-         
-        </div>
-
-        <div class="button-spacing">
-          <!-- <p-button  class="buttons" id="cancel" label="Cancel" (onClick)="onCancelCard()" ></p-button> -->
-          <p-button  class="buttons"  label="Next" (onClick)="onNext()" [disabled]="!orgInfoForm.valid"></p-button>
-        </div>
-
-      </form>
-    </p-tabPanel>
-
-    <p-tabPanel header="Admin Credentials">
-      <form [formGroup]="adminForm" class="p-fluid">
-        <div class="grid">
-          <div class="col-12 col-md-6">
-            <div class="field">
-              <!-- <label>Admin Name</label> -->
-              <input pInputText formControlName="username" placeholder="Name" />
+  
+            <div class="col-12">
+              <div class="field">
+                <!-- <label>Address</label> -->
+                <textarea pInputTextarea formControlName="address" placeholder="Address" rows="3"  class="center-placeholder"></textarea>
+              </div>
             </div>
+  
+           
           </div>
-
-          <div class="col-12 col-md-6">
-            <div class="field">
-              <!-- <label>Email</label> -->
-              <input pInputText formControlName="email" placeholder="Email" />
+  
+          <div class="button-spacing">
+            <!-- <p-button  class="buttons" id="cancel" label="Cancel" (onClick)="onCancelCard()" ></p-button> -->
+            <p-button  class="buttons"  label="Next" (onClick)="onNext()" [disabled]="!orgInfoForm.valid"></p-button>
+          </div>
+  
+        </form>
+      </p-tabPanel>
+  
+      <p-tabPanel header="Admin Credentials">
+        <form [formGroup]="adminForm" class="p-fluid">
+          <div class="grid">
+            <div class="col-12 col-md-6">
+              <div class="field">
+                <!-- <label>Admin Name</label> -->
+                <input pInputText formControlName="username" placeholder="Name" />
+              </div>
             </div>
-          </div>
-
-          <div class="col-12 col-md-6"> 
-            <div class="field">
-              <!-- <label>Password</label> -->
-              <!-- <p-password  formControlName="password"  [toggleMask]="true" placeholder="Enter admin password"></p-password> -->
-              <input pInputText type="password"   formControlName="password" placeholder="Password" />
+  
+            <div class="col-12 col-md-6">
+              <div class="field">
+                <!-- <label>Email</label> -->
+                <input pInputText formControlName="email" placeholder="Email" />
+              </div>
             </div>
-          </div>
-
-          <div class="col-12 col-md-6">
-            <div class="field">
-              <!-- <label>Contact</label> -->
-              <input pInputText formControlName="phoneNumber" placeholder="Contact" />
+  
+            <div class="col-12 col-md-6"> 
+              <div class="field">
+                <!-- <label>Password</label> -->
+                <!-- <p-password  formControlName="password"  [toggleMask]="true" placeholder="Enter admin password"></p-password> -->
+                <input pInputText type="password"   formControlName="password" placeholder="Password" />
+              </div>
             </div>
+  
+            <div class="col-12 col-md-6">
+              <div class="field">
+                <!-- <label>Contact</label> -->
+                <input pInputText formControlName="phoneNumber" placeholder="Contact" />
+              </div>
+            </div>
+  
+            
           </div>
+          <div class="button-spacing">
+            <p-button class="buttons"  id="cancel" label="Cancel"  (onClick)="onCancel()" ></p-button>
+            <p-button class="buttons" label="Submit" (onClick)="onSubmit()" [disabled]="!adminForm.valid"></p-button>
+  
+          </div>
+        </form>
+      </p-tabPanel>
+    </p-tabView>
+  </div>
+  
 
-          
-        </div>
-        <div class="button-spacing">
-          <p-button class="buttons"  id="cancel" label="Cancel"  (onClick)="onCancel()" ></p-button>
-          <p-button class="buttons" label="Submit" (onClick)="onSubmit()" [disabled]="!adminForm.valid"></p-button>
-
-        </div>
-      </form>
-    </p-tabPanel>
-  </p-tabView>
 </div>

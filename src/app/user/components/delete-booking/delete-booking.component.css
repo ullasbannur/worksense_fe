@@ -1,0 +1,18 @@
+.container{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    height: 80%;
+}
+
+.buttonDelete{
+    background-color: rgb(48, 149, 62);
+}
+
+.disabled-button {
+    background-color: rgb(142, 142, 142);
+    cursor: not-allowed;    
+}

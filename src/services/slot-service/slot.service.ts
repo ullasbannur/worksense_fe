@@ -31,8 +31,6 @@ export interface SendSlot{
   // isEdit?:boolean
 }
 
-
-
 @Injectable({
   providedIn: 'root'
 })
@@ -52,4 +50,5 @@ export class SlotService {
   updateSlotBySlotId(slotId:string, roomData: SendSlot): Observable<SendSlot>{
     return this.http.put<SendSlot>(`${this.slotApiurl}/updateSlot/${slotId}`,roomData);
   }
+  
 }

@@ -1,4 +1,7 @@
-
+/* ::ng-deep .p-dialog .p-dialog-header {
+  display: none;
+} */
+ 
 .container {
     /* max-width: 600px; */
     margin: 0 auto;

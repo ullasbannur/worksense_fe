@@ -6,7 +6,7 @@
 <div class="container" >
   <!--*ngIf=" ListData | async as list"  -->
   <h2>List of Organization</h2>
-  <button class="add-btn"  (click) ="addOrg()">Add Organization</button>
+  <button class="add-btn"  (click) ="addOrg()"   >Add Organization</button>
 
 
   
@@ -84,17 +84,16 @@
                 <td *ngIf ="organizations.isEdit">
                   <!-- <input type="text"> -->
                   <input type="text" style="width: 95%; height: 30px; font-size: 15px;" [(ngModel)]="organizations.postalCode">
-
                 </td>
 
                 <td style="padding: 5px;">
                   <button style="background-color: rgb(235, 235, 235); cursor: pointer;
                    border: 1px solid rgb(129, 137, 129); border-radius: 3px; padding: 5px; margin-right: 5px; "
-                   (click)="viewAdmin(organizations.organizationId)">View</button>
-
+                   (click)="viewAdmin(organizations.organizationId)"   >View</button>
+                  
+                   <span>
                   <i class="fa-solid fa-plus"   style="cursor: pointer;"  (click)="addAdmin(organizations.organizationId)"></i>
-
-
+                   </span>
 
                 </td>
 

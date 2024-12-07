@@ -6,3 +6,7 @@
     justify-content: space-between; 
     gap: 25px;
 }
+
+::ng-deep .p-dialog .p-dialog-header {
+    display: none;
+  }

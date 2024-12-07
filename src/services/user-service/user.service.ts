@@ -2,6 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable, of } from 'rxjs';
 
+export interface forgot {
+  code: string;
+  description:string;
+}
+
 export interface LoginModel {
   email: string;
   password: string;
@@ -49,24 +54,29 @@ export interface PasswordModel{
   providedIn: 'root'
 })
 export class UserService {
+  
   constructor(private http: HttpClient) { }
 
   private userApiUrl = `https://localhost:7266/api/User`;
 
+  // loginUser(loginData:LoginModel):Observable<any> {
+  //   return this.http.post<any>(`${this.userApiUrl}/login`,loginData ).pipe(
+  //     map(response => {
+  //       if (!response){
+  //       console.error('No token recieved');
+  //       }
+  //       console.log('login user');
+  //       console.log('token from api call-->',response);
+  //       return response;
+  //     }),
+  //     catchError(error => {
+  //       console.error('Error login:', error);
+  //       return of(error);
+  //     })
+  //   );
+  // }
   loginUser(loginData:LoginModel):Observable<any> {
-    return this.http.post<any>(`${this.userApiUrl}/login`,loginData ).pipe(
-      map(response => {
-        if (!response){
-        console.error('No token recieved');
-        }
-        console.log('token from api call-->',response);
-        return response;
-      }),
-      catchError(error => {
-        console.error('Error login:', error);
-        return of(error);
-      })
-    );
+    return this.http.post<any>(`${this.userApiUrl}/login`,loginData);
   }
 
   getAdminByOrgId(organisationId:string):Observable<any>{
@@ -88,7 +98,7 @@ export class UserService {
     return this.http.delete<any>(`${this.userApiUrl}/delete/${adminId}`);
   }
 
-  updateAdminById(id:String,updatedAdmin:any):Observable<any> {
+  updateAdminById(id:String,updatedAdmin:AdminModel):Observable<any> {
     return this.http.put<any>(`${this.userApiUrl}/update/${id}`, updatedAdmin);
   }
 
@@ -127,5 +137,9 @@ export class UserService {
 
   changePassword(Data:PasswordModel):Observable<any>{
     return this.http.post<any>(`${this.userApiUrl}/change-password`, Data);
+  }
+
+  resetPassword(email:any):Observable<forgot[]>{
+    return this.http.post<forgot[]>(`${this.userApiUrl}/reset-password`,email);
   }
 }
