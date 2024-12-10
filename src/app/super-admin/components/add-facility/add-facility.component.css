@@ -3,6 +3,11 @@
     padding: 0;
     margin: 0;
   }
+
+  :host ::ng-deep #cancel .p-button{
+    background-color: #61615e7f;
+    border:#9bbb9b;
+  }
   
   .card {
    

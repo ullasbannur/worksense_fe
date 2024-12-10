@@ -8,7 +8,6 @@ export interface Country{
     countrycode: string;
 }
 
-
 export interface City{
   id: number;
   name: string;

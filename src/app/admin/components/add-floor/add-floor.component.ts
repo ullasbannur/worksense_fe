@@ -119,9 +119,7 @@ export class AddFloorComponent implements OnInit {
 
       const {country, ...floorData1}= floorData;
 
-
       console.log(floorData1);
-
 
       this.floorService.createFloor(floorData1).subscribe((data)=>{
         console.log(data);
@@ -147,15 +145,8 @@ export class AddFloorComponent implements OnInit {
           }
         });
 
-
-
-
-
       });
 
-
-      
-    
     }
   }
 

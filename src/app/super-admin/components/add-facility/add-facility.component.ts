@@ -91,6 +91,8 @@ export class AddFacilityComponent {
         },
         error:(err)=>{
           console.log('Error adding facility',err);
+          this.listFacility.ngOnDestroy();
+
         }
        });
 
@@ -98,7 +100,8 @@ export class AddFacilityComponent {
   }
 
   onCancel(){
-    console.log("cancelled")
+    // console.log("cancelled")
+    this.listFacility.ngOnDestroy();
 
   }
 }

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
@@ -12,6 +11,8 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { HttpClientModule, provideHttpClient, withInterceptors } from '@angular/common/http';
 import { headersInterceptor } from '../interceptors/headers.interceptor';
 
+import { NgToastModule } from 'ng-angular-popup';
+
 // import { DynamicDialogModule } from 'primeng/dynamicdialog';
 // import { TabViewModule } from 'primeng/tabview';
 // import { InputTextModule } from 'primeng/inputtext';
@@ -22,7 +23,8 @@ import { headersInterceptor } from '../interceptors/headers.interceptor';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -32,25 +34,13 @@ import { headersInterceptor } from '../interceptors/headers.interceptor';
     SuperAdminModule,
     AdminModule,
     UserModule,
-    HttpClientModule
-
-    
-    // DynamicDialogModule
-
-    
-    
-    // TabViewModule,
-    // InputTextModule,
-    // InputTextareaModule,
-    // ButtonModule,
-    // FileUploadModule,
-    // HttpClientModule
-
+    HttpClientModule,
+    NgToastModule
     
   ],
   providers: [
     provideAnimationsAsync(),
-    provideHttpClient(withInterceptors([headersInterceptor]))  
+    provideHttpClient(withInterceptors([headersInterceptor])) ,
   ],
   bootstrap: [AppComponent]
 })

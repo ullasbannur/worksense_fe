@@ -5,13 +5,15 @@ import { Route, Router } from '@angular/router';
 import { UserService ,LoginModel} from '../../../../services/user-service/user.service';
 
 
+import { NgToastService } from 'ng-angular-popup';
+import { timeout } from 'rxjs';
+
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
-
 
 export class LoginComponent {
 
@@ -20,7 +22,7 @@ export class LoginComponent {
   loginForm!: FormGroup;
 
   constructor(private fb: FormBuilder, private route: Router,
-     private userService: UserService){
+     private userService: UserService ,private toast: NgToastService ){
 
       this.loginForm = this.fb.group({
         email: ['', Validators.required],
@@ -41,10 +43,10 @@ export class LoginComponent {
 
     const loginData:LoginModel = this.loginForm.value;
 
-
-    this.userService.loginUser(loginData).subscribe({
+    this.userService.loginUser(loginData).pipe(
+    ).subscribe({
       next: (response) => {
-        console.log('login call started', response);
+        this.toast.success('Success ', '', 4000);
         
         if (response.token) {
           console.log(response.token);
@@ -72,10 +74,15 @@ export class LoginComponent {
           }
         } else {
           console.log('No token received in response');
+        this.toast.warning('Error Message', '', 3000);
+
+
         }
       },
       error: (err) => {
-        console.log('Error during login:', err);
+        this.toast.danger('Error Message', '', 3000);
+
+
       }
     });
    

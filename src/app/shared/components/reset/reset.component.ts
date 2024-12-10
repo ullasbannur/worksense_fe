@@ -75,4 +75,8 @@ export class ResetComponent {
       this.resetForm.reset();
     }
   }
+
+  onCancel(){
+    this.headerPage.ngOnDestroy();
+  }
 }

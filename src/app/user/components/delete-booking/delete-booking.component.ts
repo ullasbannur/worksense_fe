@@ -40,11 +40,9 @@ export class DeleteBookingComponent implements OnInit{
 
     this.display= (this.currentUserId==this.userId )? true: false;
 
-    console.log(this.display);
-    console.log('uid form back->', this.userId);
-    console.log('current uid', this.currentUserId);
-
-
+    // console.log(this.display);
+    // console.log('uid form back->', this.userId);
+    // console.log('current uid', this.currentUserId);
 
   }
 
@@ -52,9 +50,13 @@ export class DeleteBookingComponent implements OnInit{
 
     this.bookingService.deleteBookingBySlotId(this.slotBookId).subscribe({
       next:()=>{
-        console.log('Deleted Booking');
         this.layout.loadBookedSlots();
         this.layout.loadRooms(this.floorId);
+
+        console.log('Deleted Booking');
+
+        // this.layout.loadBookedSlots();
+        // this.layout.loadRooms(this.floorId);
       },
       error:(err)=>{
         console.log(err);

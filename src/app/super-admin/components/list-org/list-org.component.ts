@@ -62,7 +62,7 @@ export class ListOrgComponent implements OnInit {
   }
 
   loadCities(countryId: number) {
-    this.staticService.getCitiesByCountryId(countryId).forEach((data) => {
+    this.staticService.getCitiesByCountryId(countryId).subscribe((data) => {
       this.cities = data.cities;
     });
   }

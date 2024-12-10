@@ -29,6 +29,14 @@
       display: flex;
       flex-wrap: wrap;
       overflow-y: auto;
+
+      
+    }
+
+    div:empty:not(:focus):before {
+      content: attr(data-text);
+      color: #999999;
+     
     }
 
     #cross {

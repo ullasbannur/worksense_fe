@@ -87,7 +87,7 @@
 
           </div>  
           
-          <div  class="chip-box">
+          <div  class="chip-box" data-text="Added Rooms....">
             <div *ngFor="let room of roomarray; let i= index; " style="margin-left:5px ;">
               <!-- <h3>{{room.roomName}}</h3> -->
                 <div class="chip"  (click)="roomEdit(room,i)" >
@@ -98,6 +98,7 @@
           </div>
   
           <div class="button-spacing">
+            
             <p-button  class="buttons" id="addRooms" label="AddRoom" (onClick)="addRoom()" [disabled]="!FloorForm.valid || roomarray.length >= 5"></p-button>
               <!-- <p-button  class="buttons" label="Cancel" (onClick)="onCancelFloor()" severity="danger"></p-button> -->
             <p-button  class="buttons" label="Submit" (onClick)="onSubmitFloor()" [disabled]="!FloorForm.valid || roomarray.length < 1" ></p-button>  

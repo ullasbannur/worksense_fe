@@ -1,6 +1,12 @@
 /* ::ng-deep .p-dialog .p-dialog-header {
   display: none;
 } */
+
+::ng-deep .p-paginator{
+  padding-top: 5px;
+  justify-content: end;
+  border:  none;
+}
  
 .container {
     /* max-width: 600px; */

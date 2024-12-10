@@ -71,7 +71,7 @@ export class AddOrgComponent {
   }
 
   loadCities(countryId:number){
-    this.staticService.getCitiesByCountryId(countryId).forEach((data)=>{
+    this.staticService.getCitiesByCountryId(countryId).subscribe((data)=>{
       this.cities=data.cities;
     });
   }
@@ -119,8 +119,7 @@ export class AddOrgComponent {
   }
 
   onCancelCard() {
-    // this.activeIndex = 0;
-    this.showCard = !this.showCard;
+    this.listOrg.ngOnDestroy();
   }
 
   onSubmit() {
@@ -169,20 +168,23 @@ export class AddOrgComponent {
             this.userService.createClientAdmin(AdminData).subscribe({
               next: () => {
                 console.log('Admin Added successfully');
+                this.listOrg.ngOnDestroy();
               },
               error: (err) => {
                 console.error("ErrorAdmin", err);
               }
             });
-
           }
           else {
             console.error('No organization returned from the server');
+            this.listOrg.ngOnDestroy();
           }
 
         },
         error: (err) => {
           console.error('Error adding organization:', err);
+          this.listOrg.ngOnDestroy();
+          
         }
       });
 

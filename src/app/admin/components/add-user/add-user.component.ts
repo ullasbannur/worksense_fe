@@ -43,7 +43,8 @@ export class AddUserComponent {
   }
 
   onCancel() {
-    console.log('Cancelled');
+    // console.log('Cancelled');
+    this.listUser.ngOnDestroy();
   }
 
   onSubmit() {
@@ -60,9 +61,12 @@ export class AddUserComponent {
         console.log('User Added');
         this.listUser.getUsersByOrgId(this.orgId);
         this.userForm.reset();
+        this.listUser.ngOnDestroy();
+
       },
       error: (err) => {
         console.error("Erroruser", err);
+        this.listUser.ngOnDestroy();
       }
     });
     }

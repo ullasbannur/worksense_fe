@@ -5,7 +5,7 @@
 </app-header>
 
 <div class="container" >
-  <h3 style="font-weight: 100;font-size: 1.5em;">Layout : {{currentFloor.floorName}}</h3>
+  <h3 style="font-weight: 100;font-size: 1.5em;">Layout : {{currentFloor?.floorName}}</h3>
 
   <div class="dropdown" *ngIf="floorsOfOrg | async as floors">
     <label for="floor-select"></label>

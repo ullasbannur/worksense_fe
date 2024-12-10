@@ -17,8 +17,15 @@
       Passwords do not match!
     </div>
 
-    <button (click)="onSubmit()"
+    <div style=" display: flex; gap:10%; justify-content: center;">
+
+      <button style="background-color: #61615e7f;"   (click)="onCancel()">Cancel</button>
+
+      <button (click)="onSubmit()"
       [ngClass]="{'login-disable': resetForm.invalid}" type="submit" [disabled]="resetForm.invalid">Submit
     </button>
+
+    </div>
+    
   </form>
 </div>
