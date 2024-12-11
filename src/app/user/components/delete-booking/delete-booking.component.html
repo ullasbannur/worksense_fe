@@ -1,7 +1,39 @@
 <div class="container">
-    <p>Delete Booking for : <b>{{bookingName}}</b> </p>
-    <p>Booked By : <b> {{userName}} </b></p>
-    <button class="buttonDelete" style="border: none;  padding: 10px; border-radius: 10px; color: white; width: 100px;"
-        (click)="deleteBooking()"  [disabled]="currentUserId!=userId"  [ngClass]="{'disabled-button': currentUserId != userId}"  >Delete
+  <p>
+    Delete Booking for : <b>{{ bookingName }}</b>
+  </p>
+  <p>
+    Booked By : <b> {{ userName }} </b>
+  </p>
+
+  <div style="display: flex ;gap: 10px; margin-top: 15px ; justify-content: end;">
+    <button
+      (click)="onCancel()"
+      style="
+        padding: 5px;
+        border: 1px;
+        background-color: #61615e7f;
+        font-size: 18px;
+        color: white;
+        border-radius: 5px;
+      "
+    >
+      Cancel
     </button>
-</div>  
+
+    <button
+      class="buttonDelete"
+      style="border: none; padding: 5px; border-radius: 5px; color: white; font-size: 18px;"
+      (click)="deleteBooking()"
+      [disabled]="currentUserId != userId"
+      [ngClass]="{ 'disabled-button': currentUserId != userId }"
+    >
+      Delete
+    </button>
+  </div>
+
+  <!-- <button class="buttonDelete" style="border
+    : none;  padding: 10px; border-radius: 10px; color: white; width: 100px;"
+        (click)="deleteBooking()"  [disabled]="currentUserId!=userId"  [ngClass]="{'disabled-button': currentUserId != userId}"  >Delete
+    </button> -->
+</div>

@@ -1,46 +1,76 @@
 <div class="seat-booking-card">
   <div class="seat-header">
-    <p>Seat Booking for : <b>{{bookingName}}</b> </p>
+    <p>
+      Seat Booking for : <b>{{ bookingName }}</b>
+    </p>
   </div>
   <div class="seat-body">
     <div class="seat-row">
-      <label for="from-date" style="font-weight: 100;">FROM</label>
+      <label for="from-date" style="font-weight: 100">FROM</label>
       <input
         id="from-date"
         type="date"
         [(ngModel)]="fromDate"
-        [min]="currentDate" 
-        (change)="onFromDateChange()" 
+        [min]="currentDate"
+        (change)="onFromDateChange()"
       />
       <input
         id="from-time"
         type="time"
         [(ngModel)]="fromTime"
-        (change)="onFromTimeChange()" 
+        (change)="onFromTimeChange()"
       />
     </div>
 
     <div class="seat-row">
-      <label for="to-date" style="font-weight: 100;">TO</label>
+      <label for="to-date" style="font-weight: 100">TO</label>
       <input
         id="to-date"
         type="date"
         [(ngModel)]="toDate"
         [min]="currentDate"
-        (change)="onToDateChange()" 
+        (change)="onToDateChange()"
       />
       <input
         id="to-time"
         type="time"
         [(ngModel)]="toTime"
-        (change)="onToTimeChange()" 
+        (change)="onToTimeChange()"
       />
     </div>
 
-    <div style="display: flex; align-items: flex-end; justify-content: end;">
+    <div
+      style="
+        display: flex;
+        align-items: flex-end;
+        justify-content: end;
+        gap: 10px;
+      "
+    >
+      <button
+        (click)="onClose()"
+        style="
+          padding: 5px;
+          border: 1px;
+          background-color: #61615e7f;
+          font-size: 18px;
+          color: white;
+          border-radius: 5px;
+        "
+      >
+        Cancel
+      </button>
+
       <button
         (click)="onSave()"
-        style="padding: 5px; border: 1px; background-color: rgb(134, 174, 165); font-size: 18px; width: 50px; color: white; border-radius: 5px;"
+        style="
+          padding: 5px;
+          border: 1px;
+          background-color: rgb(134, 174, 165);
+          font-size: 18px;
+          color: white;
+          border-radius: 5px;
+        "
       >
         Save
       </button>

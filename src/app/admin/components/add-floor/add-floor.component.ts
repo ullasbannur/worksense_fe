@@ -96,6 +96,9 @@ export class AddFloorComponent implements OnInit {
   addRoom(){
     this.activeIndex = 1;
   }
+  onCancel(){
+    this.listFloor.ngOnDestroy();
+  }
 
   deleteRoom(roomDel:any, index: number){
     this.roomarray.splice(index,1);
@@ -135,18 +138,16 @@ export class AddFloorComponent implements OnInit {
           rooms:this.roomarray
         };
   
-  
         this.slotService.createSlot(slotData).subscribe({
           next:()=>{
             console.log('Cretaed slots');
+            this.listFloor.ngOnDestroy();
           },
           error:(err)=>{
             console.log('slot creation error',err);
           }
         });
-
       });
-
     }
   }
 

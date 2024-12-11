@@ -65,7 +65,7 @@ export class LayoutComponent implements OnInit {
     return JSON.parse(decodedData);
   }
 
-  ngOnInit() {
+   ngOnInit() {
     const token = JSON.parse(localStorage.getItem('tokenFromBackend') || '{}');
     const decodedToken = this.decodeToken(token);
     const orgId = decodedToken.OrganizationId;
@@ -77,7 +77,7 @@ export class LayoutComponent implements OnInit {
     this.loadFloorsByOrgId(orgId);
     this.loadBookedSlots();
 
-    // this.fetchCurrentDateTime();
+   
 
   }
 
@@ -96,63 +96,64 @@ export class LayoutComponent implements OnInit {
   return currenttime > endtime;
 }
 
-loadBookedSlots() {
-  this.bookingService.getBookedSlotsByOrgId(this.orgId).subscribe({
-    next: (data) => {
-      this.bookedSlots = data;
+loadBookedSlots(){
+  try{
+    this.bookingService.getBookedSlotsByOrgId(this.orgId).subscribe({
+      next: (data) => {
+        this.bookedSlots = data;
+        this.bookedSlotIds = [];
+        this._bookedSlots = [];  
 
-      this.bookedSlotIds = [];
-      this._bookedSlots = [];  
+        this.bookingService.fetchCurrentTime().subscribe({
+          next: (data) => {
+            const currentTime = data.currenttime;
 
-      // this.slotIdMap = {}; 
-      // this.slotUserNameMap = {};
-      // this.slotUserMap = {};
+            this.bookedSlots.forEach(element => {
+              const et = element.endTime;
+              const ct=currentTime;
 
-      this.bookingService.fetchCurrentTime().subscribe({
-        next: (data) => {
-          const currentTime = data.currenttime;
+              if (!this.compareTime(ct, et)) {
+                this._bookedSlots.push(element);
 
-          this.bookedSlots.forEach(element => {
-            const et = element.endTime;
-            const ct=currentTime;
+                // console.log('pushed------------', this._bookedSlots);
+                // console.log('ct lesser than et', this.slotId_NameMap[element.slotId]);
 
-            if (!this.compareTime(ct, et)) {
-              this._bookedSlots.push(element);
+              } else {
+                // console.log('ct greater than et', this.slotId_NameMap[element.slotId]);
+              }
+            });
 
-              // console.log('pushed------------', this._bookedSlots);
-              // console.log('ct lesser than et', this.slotId_NameMap[element.slotId]);
+            this._bookedSlots.forEach(element => {
+              this.bookedSlotIds.push(element.slotId);
+      
+              this.slotIdMap[element.slotId]= element.slotBookId;
+              this.slotUserNameMap[element.slotId]=element.userName;
+              this.slotUserMap[element.slotId]=element.userId;
+            });
+            
+          },
+          error: (err) => {
+            console.error('Error fetching current time', err);
+          }
+        });
 
-            } else {
-              // console.log('ct greater than et', this.slotId_NameMap[element.slotId]);
-            }
-          });
+        // this.bookedSlots.forEach(element => {
+        //   this.bookedSlotIds.push(element.slotId);
 
-          this._bookedSlots.forEach(element => {
-            this.bookedSlotIds.push(element.slotId);
-    
-            this.slotIdMap[element.slotId]= element.slotBookId;
-            this.slotUserNameMap[element.slotId]=element.userName;
-            this.slotUserMap[element.slotId]=element.userId;
-          });
-          
-        },
-        error: (err) => {
-          console.error('Error fetching current time', err);
-        }
-      });
+        //   this.slotIdMap[element.slotId]= element.slotBookId;
+        //   this.slotUserNameMap[element.slotId]=element.userName;
+        //   this.slotUserMap[element.slotId]=element.userId;
+        // });
+      },
+      error: (err) => {
+        console.error('Error fetching booked slots', err);
+      }
+    });
+  }
 
-      // this.bookedSlots.forEach(element => {
-      //   this.bookedSlotIds.push(element.slotId);
-
-      //   this.slotIdMap[element.slotId]= element.slotBookId;
-      //   this.slotUserNameMap[element.slotId]=element.userName;
-      //   this.slotUserMap[element.slotId]=element.userId;
-      // });
-    },
-    error: (err) => {
-      console.error('Error fetching booked slots', err);
-    }
-  });
+  catch (error) {
+    console.error('empty bookings',error);
+  }
 }
 
 
@@ -173,7 +174,6 @@ loadBookedSlots() {
           this.slotId_NameMap[slot.slotId] = slot.slotName;
         });
         // console.log('id name map',this.slotId_NameMap ,  Object.keys(this.slotId_NameMap).length);
-
       },
       error: (err) => {
         console.log('Error fetching slots:', err);
@@ -191,6 +191,9 @@ loadBookedSlots() {
       }
     });
   }
+
+  
+  
 
   showBooking(slotId:string,bookingName:string) {
     if (this.bookedSlotIds.includes(slotId)) {

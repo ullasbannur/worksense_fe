@@ -96,13 +96,30 @@
                 </div>
             </div>
           </div>
-  
-          <div class="button-spacing">
-            
-            <p-button  class="buttons" id="addRooms" label="AddRoom" (onClick)="addRoom()" [disabled]="!FloorForm.valid || roomarray.length >= 5"></p-button>
-              <!-- <p-button  class="buttons" label="Cancel" (onClick)="onCancelFloor()" severity="danger"></p-button> -->
-            <p-button  class="buttons" label="Submit" (onClick)="onSubmitFloor()" [disabled]="!FloorForm.valid || roomarray.length < 1" ></p-button>  
+
+          <div class="button-container">
+            <p-button class="buttons" label="Cancel" id="cancel"  (click)="onCancel()"></p-button>
+          
+            <div class="button-spacing">
+              <p-button
+                class="buttons"
+                id="addRooms"
+                label="Add Room"
+                (onClick)="addRoom()"
+                [disabled]="!FloorForm.valid || roomarray.length >= 5"
+              ></p-button>
+          
+              <p-button
+                class="buttons"
+                label="Submit"
+                (onClick)="onSubmitFloor()"
+                [disabled]="!FloorForm.valid || roomarray.length < 1"
+              ></p-button>
+            </div>
           </div>
+          
+  
+          
   
         </form>
       </p-tabPanel>
@@ -137,7 +154,7 @@
   
             
           </div>
-          <div class="button-spacing">
+          <div class="button-spacing" >
             <p-button class="buttons"  id="cancel" label="Cancel" (onClick)="onCancelRoom()"  severity="danger"></p-button>
             <p-button class="buttons" label="Submit" (onClick)="onSubmitRoom()"
              [disabled]="!RoomForm.valid && !isEdit || roomarray.length >= 5 && !isEdit"

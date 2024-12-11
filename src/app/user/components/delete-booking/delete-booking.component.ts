@@ -46,6 +46,10 @@ export class DeleteBookingComponent implements OnInit{
 
   }
 
+  onCancel(){
+    this.layout.ngOnDestroy();
+  }
+
   deleteBooking(){
 
     this.bookingService.deleteBookingBySlotId(this.slotBookId).subscribe({
@@ -54,9 +58,8 @@ export class DeleteBookingComponent implements OnInit{
         this.layout.loadRooms(this.floorId);
 
         console.log('Deleted Booking');
-
-        // this.layout.loadBookedSlots();
-        // this.layout.loadRooms(this.floorId);
+        this.layout.ngOnDestroy();
+        
       },
       error:(err)=>{
         console.log(err);

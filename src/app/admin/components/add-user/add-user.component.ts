@@ -66,7 +66,7 @@ export class AddUserComponent {
       },
       error: (err) => {
         console.error("Erroruser", err);
-        this.listUser.ngOnDestroy();
+        // this.listUser.ngOnDestroy();
       }
     });
     }

@@ -49,6 +49,10 @@ export class BookingComponent implements OnInit {
     this.toTime = this.fromTime; 
   }
 
+  onClose(){
+    this.layout.ngOnDestroy();
+  }
+
   onSave() {
     const startDateTime = new Date(`${this.fromDate}T${this.fromTime}Z`);
     const endDateTime = new Date(`${this.toDate}T${this.toTime}Z`);
@@ -67,9 +71,12 @@ export class BookingComponent implements OnInit {
 
       this.bookingService.bookSlot(bookingData).subscribe({
         next: () => {
+          this.layout.ngOnDestroy();
+
           console.log('Slot Booked');
           this.layout.loadBookedSlots();
           this.layout.loadRooms(this.floorId);
+
         },
         error: (err) => {
           console.log(err);
